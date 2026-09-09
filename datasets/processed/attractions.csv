@@ -1,0 +1,379 @@
+name,normalized_name,destination_id,category,subcategory,latitude,longitude,rating,review_count,estimated_cost,currency,estimated_visit_duration_min,popularity,description,source,source_record_id,source_url,source_confidence,coordinate_source,rating_source,cost_source,duration_source,coordinate_status,data_quality_status,attraction_id,routing_status
+Baga Beach,baga beach,1,,,,,,,,INR,,,,india_tourism_dataset.json,1,,,,,,,unresolved,missing_data,1,unavailable
+Calangute Beach,calangute beach,1,,,,,,,,INR,,,,india_tourism_dataset.json,1,,,,,,,unresolved,missing_data,2,unavailable
+Old Goa Churches,old goa churches,1,,,,,,,,INR,,,,india_tourism_dataset.json,1,,,,,,,unresolved,missing_data,3,unavailable
+Fort Aguada,fort aguada,1,,,,,,,,INR,,,,india_tourism_dataset.json,1,,,,,,,unresolved,missing_data,4,unavailable
+Dudhsagar Falls,dudhsagar falls,1,,,,,,,,INR,,,,india_tourism_dataset.json,1,,,,,,,unresolved,missing_data,5,unavailable
+Spice Plantations,spice plantations,1,,,,,,,,INR,,,,india_tourism_dataset.json,1,,,,,,,unresolved,missing_data,6,unavailable
+Leh Palace,leh palace,2,,,,,,,,INR,,,,india_tourism_dataset.json,2,,,,,,,unresolved,missing_data,7,unavailable
+Shanti Stupa,shanti stupa,2,,,,,,,,INR,,,,india_tourism_dataset.json,2,,,,,,,unresolved,missing_data,8,unavailable
+Pangong Tso,pangong tso,2,,,,,,,,INR,,,,india_tourism_dataset.json,2,,,,,,,unresolved,missing_data,9,unavailable
+Nubra Valley,nubra valley,2,,,,,,,,INR,,,,india_tourism_dataset.json,2,,,,,,,unresolved,missing_data,10,unavailable
+Khardung La,khardung la,2,,,,,,,,INR,,,,india_tourism_dataset.json,2,,,,,,,unresolved,missing_data,11,unavailable
+Tso Moriri,tso moriri,2,,,,,,,,INR,,,,india_tourism_dataset.json,2,,,,,,,unresolved,missing_data,12,unavailable
+Hemis Monastery,hemis monastery,2,,,,,,,,INR,,,,india_tourism_dataset.json,2,,,,,,,unresolved,missing_data,13,unavailable
+Amer Fort,amer fort,3,,,,,,,,INR,,,,india_tourism_dataset.json,3,,,,,,,unresolved,missing_data,14,unavailable
+City Palace,city palace,3,,,,,,,,INR,,,,india_tourism_dataset.json,3,,,,,,,unresolved,missing_data,15,unavailable
+Hawa Mahal,hawa mahal,3,,,,,,,,INR,,,,india_tourism_dataset.json,3,,,,,,,unresolved,missing_data,16,unavailable
+Jantar Mantar,jantar mantar,3,,,,,,,,INR,,,,india_tourism_dataset.json,3,,,,,,,unresolved,missing_data,17,unavailable
+Nahargarh Fort,nahargarh fort,3,,,,,,,,INR,,,,india_tourism_dataset.json,3,,,,,,,unresolved,missing_data,18,unavailable
+Jaigarh Fort,jaigarh fort,3,,,,,,,,INR,,,,india_tourism_dataset.json,3,,,,,,,unresolved,missing_data,19,unavailable
+Dashashwamedh Ghat,dashashwamedh ghat,4,,,,,,,,INR,,,,india_tourism_dataset.json,4,,,,,,,unresolved,missing_data,20,unavailable
+Kashi Vishwanath Temple,kashi vishwanath temple,4,,,,,,,,INR,,,,india_tourism_dataset.json,4,,,,,,,unresolved,missing_data,21,unavailable
+Assi Ghat,assi ghat,4,,,,,,,,INR,,,,india_tourism_dataset.json,4,,,,,,,unresolved,missing_data,22,unavailable
+Sarnath,sarnath,4,,,,,,,,INR,,,,india_tourism_dataset.json,4,,,,,,,unresolved,missing_data,23,unavailable
+Manikarnika Ghat,manikarnika ghat,4,,,,,,,,INR,,,,india_tourism_dataset.json,4,,,,,,,unresolved,missing_data,24,unavailable
+Ganga Aarti,ganga aarti,4,,,,,,,,INR,,,,india_tourism_dataset.json,4,,,,,,,unresolved,missing_data,25,unavailable
+Taj Mahal,taj mahal,5,,,,,,,,INR,,,,india_tourism_dataset.json,5,,,,,,,unresolved,missing_data,26,unavailable
+Agra Fort,agra fort,5,,,,,,,,INR,,,,india_tourism_dataset.json,5,,,,,,,unresolved,missing_data,27,unavailable
+Mehtab Bagh,mehtab bagh,5,,,,,,,,INR,,,,india_tourism_dataset.json,5,,,,,,,unresolved,missing_data,28,unavailable
+Itmad-ud-Daulah (Baby Taj),itmad-ud-daulah (baby taj),5,,,,,,,,INR,,,,india_tourism_dataset.json,5,,,,,,,unresolved,missing_data,29,unavailable
+City Palace,city palace,6,,,,,,,,INR,,,,india_tourism_dataset.json,6,,,,,,,unresolved,missing_data,30,unavailable
+Lake Pichola,lake pichola,6,,,,,,,,INR,,,,india_tourism_dataset.json,6,,,,,,,unresolved,missing_data,31,unavailable
+Jag Mandir,jag mandir,6,,,,,,,,INR,,,,india_tourism_dataset.json,6,,,,,,,unresolved,missing_data,32,unavailable
+Jagdish Temple,jagdish temple,6,,,,,,,,INR,,,,india_tourism_dataset.json,6,,,,,,,unresolved,missing_data,33,unavailable
+Fateh Sagar Lake,fateh sagar lake,6,,,,,,,,INR,,,,india_tourism_dataset.json,6,,,,,,,unresolved,missing_data,34,unavailable
+Vembanad Lake,vembanad lake,7,,,,,,,,INR,,,,india_tourism_dataset.json,7,,,,,,,unresolved,missing_data,35,unavailable
+Houseboat cruises,houseboat cruises,7,,,,,,,,INR,,,,india_tourism_dataset.json,7,,,,,,,unresolved,missing_data,36,unavailable
+Alleppey canals,alleppey canals,7,,,,,,,,INR,,,,india_tourism_dataset.json,7,,,,,,,unresolved,missing_data,37,unavailable
+Kumarakom Bird Sanctuary,kumarakom bird sanctuary,7,,,,,,,,INR,,,,india_tourism_dataset.json,7,,,,,,,unresolved,missing_data,38,unavailable
+Coffee plantations,coffee plantations,8,,,,,,,,INR,,,,india_tourism_dataset.json,8,,,,,,,unresolved,missing_data,39,unavailable
+Abbey Falls,abbey falls,8,,,,,,,,INR,,,,india_tourism_dataset.json,8,,,,,,,unresolved,missing_data,40,unavailable
+Raja's Seat,raja's seat,8,,,,,,,,INR,,,,india_tourism_dataset.json,8,,,,,,,unresolved,missing_data,41,unavailable
+Dubare Elephant Camp,dubare elephant camp,8,,,,,,,,INR,,,,india_tourism_dataset.json,8,,,,,,,unresolved,missing_data,42,unavailable
+Talakaveri,talakaveri,8,,,,,,,,INR,,,,india_tourism_dataset.json,8,,,,,,,unresolved,missing_data,43,unavailable
+Rice fields and pine hills,rice fields and pine hills,9,,,,,,,,INR,,,,india_tourism_dataset.json,9,,,,,,,unresolved,missing_data,44,unavailable
+Apatani tribal villages,apatani tribal villages,9,,,,,,,,INR,,,,india_tourism_dataset.json,9,,,,,,,unresolved,missing_data,45,unavailable
+Ziro Music Festival (annual),ziro music festival (annual),9,,,,,,,,INR,,,,india_tourism_dataset.json,9,,,,,,,unresolved,missing_data,46,unavailable
+Mawlynnong village (promoted as very clean),mawlynnong village (promoted as very clean),10,,,,,,,,INR,,,,india_tourism_dataset.json,10,,,,,,,unresolved,missing_data,47,unavailable
+Nearby living root bridges,nearby living root bridges,10,,,,,,,,INR,,,,india_tourism_dataset.json,10,,,,,,,unresolved,missing_data,48,unavailable
+Skywalk viewpoints over Bangladesh plains,skywalk viewpoints over bangladesh plains,10,,,,,,,,INR,,,,india_tourism_dataset.json,10,,,,,,,unresolved,missing_data,49,unavailable
+Mall Road,mall road,11,,,,,,,,INR,,,,india_tourism_dataset.json,11,,,,,,,unresolved,missing_data,50,unavailable
+The Ridge,the ridge,11,,,,,,,,INR,,,,india_tourism_dataset.json,11,,,,,,,unresolved,missing_data,51,unavailable
+Jakhoo Temple,jakhoo temple,11,,,,,,,,INR,,,,india_tourism_dataset.json,11,,,,,,,unresolved,missing_data,52,unavailable
+Christ Church,christ church,11,,,,,,,,INR,,,,india_tourism_dataset.json,11,,,,,,,unresolved,missing_data,53,unavailable
+Kalka–Shimla Toy Train,kalka–shimla toy train,11,,,,,,,,INR,,,,india_tourism_dataset.json,11,,,,,,,unresolved,missing_data,54,unavailable
+Kufri (nearby),kufri (nearby),11,,,,,,,,INR,,,,india_tourism_dataset.json,11,,,,,,,unresolved,missing_data,55,unavailable
+McLeod Ganj main square,mcleod ganj main square,12,,,,,,,,INR,,,,india_tourism_dataset.json,12,,,,,,,unresolved,missing_data,56,unavailable
+Tsuglagkhang (Dalai Lama temple),tsuglagkhang (dalai lama temple),12,,,,,,,,INR,,,,india_tourism_dataset.json,12,,,,,,,unresolved,missing_data,57,unavailable
+Bhagsu Nag,bhagsu nag,12,,,,,,,,INR,,,,india_tourism_dataset.json,12,,,,,,,unresolved,missing_data,58,unavailable
+Norbulingka Institute,norbulingka institute,12,,,,,,,,INR,,,,india_tourism_dataset.json,12,,,,,,,unresolved,missing_data,59,unavailable
+Triund trek (nearby),triund trek (nearby),12,,,,,,,,INR,,,,india_tourism_dataset.json,12,,,,,,,unresolved,missing_data,60,unavailable
+Old Manali,old manali,13,,,,,,,,INR,,,,india_tourism_dataset.json,13,,,,,,,unresolved,missing_data,61,unavailable
+Hadimba Temple,hadimba temple,13,,,,,,,,INR,,,,india_tourism_dataset.json,13,,,,,,,unresolved,missing_data,62,unavailable
+Solang Valley,solang valley,13,,,,,,,,INR,,,,india_tourism_dataset.json,13,,,,,,,unresolved,missing_data,63,unavailable
+Rohtang Pass (seasonal),rohtang pass (seasonal),13,,,,,,,,INR,,,,india_tourism_dataset.json,13,,,,,,,unresolved,missing_data,64,unavailable
+Beas River,beas river,13,,,,,,,,INR,,,,india_tourism_dataset.json,13,,,,,,,unresolved,missing_data,65,unavailable
+Tawang Monastery,tawang monastery,14,,,,,,,,INR,,,,india_tourism_dataset.json,14,,,,,,,unresolved,missing_data,66,unavailable
+Sela Pass (en route),sela pass (en route),14,,,,,,,,INR,,,,india_tourism_dataset.json,14,,,,,,,unresolved,missing_data,67,unavailable
+"Bum La Pass (border, permits)","bum la pass (border, permits)",14,,,,,,,,INR,,,,india_tourism_dataset.json,14,,,,,,,unresolved,missing_data,68,unavailable
+War Memorial,war memorial,14,,,,,,,,INR,,,,india_tourism_dataset.json,14,,,,,,,unresolved,missing_data,69,unavailable
+High-altitude lakes,high-altitude lakes,14,,,,,,,,INR,,,,india_tourism_dataset.json,14,,,,,,,unresolved,missing_data,70,unavailable
+Khajjiar meadow,khajjiar meadow,15,,,,,,,,INR,,,,india_tourism_dataset.json,15,,,,,,,unresolved,missing_data,71,unavailable
+Small lake in meadow,small lake in meadow,15,,,,,,,,INR,,,,india_tourism_dataset.json,15,,,,,,,unresolved,missing_data,72,unavailable
+Surrounding deodar forest,surrounding deodar forest,15,,,,,,,,INR,,,,india_tourism_dataset.json,15,,,,,,,unresolved,missing_data,73,unavailable
+Kaza,kaza,16,,,,,,,,INR,,,,india_tourism_dataset.json,16,,,,,,,unresolved,missing_data,74,unavailable
+Key (Kye) Monastery,key (kye) monastery,16,,,,,,,,INR,,,,india_tourism_dataset.json,16,,,,,,,unresolved,missing_data,75,unavailable
+Kibber and Chicham,kibber and chicham,16,,,,,,,,INR,,,,india_tourism_dataset.json,16,,,,,,,unresolved,missing_data,76,unavailable
+Pin Valley,pin valley,16,,,,,,,,INR,,,,india_tourism_dataset.json,16,,,,,,,unresolved,missing_data,77,unavailable
+Dhankar and Tabo monasteries,dhankar and tabo monasteries,16,,,,,,,,INR,,,,india_tourism_dataset.json,16,,,,,,,unresolved,missing_data,78,unavailable
+Chandratal (seasonal access),chandratal (seasonal access),16,,,,,,,,INR,,,,india_tourism_dataset.json,16,,,,,,,unresolved,missing_data,79,unavailable
+Hunder sand dunes,hunder sand dunes,17,,,,,,,,INR,,,,india_tourism_dataset.json,17,,,,,,,unresolved,missing_data,80,unavailable
+Bactrian camel rides,bactrian camel rides,17,,,,,,,,INR,,,,india_tourism_dataset.json,17,,,,,,,unresolved,missing_data,81,unavailable
+Diskit Monastery and giant Buddha statue,diskit monastery and giant buddha statue,17,,,,,,,,INR,,,,india_tourism_dataset.json,17,,,,,,,unresolved,missing_data,82,unavailable
+"Villages like Turtuk (further north, permits)","villages like turtuk (further north, permits)",17,,,,,,,,INR,,,,india_tourism_dataset.json,17,,,,,,,unresolved,missing_data,83,unavailable
+Colour-changing blue lake,colour-changing blue lake,18,,,,,,,,INR,,,,india_tourism_dataset.json,18,,,,,,,unresolved,missing_data,84,unavailable
+High-altitude landscapes,high-altitude landscapes,18,,,,,,,,INR,,,,india_tourism_dataset.json,18,,,,,,,unresolved,missing_data,85,unavailable
+Nearby village stays (Spangmik area),nearby village stays (spangmik area),18,,,,,,,,INR,,,,india_tourism_dataset.json,18,,,,,,,unresolved,missing_data,86,unavailable
+Ooty Lake,ooty lake,19,,,,,,,,INR,,,,india_tourism_dataset.json,19,,,,,,,unresolved,missing_data,87,unavailable
+Botanical Gardens,botanical gardens,19,,,,,,,,INR,,,,india_tourism_dataset.json,19,,,,,,,unresolved,missing_data,88,unavailable
+Doddabetta Peak,doddabetta peak,19,,,,,,,,INR,,,,india_tourism_dataset.json,19,,,,,,,unresolved,missing_data,89,unavailable
+Nilgiri Mountain Railway,nilgiri mountain railway,19,,,,,,,,INR,,,,india_tourism_dataset.json,19,,,,,,,unresolved,missing_data,90,unavailable
+Tea estates (Coonoor route),tea estates (coonoor route),19,,,,,,,,INR,,,,india_tourism_dataset.json,19,,,,,,,unresolved,missing_data,91,unavailable
+Tea plantations,tea plantations,20,,,,,,,,INR,,,,india_tourism_dataset.json,20,,,,,,,unresolved,missing_data,92,unavailable
+Top Station viewpoint,top station viewpoint,20,,,,,,,,INR,,,,india_tourism_dataset.json,20,,,,,,,unresolved,missing_data,93,unavailable
+"Eravikulam National Park (Nilgiri tahr, seasonal closure during breeding)","eravikulam national park (nilgiri tahr, seasonal closure during breeding)",20,,,,,,,,INR,,,,india_tourism_dataset.json,20,,,,,,,unresolved,missing_data,94,unavailable
+Mattupetty Dam,mattupetty dam,20,,,,,,,,INR,,,,india_tourism_dataset.json,20,,,,,,,unresolved,missing_data,95,unavailable
+Photo Point,photo point,20,,,,,,,,INR,,,,india_tourism_dataset.json,20,,,,,,,unresolved,missing_data,96,unavailable
+Vivekananda Rock Memorial,vivekananda rock memorial,21,,,,,,,,INR,,,,india_tourism_dataset.json,21,,,,,,,unresolved,missing_data,97,unavailable
+Thiruvalluvar Statue,thiruvalluvar statue,21,,,,,,,,INR,,,,india_tourism_dataset.json,21,,,,,,,unresolved,missing_data,98,unavailable
+Sunrise Point,sunrise point,21,,,,,,,,INR,,,,india_tourism_dataset.json,21,,,,,,,unresolved,missing_data,99,unavailable
+Sunset View Point,sunset view point,21,,,,,,,,INR,,,,india_tourism_dataset.json,21,,,,,,,unresolved,missing_data,100,unavailable
+Kumari Amman Temple,kumari amman temple,21,,,,,,,,INR,,,,india_tourism_dataset.json,21,,,,,,,unresolved,missing_data,101,unavailable
+Kanyakumari Beach,kanyakumari beach,21,,,,,,,,INR,,,,india_tourism_dataset.json,21,,,,,,,unresolved,missing_data,102,unavailable
+White Salt Desert (White Rann),white salt desert (white rann),22,,,,,,,,INR,,,,india_tourism_dataset.json,22,,,,,,,unresolved,missing_data,103,unavailable
+Rann Utsav Tent City (seasonal),rann utsav tent city (seasonal),22,,,,,,,,INR,,,,india_tourism_dataset.json,22,,,,,,,unresolved,missing_data,104,unavailable
+Kala Dungar (Black Hill),kala dungar (black hill),22,,,,,,,,INR,,,,india_tourism_dataset.json,22,,,,,,,unresolved,missing_data,105,unavailable
+Nearby craft villages,nearby craft villages,22,,,,,,,,INR,,,,india_tourism_dataset.json,22,,,,,,,unresolved,missing_data,106,unavailable
+Ruins of Dhanushkodi ghost town,ruins of dhanushkodi ghost town,23,,,,,,,,INR,,,,india_tourism_dataset.json,23,,,,,,,unresolved,missing_data,107,unavailable
+Pristine Dhanushkodi Beach,pristine dhanushkodi beach,23,,,,,,,,INR,,,,india_tourism_dataset.json,23,,,,,,,unresolved,missing_data,108,unavailable
+Views towards Sri Lanka across Palk Strait,views towards sri lanka across palk strait,23,,,,,,,,INR,,,,india_tourism_dataset.json,23,,,,,,,unresolved,missing_data,109,unavailable
+Nearby Pamban Bridge (en route),nearby pamban bridge (en route),23,,,,,,,,INR,,,,india_tourism_dataset.json,23,,,,,,,unresolved,missing_data,110,unavailable
+Chitrakote Falls (broad horseshoe-shaped waterfall),chitrakote falls (broad horseshoe-shaped waterfall),24,,,,,,,,INR,,,,india_tourism_dataset.json,24,,,,,,,unresolved,missing_data,111,unavailable
+Boat rides in calmer seasons (where permitted),boat rides in calmer seasons (where permitted),24,,,,,,,,INR,,,,india_tourism_dataset.json,24,,,,,,,unresolved,missing_data,112,unavailable
+Viewpoints along the gorge,viewpoints along the gorge,24,,,,,,,,INR,,,,india_tourism_dataset.json,24,,,,,,,unresolved,missing_data,113,unavailable
+Gokarna Main Beach,gokarna main beach,25,,,,,,,,INR,,,,india_tourism_dataset.json,25,,,,,,,unresolved,missing_data,114,unavailable
+Kudle Beach,kudle beach,25,,,,,,,,INR,,,,india_tourism_dataset.json,25,,,,,,,unresolved,missing_data,115,unavailable
+Om Beach,om beach,25,,,,,,,,INR,,,,india_tourism_dataset.json,25,,,,,,,unresolved,missing_data,116,unavailable
+Half Moon and Paradise beaches (via treks/boat),half moon and paradise beaches (via treks/boat),25,,,,,,,,INR,,,,india_tourism_dataset.json,25,,,,,,,unresolved,missing_data,117,unavailable
+Mahabaleshwar Temple,mahabaleshwar temple,25,,,,,,,,INR,,,,india_tourism_dataset.json,25,,,,,,,unresolved,missing_data,118,unavailable
+French Quarter (White Town),french quarter (white town),26,,,,,,,,INR,,,,india_tourism_dataset.json,26,,,,,,,unresolved,missing_data,119,unavailable
+Seafront Promenade,seafront promenade,26,,,,,,,,INR,,,,india_tourism_dataset.json,26,,,,,,,unresolved,missing_data,120,unavailable
+Sri Aurobindo Ashram,sri aurobindo ashram,26,,,,,,,,INR,,,,india_tourism_dataset.json,26,,,,,,,unresolved,missing_data,121,unavailable
+Nearby Auroville (separate township),nearby auroville (separate township),26,,,,,,,,INR,,,,india_tourism_dataset.json,26,,,,,,,unresolved,missing_data,122,unavailable
+Rock Beach,rock beach,26,,,,,,,,INR,,,,india_tourism_dataset.json,26,,,,,,,unresolved,missing_data,123,unavailable
+Virupaksha Temple,virupaksha temple,27,,,,,,,,INR,,,,india_tourism_dataset.json,27,,,,,,,unresolved,missing_data,124,unavailable
+Vittala Temple (stone chariot & musical pillars),vittala temple (stone chariot & musical pillars),27,,,,,,,,INR,,,,india_tourism_dataset.json,27,,,,,,,unresolved,missing_data,125,unavailable
+Hemakuta Hill,hemakuta hill,27,,,,,,,,INR,,,,india_tourism_dataset.json,27,,,,,,,unresolved,missing_data,126,unavailable
+Matanga Hill sunrise/sunset,matanga hill sunrise/sunset,27,,,,,,,,INR,,,,india_tourism_dataset.json,27,,,,,,,unresolved,missing_data,127,unavailable
+Royal Enclosure and underground structures,royal enclosure and underground structures,27,,,,,,,,INR,,,,india_tourism_dataset.json,27,,,,,,,unresolved,missing_data,128,unavailable
+Satras (Vaishnavite monasteries),satras (vaishnavite monasteries),28,,,,,,,,INR,,,,india_tourism_dataset.json,28,,,,,,,unresolved,missing_data,129,unavailable
+Traditional Mising and Assamese villages,traditional mising and assamese villages,28,,,,,,,,INR,,,,india_tourism_dataset.json,28,,,,,,,unresolved,missing_data,130,unavailable
+Riverine landscapes and birdlife,riverine landscapes and birdlife,28,,,,,,,,INR,,,,india_tourism_dataset.json,28,,,,,,,unresolved,missing_data,131,unavailable
+Araku Valley viewpoints,araku valley viewpoints,29,,,,,,,,INR,,,,india_tourism_dataset.json,29,,,,,,,unresolved,missing_data,132,unavailable
+Ananthagiri coffee plantations,ananthagiri coffee plantations,29,,,,,,,,INR,,,,india_tourism_dataset.json,29,,,,,,,unresolved,missing_data,133,unavailable
+Borra Caves (nearby),borra caves (nearby),29,,,,,,,,INR,,,,india_tourism_dataset.json,29,,,,,,,unresolved,missing_data,134,unavailable
+Tribal Museum,tribal museum,29,,,,,,,,INR,,,,india_tourism_dataset.json,29,,,,,,,unresolved,missing_data,135,unavailable
+Varkala Cliff and North Cliff promenade,varkala cliff and north cliff promenade,30,,,,,,,,INR,,,,india_tourism_dataset.json,30,,,,,,,unresolved,missing_data,136,unavailable
+Papanasam Beach,papanasam beach,30,,,,,,,,INR,,,,india_tourism_dataset.json,30,,,,,,,unresolved,missing_data,137,unavailable
+Sivagiri Mutt (nearby ashram),sivagiri mutt (nearby ashram),30,,,,,,,,INR,,,,india_tourism_dataset.json,30,,,,,,,unresolved,missing_data,138,unavailable
+Edava lakes and backwater area (short drive),edava lakes and backwater area (short drive),30,,,,,,,,INR,,,,india_tourism_dataset.json,30,,,,,,,unresolved,missing_data,139,unavailable
+Radhanagar Beach (Beach No. 7),radhanagar beach (beach no. 7),31,,,,,,,,INR,,,,india_tourism_dataset.json,31,,,,,,,unresolved,missing_data,140,unavailable
+Elephant Beach (snorkelling/activities),elephant beach (snorkelling/activities),31,,,,,,,,INR,,,,india_tourism_dataset.json,31,,,,,,,unresolved,missing_data,141,unavailable
+Kalapathar Beach,kalapathar beach,31,,,,,,,,INR,,,,india_tourism_dataset.json,31,,,,,,,unresolved,missing_data,142,unavailable
+Neil’s Cove (near Radhanagar),neil’s cove (near radhanagar),31,,,,,,,,INR,,,,india_tourism_dataset.json,31,,,,,,,unresolved,missing_data,143,unavailable
+Bharatpur Beach,bharatpur beach,32,,,,,,,,INR,,,,india_tourism_dataset.json,32,,,,,,,unresolved,missing_data,144,unavailable
+Laxmanpur Beach,laxmanpur beach,32,,,,,,,,INR,,,,india_tourism_dataset.json,32,,,,,,,unresolved,missing_data,145,unavailable
+Sitapur Beach,sitapur beach,32,,,,,,,,INR,,,,india_tourism_dataset.json,32,,,,,,,unresolved,missing_data,146,unavailable
+Natural Rock Formation,natural rock formation,32,,,,,,,,INR,,,,india_tourism_dataset.json,32,,,,,,,unresolved,missing_data,147,unavailable
+Ward’s Lake,ward’s lake,33,,,,,,,,INR,,,,india_tourism_dataset.json,33,,,,,,,unresolved,missing_data,148,unavailable
+Police Bazaar (market),police bazaar (market),33,,,,,,,,INR,,,,india_tourism_dataset.json,33,,,,,,,unresolved,missing_data,149,unavailable
+Shillong Peak and viewpoints,shillong peak and viewpoints,33,,,,,,,,INR,,,,india_tourism_dataset.json,33,,,,,,,unresolved,missing_data,150,unavailable
+Nearby waterfalls and lakes (like Umiam Lake en route),nearby waterfalls and lakes (like umiam lake en route),33,,,,,,,,INR,,,,india_tourism_dataset.json,33,,,,,,,unresolved,missing_data,151,unavailable
+Nohkalikai Falls,nohkalikai falls,34,,,,,,,,INR,,,,india_tourism_dataset.json,34,,,,,,,unresolved,missing_data,152,unavailable
+Seven Sisters Falls (seasonal flow),seven sisters falls (seasonal flow),34,,,,,,,,INR,,,,india_tourism_dataset.json,34,,,,,,,unresolved,missing_data,153,unavailable
+Mawsmai Cave,mawsmai cave,34,,,,,,,,INR,,,,india_tourism_dataset.json,34,,,,,,,unresolved,missing_data,154,unavailable
+Viewpoints over Bangladesh plains,viewpoints over bangladesh plains,34,,,,,,,,INR,,,,india_tourism_dataset.json,34,,,,,,,unresolved,missing_data,155,unavailable
+Umngot River at Dawki and Shnongpdeng (crystal-clear water)[web:221],umngot river at dawki and shnongpdeng (crystal-clear water)[web:221],35,,,,,,,,INR,,,,india_tourism_dataset.json,35,,,,,,,unresolved,missing_data,156,unavailable
+Boating and kayaking stretches,boating and kayaking stretches,35,,,,,,,,INR,,,,india_tourism_dataset.json,35,,,,,,,unresolved,missing_data,157,unavailable
+Border town views towards Bangladesh,border town views towards bangladesh,35,,,,,,,,INR,,,,india_tourism_dataset.json,35,,,,,,,unresolved,missing_data,158,unavailable
+Turquoise-blue plunge pool,turquoise-blue plunge pool,36,,,,,,,,INR,,,,india_tourism_dataset.json,36,,,,,,,unresolved,missing_data,159,unavailable
+Curtain-like waterfall with viewing platforms,curtain-like waterfall with viewing platforms,36,,,,,,,,INR,,,,india_tourism_dataset.json,36,,,,,,,unresolved,missing_data,160,unavailable
+Laxman Jhula and Ram Jhula areas,laxman jhula and ram jhula areas,37,,,,,,,,INR,,,,india_tourism_dataset.json,37,,,,,,,unresolved,missing_data,161,unavailable
+Ganga Aarti ghats,ganga aarti ghats,37,,,,,,,,INR,,,,india_tourism_dataset.json,37,,,,,,,unresolved,missing_data,162,unavailable
+Beatles Ashram (Chaurasi Kutiya),beatles ashram (chaurasi kutiya),37,,,,,,,,INR,,,,india_tourism_dataset.json,37,,,,,,,unresolved,missing_data,163,unavailable
+Nearby rafting stretches on Ganga,nearby rafting stretches on ganga,37,,,,,,,,INR,,,,india_tourism_dataset.json,37,,,,,,,unresolved,missing_data,164,unavailable
+Har Ki Pauri ghat,har ki pauri ghat,38,,,,,,,,INR,,,,india_tourism_dataset.json,38,,,,,,,unresolved,missing_data,165,unavailable
+Ganga Aarti,ganga aarti,38,,,,,,,,INR,,,,india_tourism_dataset.json,38,,,,,,,unresolved,missing_data,166,unavailable
+Temples along riverfront,temples along riverfront,38,,,,,,,,INR,,,,india_tourism_dataset.json,38,,,,,,,unresolved,missing_data,167,unavailable
+Local bazaars,local bazaars,38,,,,,,,,INR,,,,india_tourism_dataset.json,38,,,,,,,unresolved,missing_data,168,unavailable
+Dashashwamedh and Assi Ghats,dashashwamedh and assi ghats,4,,,,,,,,INR,,,,india_tourism_dataset.json,39,,,,,,,unresolved,missing_data,169,unavailable
+Kashi Vishwanath Temple corridor,kashi vishwanath temple corridor,4,,,,,,,,INR,,,,india_tourism_dataset.json,39,,,,,,,unresolved,missing_data,170,unavailable
+Boat rides on Ganga,boat rides on ganga,4,,,,,,,,INR,,,,india_tourism_dataset.json,39,,,,,,,unresolved,missing_data,171,unavailable
+Old city lanes,old city lanes,4,,,,,,,,INR,,,,india_tourism_dataset.json,39,,,,,,,unresolved,missing_data,172,unavailable
+Golden Temple (Harmandir Sahib),golden temple (harmandir sahib),39,,,,,,,,INR,,,,india_tourism_dataset.json,40,,,,,,,unresolved,missing_data,173,unavailable
+Wagah/Attari Border ceremony,wagah/attari border ceremony,39,,,,,,,,INR,,,,india_tourism_dataset.json,40,,,,,,,unresolved,missing_data,174,unavailable
+Jallianwala Bagh memorial,jallianwala bagh memorial,39,,,,,,,,INR,,,,india_tourism_dataset.json,40,,,,,,,unresolved,missing_data,175,unavailable
+Old city bazaars,old city bazaars,39,,,,,,,,INR,,,,india_tourism_dataset.json,40,,,,,,,unresolved,missing_data,176,unavailable
+Apple orchards and forest walks,apple orchards and forest walks,40,,,,,,,,INR,,,,india_tourism_dataset.json,41,,,,,,,unresolved,missing_data,177,unavailable
+Views towards snow peaks (on clear days),views towards snow peaks (on clear days),40,,,,,,,,INR,,,,india_tourism_dataset.json,41,,,,,,,unresolved,missing_data,178,unavailable
+Nearby Surkanda Devi Temple,nearby surkanda devi temple,40,,,,,,,,INR,,,,india_tourism_dataset.json,41,,,,,,,unresolved,missing_data,179,unavailable
+Binsar Wildlife Sanctuary viewpoints,binsar wildlife sanctuary viewpoints,41,,,,,,,,INR,,,,india_tourism_dataset.json,42,,,,,,,unresolved,missing_data,180,unavailable
+Zero Point trek,zero point trek,41,,,,,,,,INR,,,,india_tourism_dataset.json,42,,,,,,,unresolved,missing_data,181,unavailable
+Panoramic views of Nanda Devi and other peaks (on clear days),panoramic views of nanda devi and other peaks (on clear days),41,,,,,,,,INR,,,,india_tourism_dataset.json,42,,,,,,,unresolved,missing_data,182,unavailable
+Panchachuli peak views,panchachuli peak views,42,,,,,,,,INR,,,,india_tourism_dataset.json,43,,,,,,,unresolved,missing_data,183,unavailable
+Khaliya Top trek,khaliya top trek,42,,,,,,,,INR,,,,india_tourism_dataset.json,43,,,,,,,unresolved,missing_data,184,unavailable
+Base for Milam and Ralam glacier treks,base for milam and ralam glacier treks,42,,,,,,,,INR,,,,india_tourism_dataset.json,43,,,,,,,unresolved,missing_data,185,unavailable
+Deoban forest viewpoints,deoban forest viewpoints,43,,,,,,,,INR,,,,india_tourism_dataset.json,44,,,,,,,unresolved,missing_data,186,unavailable
+Tiger Falls (nearby),tiger falls (nearby),43,,,,,,,,INR,,,,india_tourism_dataset.json,44,,,,,,,unresolved,missing_data,187,unavailable
+Village and ridge walks,village and ridge walks,43,,,,,,,,INR,,,,india_tourism_dataset.json,44,,,,,,,unresolved,missing_data,188,unavailable
+"Core safari zones (Kanha, Kisli, Mukki, Sarhi)","core safari zones (kanha, kisli, mukki, sarhi)",44,,,,,,,,INR,,,,india_tourism_dataset.json,45,,,,,,,unresolved,missing_data,189,unavailable
+Sal and bamboo forests with meadows,sal and bamboo forests with meadows,44,,,,,,,,INR,,,,india_tourism_dataset.json,45,,,,,,,unresolved,missing_data,190,unavailable
+Barasingha (hard-ground swamp deer) conservation success,barasingha (hard-ground swamp deer) conservation success,44,,,,,,,,INR,,,,india_tourism_dataset.json,45,,,,,,,unresolved,missing_data,191,unavailable
+Core safari zones 1–10,core safari zones 1–10,45,,,,,,,,INR,,,,india_tourism_dataset.json,46,,,,,,,unresolved,missing_data,192,unavailable
+Ranthambore Fort within park,ranthambore fort within park,45,,,,,,,,INR,,,,india_tourism_dataset.json,46,,,,,,,unresolved,missing_data,193,unavailable
+Lakes with ruins where tigers often appear,lakes with ruins where tigers often appear,45,,,,,,,,INR,,,,india_tourism_dataset.json,46,,,,,,,unresolved,missing_data,194,unavailable
+"Tala, Magadhi, Khitauli and newer zones","tala, magadhi, khitauli and newer zones",46,,,,,,,,INR,,,,india_tourism_dataset.json,47,,,,,,,unresolved,missing_data,195,unavailable
+High tiger density in core,high tiger density in core,46,,,,,,,,INR,,,,india_tourism_dataset.json,47,,,,,,,unresolved,missing_data,196,unavailable
+Bandhavgarh Fort and hill (restricted access zones),bandhavgarh fort and hill (restricted access zones),46,,,,,,,,INR,,,,india_tourism_dataset.json,47,,,,,,,unresolved,missing_data,197,unavailable
+"Core zones like Moharli, Tadoba, Kolsa–Zari, Navegaon","core zones like moharli, tadoba, kolsa–zari, navegaon",47,,,,,,,,INR,,,,india_tourism_dataset.json,48,,,,,,,unresolved,missing_data,198,unavailable
+Large lake and mixed teak forest,large lake and mixed teak forest,47,,,,,,,,INR,,,,india_tourism_dataset.json,48,,,,,,,unresolved,missing_data,199,unavailable
+Good big-cat and wild-dog sightings,good big-cat and wild-dog sightings,47,,,,,,,,INR,,,,india_tourism_dataset.json,48,,,,,,,unresolved,missing_data,200,unavailable
+Agatti Island beaches and lagoon,agatti island beaches and lagoon,48,,,,,,,,INR,,,,india_tourism_dataset.json,49,,,,,,,unresolved,missing_data,201,unavailable
+Bangaram Island (often via permits/packages),bangaram island (often via permits/packages),48,,,,,,,,INR,,,,india_tourism_dataset.json,49,,,,,,,unresolved,missing_data,202,unavailable
+Kadmat Island for water sports and reefs,kadmat island for water sports and reefs,48,,,,,,,,INR,,,,india_tourism_dataset.json,49,,,,,,,unresolved,missing_data,203,unavailable
+Kalpeni/Kavaratti side trips depending on itinerary,kalpeni/kavaratti side trips depending on itinerary,48,,,,,,,,INR,,,,india_tourism_dataset.json,49,,,,,,,unresolved,missing_data,204,unavailable
+Wide shallow lagoon with clear waters,wide shallow lagoon with clear waters,49,,,,,,,,INR,,,,india_tourism_dataset.json,50,,,,,,,unresolved,missing_data,205,unavailable
+Unique shoreline shaped by coral debris,unique shoreline shaped by coral debris,49,,,,,,,,INR,,,,india_tourism_dataset.json,50,,,,,,,unresolved,missing_data,206,unavailable
+"Nearby uninhabited islets like Tilakkam, Pitti, Cheriyam accessible by authorised trips","nearby uninhabited islets like tilakkam, pitti, cheriyam accessible by authorised trips",49,,,,,,,,INR,,,,india_tourism_dataset.json,50,,,,,,,unresolved,missing_data,207,unavailable
+Jaisalmer Fort (living fort with havelis and temples),jaisalmer fort (living fort with havelis and temples),50,,,,,,,,INR,,,,india_tourism_dataset.json,51,,,,,,,unresolved,missing_data,208,unavailable
+Patwon Ki Haveli and other mansions,patwon ki haveli and other mansions,50,,,,,,,,INR,,,,india_tourism_dataset.json,51,,,,,,,unresolved,missing_data,209,unavailable
+Sam and Khuri sand dunes (camel and jeep safaris),sam and khuri sand dunes (camel and jeep safaris),50,,,,,,,,INR,,,,india_tourism_dataset.json,51,,,,,,,unresolved,missing_data,210,unavailable
+Gadisar Lake,gadisar lake,50,,,,,,,,INR,,,,india_tourism_dataset.json,51,,,,,,,unresolved,missing_data,211,unavailable
+Bhuj old town and palaces,bhuj old town and palaces,51,,,,,,,,INR,,,,india_tourism_dataset.json,52,,,,,,,unresolved,missing_data,212,unavailable
+Mandvi beach and Vijay Vilas Palace,mandvi beach and vijay vilas palace,51,,,,,,,,INR,,,,india_tourism_dataset.json,52,,,,,,,unresolved,missing_data,213,unavailable
+"Craft villages (Bhujodi, Nirona, Hodka, etc.)","craft villages (bhujodi, nirona, hodka, etc.)",51,,,,,,,,INR,,,,india_tourism_dataset.json,52,,,,,,,unresolved,missing_data,214,unavailable
+Kala Dungar hill and nearby desert landscapes,kala dungar hill and nearby desert landscapes,51,,,,,,,,INR,,,,india_tourism_dataset.json,52,,,,,,,unresolved,missing_data,215,unavailable
+Coffee and spice plantations,coffee and spice plantations,8,,,,,,,,INR,,,,india_tourism_dataset.json,53,,,,,,,unresolved,missing_data,216,unavailable
+Abbey Falls (seasonal strength),abbey falls (seasonal strength),8,,,,,,,,INR,,,,india_tourism_dataset.json,53,,,,,,,unresolved,missing_data,217,unavailable
+Raja’s Seat viewpoint in Madikeri,raja’s seat viewpoint in madikeri,8,,,,,,,,INR,,,,india_tourism_dataset.json,53,,,,,,,unresolved,missing_data,218,unavailable
+Dubare elephant camp (nearby),dubare elephant camp (nearby),8,,,,,,,,INR,,,,india_tourism_dataset.json,53,,,,,,,unresolved,missing_data,219,unavailable
+Tea/coffee and spice estates,tea/coffee and spice estates,52,,,,,,,,INR,,,,india_tourism_dataset.json,54,,,,,,,unresolved,missing_data,220,unavailable
+Banasura Sagar Dam and viewpoints,banasura sagar dam and viewpoints,52,,,,,,,,INR,,,,india_tourism_dataset.json,54,,,,,,,unresolved,missing_data,221,unavailable
+Edakkal Caves (prehistoric rock art),edakkal caves (prehistoric rock art),52,,,,,,,,INR,,,,india_tourism_dataset.json,54,,,,,,,unresolved,missing_data,222,unavailable
+Soochipara and Meenmutty Falls (seasonal flow),soochipara and meenmutty falls (seasonal flow),52,,,,,,,,INR,,,,india_tourism_dataset.json,54,,,,,,,unresolved,missing_data,223,unavailable
+Green valleys and forests of Tamhini Ghat,green valleys and forests of tamhini ghat,53,,,,,,,,INR,,,,india_tourism_dataset.json,55,,,,,,,unresolved,missing_data,224,unavailable
+Roadside seasonal waterfalls,roadside seasonal waterfalls,53,,,,,,,,INR,,,,india_tourism_dataset.json,55,,,,,,,unresolved,missing_data,225,unavailable
+Mulshi Lake views and damside spots,mulshi lake views and damside spots,53,,,,,,,,INR,,,,india_tourism_dataset.json,55,,,,,,,unresolved,missing_data,226,unavailable
+"Viewpoints like Arthur’s Seat, Kate’s Point, Elephant’s Head","viewpoints like arthur’s seat, kate’s point, elephant’s head",54,,,,,,,,INR,,,,india_tourism_dataset.json,56,,,,,,,unresolved,missing_data,227,unavailable
+Venna Lake boating,venna lake boating,54,,,,,,,,INR,,,,india_tourism_dataset.json,56,,,,,,,unresolved,missing_data,228,unavailable
+Strawberry farms (seasonal),strawberry farms (seasonal),54,,,,,,,,INR,,,,india_tourism_dataset.json,56,,,,,,,unresolved,missing_data,229,unavailable
+Table Land in Panchgani,table land in panchgani,54,,,,,,,,INR,,,,india_tourism_dataset.json,56,,,,,,,unresolved,missing_data,230,unavailable
+Mullayanagiri and Baba Budangiri peaks,mullayanagiri and baba budangiri peaks,55,,,,,,,,INR,,,,india_tourism_dataset.json,57,,,,,,,unresolved,missing_data,231,unavailable
+Coffee estates and homestays,coffee estates and homestays,55,,,,,,,,INR,,,,india_tourism_dataset.json,57,,,,,,,unresolved,missing_data,232,unavailable
+"Hebbe and Jhari Falls (seasonal, access regulated)","hebbe and jhari falls (seasonal, access regulated)",55,,,,,,,,INR,,,,india_tourism_dataset.json,57,,,,,,,unresolved,missing_data,233,unavailable
+Hirekolale and other lakes,hirekolale and other lakes,55,,,,,,,,INR,,,,india_tourism_dataset.json,57,,,,,,,unresolved,missing_data,234,unavailable
+Amboli waterfalls and stream viewpoints,amboli waterfalls and stream viewpoints,56,,,,,,,,INR,,,,india_tourism_dataset.json,58,,,,,,,unresolved,missing_data,235,unavailable
+Viewpoints over Konkan plains,viewpoints over konkan plains,56,,,,,,,,INR,,,,india_tourism_dataset.json,58,,,,,,,unresolved,missing_data,236,unavailable
+Rich amphibian and reptile life in monsoon forests (for specialists),rich amphibian and reptile life in monsoon forests (for specialists),56,,,,,,,,INR,,,,india_tourism_dataset.json,58,,,,,,,unresolved,missing_data,237,unavailable
+Sunset viewpoints over Arabian Sea side,sunset viewpoints over arabian sea side,57,,,,,,,,INR,,,,india_tourism_dataset.json,59,,,,,,,unresolved,missing_data,238,unavailable
+"Nearby waterfalls such as Barkana, Onake Abbi (trek-based, regulated)","nearby waterfalls such as barkana, onake abbi (trek-based, regulated)",57,,,,,,,,INR,,,,india_tourism_dataset.json,59,,,,,,,unresolved,missing_data,239,unavailable
+High-rainfall evergreen forests rich in wildlife,high-rainfall evergreen forests rich in wildlife,57,,,,,,,,INR,,,,india_tourism_dataset.json,59,,,,,,,unresolved,missing_data,240,unavailable
+Kudremukh peak trek (regulated),kudremukh peak trek (regulated),58,,,,,,,,INR,,,,india_tourism_dataset.json,60,,,,,,,unresolved,missing_data,241,unavailable
+Rolling grassland and shola forest landscapes,rolling grassland and shola forest landscapes,58,,,,,,,,INR,,,,india_tourism_dataset.json,60,,,,,,,unresolved,missing_data,242,unavailable
+Nearby waterfalls and streams,nearby waterfalls and streams,58,,,,,,,,INR,,,,india_tourism_dataset.json,60,,,,,,,unresolved,missing_data,243,unavailable
+Kalapathar Beach sunrise,kalapathar beach sunrise,31,,,,,,,,INR,,,,india_tourism_dataset.json,61,,,,,,,unresolved,missing_data,244,unavailable
+Elephant Beach for snorkelling and water sports,elephant beach for snorkelling and water sports,31,,,,,,,,INR,,,,india_tourism_dataset.json,61,,,,,,,unresolved,missing_data,245,unavailable
+Coral reefs and dive sites,coral reefs and dive sites,31,,,,,,,,INR,,,,india_tourism_dataset.json,61,,,,,,,unresolved,missing_data,246,unavailable
+Bharatpur Beach (snorkelling and water sports),bharatpur beach (snorkelling and water sports),32,,,,,,,,INR,,,,india_tourism_dataset.json,62,,,,,,,unresolved,missing_data,247,unavailable
+Laxmanpur Beach sunset point,laxmanpur beach sunset point,32,,,,,,,,INR,,,,india_tourism_dataset.json,62,,,,,,,unresolved,missing_data,248,unavailable
+Natural bridge/rock formation,natural bridge/rock formation,32,,,,,,,,INR,,,,india_tourism_dataset.json,62,,,,,,,unresolved,missing_data,249,unavailable
+Quiet interior villages and fields,quiet interior villages and fields,32,,,,,,,,INR,,,,india_tourism_dataset.json,62,,,,,,,unresolved,missing_data,250,unavailable
+Cellular Jail and sound-and-light show,cellular jail and sound-and-light show,59,,,,,,,,INR,,,,india_tourism_dataset.json,63,,,,,,,unresolved,missing_data,251,unavailable
+Corbyn’s Cove Beach,corbyn’s cove beach,59,,,,,,,,INR,,,,india_tourism_dataset.json,63,,,,,,,unresolved,missing_data,252,unavailable
+Ross Island (Netaji Subhash Chandra Bose Island) boat trip,ross island (netaji subhash chandra bose island) boat trip,59,,,,,,,,INR,,,,india_tourism_dataset.json,63,,,,,,,unresolved,missing_data,253,unavailable
+Museums and local markets,museums and local markets,59,,,,,,,,INR,,,,india_tourism_dataset.json,63,,,,,,,unresolved,missing_data,254,unavailable
+Tiger Hill sunrise views of Kanchenjunga (weather permitting),tiger hill sunrise views of kanchenjunga (weather permitting),60,,,,,,,,INR,,,,india_tourism_dataset.json,64,,,,,,,unresolved,missing_data,255,unavailable
+Tea gardens and factory visits,tea gardens and factory visits,60,,,,,,,,INR,,,,india_tourism_dataset.json,64,,,,,,,unresolved,missing_data,256,unavailable
+Batasia Loop and Toy Train rides,batasia loop and toy train rides,60,,,,,,,,INR,,,,india_tourism_dataset.json,64,,,,,,,unresolved,missing_data,257,unavailable
+Mall Road and Observatory Hill area,mall road and observatory hill area,60,,,,,,,,INR,,,,india_tourism_dataset.json,64,,,,,,,unresolved,missing_data,258,unavailable
+MG Marg promenade,mg marg promenade,61,,,,,,,,INR,,,,india_tourism_dataset.json,65,,,,,,,unresolved,missing_data,259,unavailable
+Tsomgo (Changu) Lake and Baba Mandir (permits required),tsomgo (changu) lake and baba mandir (permits required),61,,,,,,,,INR,,,,india_tourism_dataset.json,65,,,,,,,unresolved,missing_data,260,unavailable
+Tashi View Point and nearby monasteries,tashi view point and nearby monasteries,61,,,,,,,,INR,,,,india_tourism_dataset.json,65,,,,,,,unresolved,missing_data,261,unavailable
+Cable car and city viewpoints,cable car and city viewpoints,61,,,,,,,,INR,,,,india_tourism_dataset.json,65,,,,,,,unresolved,missing_data,262,unavailable
+Yumthang Valley (‘Valley of Flowers’ in season),yumthang valley (‘valley of flowers’ in season),62,,,,,,,,INR,,,,india_tourism_dataset.json,66,,,,,,,unresolved,missing_data,263,unavailable
+"Gurudongmar Lake (high altitude, permits needed)","gurudongmar lake (high altitude, permits needed)",62,,,,,,,,INR,,,,india_tourism_dataset.json,66,,,,,,,unresolved,missing_data,264,unavailable
+Lachung and Lachen villages,lachung and lachen villages,62,,,,,,,,INR,,,,india_tourism_dataset.json,66,,,,,,,unresolved,missing_data,265,unavailable
+Hot springs and snow viewpoints (seasonal),hot springs and snow viewpoints (seasonal),62,,,,,,,,INR,,,,india_tourism_dataset.json,66,,,,,,,unresolved,missing_data,266,unavailable
+Shillong city viewpoints and cafes,shillong city viewpoints and cafes,63,,,,,,,,INR,,,,india_tourism_dataset.json,67,,,,,,,unresolved,missing_data,267,unavailable
+"Sohra waterfalls (Nohkalikai, Seven Sisters, etc.)","sohra waterfalls (nohkalikai, seven sisters, etc.)",63,,,,,,,,INR,,,,india_tourism_dataset.json,67,,,,,,,unresolved,missing_data,268,unavailable
+Living root bridges near Nongriat and other villages,living root bridges near nongriat and other villages,63,,,,,,,,INR,,,,india_tourism_dataset.json,67,,,,,,,unresolved,missing_data,269,unavailable
+Mawlynnong ‘cleanest village’ and Dawki river,mawlynnong ‘cleanest village’ and dawki river,63,,,,,,,,INR,,,,india_tourism_dataset.json,67,,,,,,,unresolved,missing_data,270,unavailable
+Kaziranga National Park jeep safaris,kaziranga national park jeep safaris,64,,,,,,,,INR,,,,india_tourism_dataset.json,68,,,,,,,unresolved,missing_data,271,unavailable
+One-horned rhinoceros sightings,one-horned rhinoceros sightings,64,,,,,,,,INR,,,,india_tourism_dataset.json,68,,,,,,,unresolved,missing_data,272,unavailable
+"Elephant-back safaris (limited, regulated)","elephant-back safaris (limited, regulated)",64,,,,,,,,INR,,,,india_tourism_dataset.json,68,,,,,,,unresolved,missing_data,273,unavailable
+Tea estate drives and visits in surrounding belt,tea estate drives and visits in surrounding belt,64,,,,,,,,INR,,,,india_tourism_dataset.json,68,,,,,,,unresolved,missing_data,274,unavailable
+Khajuraho Group of Monuments (UNESCO temples),khajuraho group of monuments (unesco temples),65,,,,,,,,INR,,,,india_tourism_dataset.json,69,,,,,,,unresolved,missing_data,275,unavailable
+Sound-and-light show at temple complex,sound-and-light show at temple complex,65,,,,,,,,INR,,,,india_tourism_dataset.json,69,,,,,,,unresolved,missing_data,276,unavailable
+Panna National Park tiger reserve safaris,panna national park tiger reserve safaris,65,,,,,,,,INR,,,,india_tourism_dataset.json,69,,,,,,,unresolved,missing_data,277,unavailable
+Ken River gorge and waterfalls (seasonal),ken river gorge and waterfalls (seasonal),65,,,,,,,,INR,,,,india_tourism_dataset.json,69,,,,,,,unresolved,missing_data,278,unavailable
+Orchha Fort complex and palaces,orchha fort complex and palaces,66,,,,,,,,INR,,,,india_tourism_dataset.json,70,,,,,,,unresolved,missing_data,279,unavailable
+Chhatris (cenotaphs) along Betwa River,chhatris (cenotaphs) along betwa river,66,,,,,,,,INR,,,,india_tourism_dataset.json,70,,,,,,,unresolved,missing_data,280,unavailable
+Ram Raja Temple and local markets,ram raja temple and local markets,66,,,,,,,,INR,,,,india_tourism_dataset.json,70,,,,,,,unresolved,missing_data,281,unavailable
+"Betwa riverside scenery and rafting (seasonal, regulated)","betwa riverside scenery and rafting (seasonal, regulated)",66,,,,,,,,INR,,,,india_tourism_dataset.json,70,,,,,,,unresolved,missing_data,282,unavailable
+"Kudle, Om, Half Moon and Paradise Beaches","kudle, om, half moon and paradise beaches",25,,,,,,,,INR,,,,india_tourism_dataset.json,71,,,,,,,unresolved,missing_data,283,unavailable
+Cliffside trails between coves,cliffside trails between coves,25,,,,,,,,INR,,,,india_tourism_dataset.json,71,,,,,,,unresolved,missing_data,284,unavailable
+Old Almora bazaars and traditional houses,old almora bazaars and traditional houses,67,,,,,,,,INR,,,,india_tourism_dataset.json,72,,,,,,,unresolved,missing_data,285,unavailable
+Kasar Devi Temple ridge,kasar devi temple ridge,67,,,,,,,,INR,,,,india_tourism_dataset.json,72,,,,,,,unresolved,missing_data,286,unavailable
+Views towards Nanda Devi range on clear days,views towards nanda devi range on clear days,67,,,,,,,,INR,,,,india_tourism_dataset.json,72,,,,,,,unresolved,missing_data,287,unavailable
+Proximity to Binsar Wildlife Sanctuary,proximity to binsar wildlife sanctuary,67,,,,,,,,INR,,,,india_tourism_dataset.json,72,,,,,,,unresolved,missing_data,288,unavailable
+Sela Pass (on the way),sela pass (on the way),14,,,,,,,,INR,,,,india_tourism_dataset.json,73,,,,,,,unresolved,missing_data,289,unavailable
+High-altitude lakes (Madhuri Lake etc.),high-altitude lakes (madhuri lake etc.),14,,,,,,,,INR,,,,india_tourism_dataset.json,73,,,,,,,unresolved,missing_data,290,unavailable
+War memorials and viewpoints,war memorials and viewpoints,14,,,,,,,,INR,,,,india_tourism_dataset.json,73,,,,,,,unresolved,missing_data,291,unavailable
+"Villages like Kaza, Langza, Hikkim, Komic, Dhankar","villages like kaza, langza, hikkim, komic, dhankar",16,,,,,,,,INR,,,,india_tourism_dataset.json,74,,,,,,,unresolved,missing_data,292,unavailable
+Key Monastery,key monastery,16,,,,,,,,INR,,,,india_tourism_dataset.json,74,,,,,,,unresolved,missing_data,293,unavailable
+High passes and stark desert mountains,high passes and stark desert mountains,16,,,,,,,,INR,,,,india_tourism_dataset.json,74,,,,,,,unresolved,missing_data,294,unavailable
+Riverside villages along Tirthan River,riverside villages along tirthan river,68,,,,,,,,INR,,,,india_tourism_dataset.json,75,,,,,,,unresolved,missing_data,295,unavailable
+Wooden homestays in Jibhi and Shoja,wooden homestays in jibhi and shoja,68,,,,,,,,INR,,,,india_tourism_dataset.json,75,,,,,,,unresolved,missing_data,296,unavailable
+Easy access to Great Himalayan National Park region (GHNP gate),easy access to great himalayan national park region (ghnp gate),68,,,,,,,,INR,,,,india_tourism_dataset.json,75,,,,,,,unresolved,missing_data,297,unavailable
+Chitkul village on Baspa River,chitkul village on baspa river,69,,,,,,,,INR,,,,india_tourism_dataset.json,76,,,,,,,unresolved,missing_data,298,unavailable
+Valley meadows and pine forests,valley meadows and pine forests,69,,,,,,,,INR,,,,india_tourism_dataset.json,76,,,,,,,unresolved,missing_data,299,unavailable
+‘Last village’ feel near Indo–Tibetan border,‘last village’ feel near indo–tibetan border,69,,,,,,,,INR,,,,india_tourism_dataset.json,76,,,,,,,unresolved,missing_data,300,unavailable
+Long glacial valley between Pir Panjal and Zanskar ranges,long glacial valley between pir panjal and zanskar ranges,70,,,,,,,,INR,,,,india_tourism_dataset.json,77,,,,,,,unresolved,missing_data,301,unavailable
+Remote villages and meadows,remote villages and meadows,70,,,,,,,,INR,,,,india_tourism_dataset.json,77,,,,,,,unresolved,missing_data,302,unavailable
+Base for trekking and climbing expeditions,base for trekking and climbing expeditions,70,,,,,,,,INR,,,,india_tourism_dataset.json,77,,,,,,,unresolved,missing_data,303,unavailable
+Wetland and woodland habitat with hundreds of bird species,wetland and woodland habitat with hundreds of bird species,71,,,,,,,,INR,,,,india_tourism_dataset.json,78,,,,,,,unresolved,missing_data,304,unavailable
+Winter migratory birds including cranes and ducks,winter migratory birds including cranes and ducks,71,,,,,,,,INR,,,,india_tourism_dataset.json,78,,,,,,,unresolved,missing_data,305,unavailable
+Well-laid cycle/foot paths inside park,well-laid cycle/foot paths inside park,71,,,,,,,,INR,,,,india_tourism_dataset.json,78,,,,,,,unresolved,missing_data,306,unavailable
+River-island sanctuary on Kaveri,river-island sanctuary on kaveri,72,,,,,,,,INR,,,,india_tourism_dataset.json,79,,,,,,,unresolved,missing_data,307,unavailable
+"Large nesting colonies of storks, ibises and other waterbirds","large nesting colonies of storks, ibises and other waterbirds",72,,,,,,,,INR,,,,india_tourism_dataset.json,79,,,,,,,unresolved,missing_data,308,unavailable
+Short boat rides for close views,short boat rides for close views,72,,,,,,,,INR,,,,india_tourism_dataset.json,79,,,,,,,unresolved,missing_data,309,unavailable
+Vast shallow lake and marshes,vast shallow lake and marshes,73,,,,,,,,INR,,,,india_tourism_dataset.json,80,,,,,,,unresolved,missing_data,310,unavailable
+Large flocks of winter migratory birds,large flocks of winter migratory birds,73,,,,,,,,INR,,,,india_tourism_dataset.json,80,,,,,,,unresolved,missing_data,311,unavailable
+Boating among islets and bird congregations,boating among islets and bird congregations,73,,,,,,,,INR,,,,india_tourism_dataset.json,80,,,,,,,unresolved,missing_data,312,unavailable
+Endless white salt desert vistas,endless white salt desert vistas,74,,,,,,,,INR,,,,india_tourism_dataset.json,81,,,,,,,unresolved,missing_data,313,unavailable
+Sunset and full-moon views over salt flats,sunset and full-moon views over salt flats,74,,,,,,,,INR,,,,india_tourism_dataset.json,81,,,,,,,unresolved,missing_data,314,unavailable
+Rann Utsav tent city (seasonal) and cultural shows,rann utsav tent city (seasonal) and cultural shows,74,,,,,,,,INR,,,,india_tourism_dataset.json,81,,,,,,,unresolved,missing_data,315,unavailable
+Nearby sites like Kala Dungar and handicraft villages,nearby sites like kala dungar and handicraft villages,74,,,,,,,,INR,,,,india_tourism_dataset.json,81,,,,,,,unresolved,missing_data,316,unavailable
+Living Jaisalmer Fort and havelis,living jaisalmer fort and havelis,75,,,,,,,,INR,,,,india_tourism_dataset.json,82,,,,,,,unresolved,missing_data,317,unavailable
+Sam and Khuri sand dunes,sam and khuri sand dunes,75,,,,,,,,INR,,,,india_tourism_dataset.json,82,,,,,,,unresolved,missing_data,318,unavailable
+Desert camps and cultural evenings,desert camps and cultural evenings,75,,,,,,,,INR,,,,india_tourism_dataset.json,82,,,,,,,unresolved,missing_data,319,unavailable
+Gadisar Lake and nearby temples,gadisar lake and nearby temples,75,,,,,,,,INR,,,,india_tourism_dataset.json,82,,,,,,,unresolved,missing_data,320,unavailable
+"Maravanthe Beach strip with river on one side, sea on the other","maravanthe beach strip with river on one side, sea on the other",76,,,,,,,,INR,,,,india_tourism_dataset.json,83,,,,,,,unresolved,missing_data,321,unavailable
+Nearby Kodi Beach and quiet fishing hamlets,nearby kodi beach and quiet fishing hamlets,76,,,,,,,,INR,,,,india_tourism_dataset.json,83,,,,,,,unresolved,missing_data,322,unavailable
+"Easy extensions to Udupi, Murudeshwar and Gokarna","easy extensions to udupi, murudeshwar and gokarna",76,,,,,,,,INR,,,,india_tourism_dataset.json,83,,,,,,,unresolved,missing_data,323,unavailable
+Astaranga’s colourful sunsets over Bay of Bengal,astaranga’s colourful sunsets over bay of bengal,77,,,,,,,,INR,,,,india_tourism_dataset.json,84,,,,,,,unresolved,missing_data,324,unavailable
+Ramachandi Beach near Konark,ramachandi beach near konark,77,,,,,,,,INR,,,,india_tourism_dataset.json,84,,,,,,,unresolved,missing_data,325,unavailable
+Proximity to Konark Sun Temple and Puri,proximity to konark sun temple and puri,77,,,,,,,,INR,,,,india_tourism_dataset.json,84,,,,,,,unresolved,missing_data,326,unavailable
+Unakoti rock-cut reliefs and sculptures in forested gorge,unakoti rock-cut reliefs and sculptures in forested gorge,78,,,,,,,,INR,,,,india_tourism_dataset.json,85,,,,,,,unresolved,missing_data,327,unavailable
+Local temples and village landscapes,local temples and village landscapes,78,,,,,,,,INR,,,,india_tourism_dataset.json,85,,,,,,,unresolved,missing_data,328,unavailable
+Integration with wider Tripura heritage and nature circuits,integration with wider tripura heritage and nature circuits,78,,,,,,,,INR,,,,india_tourism_dataset.json,85,,,,,,,unresolved,missing_data,329,unavailable
+UNESCO-listed shore temple and rock-cut monuments,unesco-listed shore temple and rock-cut monuments,79,,,,,,,,INR,,,,india_tourism_dataset.json,86,,,,,,,unresolved,missing_data,330,unavailable
+Five Rathas and Arjuna’s Penance bas-relief,five rathas and arjuna’s penance bas-relief,79,,,,,,,,INR,,,,india_tourism_dataset.json,86,,,,,,,unresolved,missing_data,331,unavailable
+ECR coastal drives with sea views,ecr coastal drives with sea views,79,,,,,,,,INR,,,,india_tourism_dataset.json,86,,,,,,,unresolved,missing_data,332,unavailable
+Nearby planned heritage and eco-park projects,nearby planned heritage and eco-park projects,79,,,,,,,,INR,,,,india_tourism_dataset.json,86,,,,,,,unresolved,missing_data,333,unavailable
+Butterfly Beach and other small coves near Canacona,butterfly beach and other small coves near canacona,80,,,,,,,,INR,,,,india_tourism_dataset.json,87,,,,,,,unresolved,missing_data,334,unavailable
+Quieter sands than main stretches,quieter sands than main stretches,80,,,,,,,,INR,,,,india_tourism_dataset.json,87,,,,,,,unresolved,missing_data,335,unavailable
+Proximity to Palolem/Agonda for stay and food,proximity to palolem/agonda for stay and food,80,,,,,,,,INR,,,,india_tourism_dataset.json,87,,,,,,,unresolved,missing_data,336,unavailable
+Pristine white-sand beaches and lagoons,pristine white-sand beaches and lagoons,81,,,,,,,,INR,,,,india_tourism_dataset.json,88,,,,,,,unresolved,missing_data,337,unavailable
+Snorkelling and kayaking in clear waters,snorkelling and kayaking in clear waters,81,,,,,,,,INR,,,,india_tourism_dataset.json,88,,,,,,,unresolved,missing_data,338,unavailable
+Low tourist volumes due to entry restrictions,low tourist volumes due to entry restrictions,81,,,,,,,,INR,,,,india_tourism_dataset.json,88,,,,,,,unresolved,missing_data,339,unavailable
+"Rivers, backwaters and village landscapes","rivers, backwaters and village landscapes",82,,,,,,,,INR,,,,india_tourism_dataset.json,89,,,,,,,unresolved,missing_data,340,unavailable
+Slow boat cruises as part of Malanad Malabar Cruise Tourism,slow boat cruises as part of malanad malabar cruise tourism,82,,,,,,,,INR,,,,india_tourism_dataset.json,89,,,,,,,unresolved,missing_data,341,unavailable
+"Local temples, theyyams (seasonal) and coastal life","local temples, theyyams (seasonal) and coastal life",82,,,,,,,,INR,,,,india_tourism_dataset.json,89,,,,,,,unresolved,missing_data,342,unavailable
+Mathura and Vrindavan temples associated with Krishna’s early life,mathura and vrindavan temples associated with krishna’s early life,83,,,,,,,,INR,,,,india_tourism_dataset.json,90,,,,,,,unresolved,missing_data,343,unavailable
+Dwarkadhish Temple at Dwarka in Gujarat,dwarkadhish temple at dwarka in gujarat,83,,,,,,,,INR,,,,india_tourism_dataset.json,90,,,,,,,unresolved,missing_data,344,unavailable
+"Additional nodes in Rajasthan, Haryana and Odisha under the Krishna Circuit","additional nodes in rajasthan, haryana and odisha under the krishna circuit",83,,,,,,,,INR,,,,india_tourism_dataset.json,90,,,,,,,unresolved,missing_data,345,unavailable
+Ganga Aarti at Haridwar and Rishikesh ghats,ganga aarti at haridwar and rishikesh ghats,84,,,,,,,,INR,,,,india_tourism_dataset.json,91,,,,,,,unresolved,missing_data,346,unavailable
+Ashrams and yoga/meditation centres,ashrams and yoga/meditation centres,84,,,,,,,,INR,,,,india_tourism_dataset.json,91,,,,,,,unresolved,missing_data,347,unavailable
+Suspension bridges like Lakshman Jhula (and new bridge),suspension bridges like lakshman jhula (and new bridge),84,,,,,,,,INR,,,,india_tourism_dataset.json,91,,,,,,,unresolved,missing_data,348,unavailable
+Rafting and short hikes in surrounding hills,rafting and short hikes in surrounding hills,84,,,,,,,,INR,,,,india_tourism_dataset.json,91,,,,,,,unresolved,missing_data,349,unavailable
+Ganga ghats including Dashashwamedh and Assi,ganga ghats including dashashwamedh and assi,85,,,,,,,,INR,,,,india_tourism_dataset.json,92,,,,,,,unresolved,missing_data,350,unavailable
+Kashi Vishwanath Temple corridor,kashi vishwanath temple corridor,85,,,,,,,,INR,,,,india_tourism_dataset.json,92,,,,,,,unresolved,missing_data,351,unavailable
+Morning and evening Ganga Aarti,morning and evening ganga aarti,85,,,,,,,,INR,,,,india_tourism_dataset.json,92,,,,,,,unresolved,missing_data,352,unavailable
+Boat rides on the river,boat rides on the river,85,,,,,,,,INR,,,,india_tourism_dataset.json,92,,,,,,,unresolved,missing_data,353,unavailable
+Mahabodhi Temple Complex (UNESCO),mahabodhi temple complex (unesco),86,,,,,,,,INR,,,,india_tourism_dataset.json,93,,,,,,,unresolved,missing_data,354,unavailable
+Bodhi Tree and meditation paths,bodhi tree and meditation paths,86,,,,,,,,INR,,,,india_tourism_dataset.json,93,,,,,,,unresolved,missing_data,355,unavailable
+International monasteries from various Buddhist countries,international monasteries from various buddhist countries,86,,,,,,,,INR,,,,india_tourism_dataset.json,93,,,,,,,unresolved,missing_data,356,unavailable
+Ramanathaswamy Temple and long pillared corridors,ramanathaswamy temple and long pillared corridors,87,,,,,,,,INR,,,,india_tourism_dataset.json,94,,,,,,,unresolved,missing_data,357,unavailable
+Sacred ‘teerthams’ (water bodies) and sea dips,sacred ‘teerthams’ (water bodies) and sea dips,87,,,,,,,,INR,,,,india_tourism_dataset.json,94,,,,,,,unresolved,missing_data,358,unavailable
+Pamban Bridge views and coastal scenery,pamban bridge views and coastal scenery,87,,,,,,,,INR,,,,india_tourism_dataset.json,94,,,,,,,unresolved,missing_data,359,unavailable
+Ruins and temple complexes of Hampi (UNESCO),ruins and temple complexes of hampi (unesco),88,,,,,,,,INR,,,,india_tourism_dataset.json,95,,,,,,,unresolved,missing_data,360,unavailable
+Vittala Temple and Stone Chariot,vittala temple and stone chariot,88,,,,,,,,INR,,,,india_tourism_dataset.json,95,,,,,,,unresolved,missing_data,361,unavailable
+Pattadakal temple complex (UNESCO),pattadakal temple complex (unesco),88,,,,,,,,INR,,,,india_tourism_dataset.json,95,,,,,,,unresolved,missing_data,362,unavailable
+Nearby Badami caves and Aihole early temples,nearby badami caves and aihole early temples,88,,,,,,,,INR,,,,india_tourism_dataset.json,95,,,,,,,unresolved,missing_data,363,unavailable
+Gulmarg Gondola (one of highest cable cars),gulmarg gondola (one of highest cable cars),89,,,,,,,,INR,,,,india_tourism_dataset.json,96,,,,,,,unresolved,missing_data,364,unavailable
+Deep‑snow ski slopes and powder runs,deep‑snow ski slopes and powder runs,89,,,,,,,,INR,,,,india_tourism_dataset.json,96,,,,,,,unresolved,missing_data,365,unavailable
+Meadows and pine forests turning into ski terrain in winter,meadows and pine forests turning into ski terrain in winter,89,,,,,,,,INR,,,,india_tourism_dataset.json,96,,,,,,,unresolved,missing_data,366,unavailable
+Groomed ski slopes with Nanda Devi views,groomed ski slopes with nanda devi views,90,,,,,,,,INR,,,,india_tourism_dataset.json,97,,,,,,,unresolved,missing_data,367,unavailable
+Chair‑lifts and cable car rides,chair‑lifts and cable car rides,90,,,,,,,,INR,,,,india_tourism_dataset.json,97,,,,,,,unresolved,missing_data,368,unavailable
+Snow activities for beginners and families,snow activities for beginners and families,90,,,,,,,,INR,,,,india_tourism_dataset.json,97,,,,,,,unresolved,missing_data,369,unavailable
+Arunachaleswarar Temple,arunachaleswarar temple,91,,,,,,,,INR,,,,india_tourism_dataset.json,98,,,,,,,unresolved,missing_data,370,unavailable
+Ramana Maharshi Ashram,ramana maharshi ashram,91,,,,,,,,INR,,,,india_tourism_dataset.json,98,,,,,,,unresolved,missing_data,371,unavailable
+Girivalam/Pradakshina (circumambulation) of Arunachala hill,girivalam/pradakshina (circumambulation) of arunachala hill,91,,,,,,,,INR,,,,india_tourism_dataset.json,98,,,,,,,unresolved,missing_data,372,unavailable
+Source region of Narmada and Son rivers,source region of narmada and son rivers,92,,,,,,,,INR,,,,india_tourism_dataset.json,99,,,,,,,unresolved,missing_data,373,unavailable
+Temples and ashrams amidst forests,temples and ashrams amidst forests,92,,,,,,,,INR,,,,india_tourism_dataset.json,99,,,,,,,unresolved,missing_data,374,unavailable
+Nearby waterfalls and viewpoints,nearby waterfalls and viewpoints,92,,,,,,,,INR,,,,india_tourism_dataset.json,99,,,,,,,unresolved,missing_data,375,unavailable
+"Gateway status for Char Dham Yatra (Yamunotri, Gangotri, Kedarnath, Badrinath)","gateway status for char dham yatra (yamunotri, gangotri, kedarnath, badrinath)",93,,,,,,,,INR,,,,india_tourism_dataset.json,100,,,,,,,unresolved,missing_data,376,unavailable
+Haridwar and Rishikesh ghats and ashrams,haridwar and rishikesh ghats and ashrams,93,,,,,,,,INR,,,,india_tourism_dataset.json,100,,,,,,,unresolved,missing_data,377,unavailable
+Organised yatra packages originating here,organised yatra packages originating here,93,,,,,,,,INR,,,,india_tourism_dataset.json,100,,,,,,,unresolved,missing_data,378,unavailable

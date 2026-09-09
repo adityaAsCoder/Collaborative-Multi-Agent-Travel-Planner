@@ -1,0 +1,13 @@
+pandas
+geopandas
+fiona
+pyarrow
+openpyxl
+SQLAlchemy
+pydantic
+fastapi
+uvicorn
+pytest
+networkx
+osmnx
+scikit-learn
