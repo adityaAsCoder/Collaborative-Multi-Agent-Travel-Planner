@@ -1,0 +1,27 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.1, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\Collaborative-Multi-Agent-Travel-Planner
+plugins: anyio-4.9.0, langsmith-0.3.26
+collected 6 items
+
+tests\test_hotel_query_normalizer.py ..FF..                              [100%]
+
+================================== FAILURES ===================================
+__________________ test_promotional_text_preserves_location ___________________
+tests\test_hotel_query_normalizer.py:21: in test_promotional_text_preserves_location
+    assert normalized == "Hotel Cozy Vibes"
+E   AssertionError: assert 'Hotel Cozy V...Metro Station' == 'Hotel Cozy Vibes'
+E     
+E     - Hotel Cozy Vibes
+E     + Hotel Cozy Vibes Near Inderlok Metro Station
+_______________________ test_punctuation_and_whitespace _______________________
+tests\test_hotel_query_normalizer.py:28: in test_punctuation_and_whitespace
+    assert normalized == "Hotel Relax Inn"
+E   AssertionError: assert 'Hotel Relax ...Metro Station' == 'Hotel Relax Inn'
+E     
+E     - Hotel Relax Inn
+E     + Hotel Relax Inn Near Banashankari Metro Station
+=========================== short test summary info ===========================
+FAILED tests/test_hotel_query_normalizer.py::test_promotional_text_preserves_location
+FAILED tests/test_hotel_query_normalizer.py::test_punctuation_and_whitespace
+========================= 2 failed, 4 passed in 0.38s =========================

@@ -1,0 +1,319 @@
+================================================================================
+PHASE 6 – 20-hotel diagnostic sample (seed=42)
+================================================================================
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=670
+name    = OYO Homes 367 Greater Kailash M Block Market 2
+address = New Delhi
+city_extracted = 'New Delhi'
+
+  QUERY-A: 'OYO Homes 367 Greater Kailash M Block Market 2 New Delhi'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Homes 367 Greater Kailash M Block Market 2, New Delhi'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=34
+name    = Super OYO Townhouse 238 Tierra Woods Near Halasuru Metro Station
+address = Halasuru, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: 'Super OYO Townhouse 238 Tierra Woods Near Halasuru Metro Station Bangalore'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'Super OYO Townhouse 238 Tierra Woods Near Halasuru Metro Station, Halasuru, Bangalore'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'Super OYO Townhouse 238 Tierra Woods Near Halasuru Metro Station Halasuru'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=550
+name    = OYO Rooms 541 Dwarka Sector 13 Metro Station
+address = Sector 13, Dwarka
+city_extracted = 'Dwarka'
+
+  QUERY-A: 'OYO Rooms 541 Dwarka Sector 13 Metro Station Dwarka'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Rooms 541 Dwarka Sector 13 Metro Station, Sector 13, Dwarka'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'OYO Rooms 541 Dwarka Sector 13 Metro Station Sector 13'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=200
+name    = OYO 811030 Ocean Guest House
+address = Brij Puri, Delhi
+city_extracted = 'Delhi'
+
+  QUERY-A: 'OYO 811030 Ocean Guest House Delhi'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO 811030 Ocean Guest House, Brij Puri, Delhi'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'OYO 811030 Ocean Guest House Brij Puri'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=265
+name    = OYO TOWNHOUSE  R K Residency Near Mother dairy gate no. 2
+address = Flat No 3 Near Fair Deal South Ganesh Nagar, Delhi
+city_extracted = 'Delhi'
+
+  QUERY-A: 'OYO TOWNHOUSE  R K Residency Near Mother dairy gate no. 2 Delhi'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO TOWNHOUSE  R K Residency Near Mother dairy gate no. 2, Flat No 3 Near Fair Deal South Ganesh Nagar, Delhi'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'OYO TOWNHOUSE  R K Residency Near Mother dairy gate no. 2 Flat No 3 Near Fair Deal South Ganesh Nagar'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=584
+name    = OYO Rooms 145 Paschim Vihar
+address = Rohtak Road
+city_extracted = 'Rohtak Road'
+
+  QUERY-A: 'OYO Rooms 145 Paschim Vihar Rohtak Road'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Rooms 145 Paschim Vihar, Rohtak Road'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=40
+name    = Collection O Hotel Palm Tree
+address = Near Halasuru Metro Station, Ulsoor, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: 'Collection O Hotel Palm Tree Bangalore'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'Collection O Hotel Palm Tree, Near Halasuru Metro Station, Ulsoor, Bangalore'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'Collection O Hotel Palm Tree Near Halasuru Metro Station'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=555
+name    = OYO Rooms 051 New Friends Colony Market
+address = New Friends Colony
+city_extracted = 'New Friends Colony'
+
+  QUERY-A: 'OYO Rooms 051 New Friends Colony Market New Friends Colony'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Rooms 051 New Friends Colony Market, New Friends Colony'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=586
+name    = OYO Rooms 280 J Block Vikaspuri Delhi
+address = Vikaspuri
+city_extracted = 'Vikaspuri'
+
+  QUERY-A: 'OYO Rooms 280 J Block Vikaspuri Delhi Vikaspuri'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Rooms 280 J Block Vikaspuri Delhi, Vikaspuri'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=610
+name    = OYO Rooms 174 New Delhi Railway Station 2
+address = Ram Nagar
+city_extracted = 'Ram Nagar'
+
+  QUERY-A: 'OYO Rooms 174 New Delhi Railway Station 2 Ram Nagar'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Rooms 174 New Delhi Railway Station 2, Ram Nagar'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=325
+name    = Capital O Kabita Guest House Near Acropolis Mall
+address = Mukundapur Main Road Seven Maddox Square Multi cuisine Restaurant Kolkata EM Bye Pass Opposite Dr. Devi Shetty Hospital
+city_extracted = 'Mukundapur Main Road Seven Maddox Square Multi cuisine Restaurant Kolkata EM Bye Pass Opposite Dr. Devi Shetty Hospital'
+
+  QUERY-A: 'Capital O Kabita Guest House Near Acropolis Mall Mukundapur Main Road Seven Maddox Square Multi cuisine Restaurant Kolkata EM Bye Pass Opposite Dr. Devi Shetty Hospital'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'Capital O Kabita Guest House Near Acropolis Mall, Mukundapur Main Road Seven Maddox Square Multi cuisine Restaurant Kolkata EM Bye Pass Opposite Dr. Devi Shetty Hospital'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=391
+name    = Collection O 76651 Dovers Inn
+address = Opp Gariahat Police Station, Kolkata
+city_extracted = 'Kolkata'
+
+  QUERY-A: 'Collection O 76651 Dovers Inn Kolkata'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'Collection O 76651 Dovers Inn, Opp Gariahat Police Station, Kolkata'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'Collection O 76651 Dovers Inn Opp Gariahat Police Station'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=486
+name    = OYO Rooms 111 Paharganj 54
+address = Paharganj
+city_extracted = 'Paharganj'
+
+  QUERY-A: 'OYO Rooms 111 Paharganj 54 Paharganj'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Rooms 111 Paharganj 54, Paharganj'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=704
+name    = OYO Rooms 293 Jhandewalan Metro Station 3
+address = Karol Bagh
+city_extracted = 'Karol Bagh'
+
+  QUERY-A: 'OYO Rooms 293 Jhandewalan Metro Station 3 Karol Bagh'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Rooms 293 Jhandewalan Metro Station 3, Karol Bagh'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=67
+name    = Super OYO Capital O High end Withinn Hotel Near Hare Krishna Hill
+address = Near NIAS, Mathikere Extension, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: 'Super OYO Capital O High end Withinn Hotel Near Hare Krishna Hill Bangalore'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'Super OYO Capital O High end Withinn Hotel Near Hare Krishna Hill, Near NIAS, Mathikere Extension, Bangalore'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'Super OYO Capital O High end Withinn Hotel Near Hare Krishna Hill Near NIAS'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=79
+name    = Super OYO Townhouse 490 Indiranagar Extn
+address = Bangalore, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: 'Super OYO Townhouse 490 Indiranagar Extn Bangalore'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'Super OYO Townhouse 490 Indiranagar Extn, Bangalore, Bangalore'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'Super OYO Townhouse 490 Indiranagar Extn Bangalore'
+  status=CACHE_HIT | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=73
+name    = Collection O Hotel Status Executive Room's
+address = Near Old Airport Road, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: "Collection O Hotel Status Executive Room's Bangalore"
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: "Collection O Hotel Status Executive Room's, Near Old Airport Road, Bangalore"
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: "Collection O Hotel Status Executive Room's Near Old Airport Road"
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=193
+name    = OYO Kochar Plaza Near Satyam Inox Patel Nagar
+address = Near Liberty Cinema, New Rohtak Rd, Delhi
+city_extracted = 'Delhi'
+
+  QUERY-A: 'OYO Kochar Plaza Near Satyam Inox Patel Nagar Delhi'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Kochar Plaza Near Satyam Inox Patel Nagar, Near Liberty Cinema, New Rohtak Rd, Delhi'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'OYO Kochar Plaza Near Satyam Inox Patel Nagar Near Liberty Cinema'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=399
+name    = Super OYO Flagship Mourigram Near Andul Rd
+address = Howrah, Kolkata
+city_extracted = 'Kolkata'
+
+  QUERY-A: 'Super OYO Flagship Mourigram Near Andul Rd Kolkata'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'Super OYO Flagship Mourigram Near Andul Rd, Howrah, Kolkata'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-C: 'Super OYO Flagship Mourigram Near Andul Rd Howrah'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=667
+name    = OYO Rooms 163 Rohini Near M2K
+address = Main Road Naharpur Village
+city_extracted = 'Main Road Naharpur Village'
+
+  QUERY-A: 'OYO Rooms 163 Rohini Near M2K Main Road Naharpur Village'
+  status=CACHE_HIT | candidates=0
+
+  QUERY-B: 'OYO Rooms 163 Rohini Near M2K, Main Road Naharpur Village'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+
+DONE.

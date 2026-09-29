@@ -1,0 +1,230 @@
+﻿=== 20-HOTEL DIAGNOSTIC SAMPLE ===
+
+Original hotel:
+  - name: OYO Rooms 604 DB Gupta Main Road 1
+  - location/address: DB Gupta Road, Pahar Ganj Bridge
+  - city: Pahar Ganj Bridge
+Query 1: OYO Rooms 604 DB Gupta Main Road 1 Pahar Ganj Bridge
+  HTTP Status: 200
+Query 2: OYO Rooms 604 DB Gupta Main Road 1, DB Gupta Road, Pahar Ganj Bridge, Pahar Ganj Bridge
+  HTTP Status: 200
+Query 3: OYO Rooms 604 DB Gupta Main Road 1 DB Gupta Road Pahar Ganj Bridge
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO 8501 ABHIMAANI COMFORTS
+  - location/address: Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar
+  - city: Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar
+Query 1: OYO 8501 ABHIMAANI COMFORTS Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar
+  HTTP Status: 200
+Query 2: OYO 8501 ABHIMAANI COMFORTS, Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar, Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Hotel Townhall
+  - location/address: Near Dhanlakshmi Bank, JC Road, Bangalore
+  - city: Bangalore
+Query 1: OYO Hotel Townhall Bangalore
+  HTTP Status: 200
+Query 2: OYO Hotel Townhall, Near Dhanlakshmi Bank, JC Road, Bangalore, Bangalore
+  HTTP Status: 200
+Query 3: OYO Hotel Townhall Near Dhanlakshmi Bank Bangalore
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: Collection O 23641 Hotel Cozy Vibes Stay
+  - location/address: Near Inderlok Metro Station, Anandnagar, Delhi
+  - city: Delhi
+Query 1: Collection O 23641 Hotel Cozy Vibes Stay Delhi
+  HTTP Status: 200
+Query 2: Collection O 23641 Hotel Cozy Vibes Stay, Near Inderlok Metro Station, Anandnagar, Delhi, Delhi
+  HTTP Status: 200
+Query 3: Collection O 23641 Hotel Cozy Vibes Stay Near Inderlok Metro Station Delhi
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Flagship 805147 Hotel Sona International Near Gurudwara Shri Bangla Sahib
+  - location/address: Paharganj  near Delhi Railway Station)null, Delhi
+  - city: Delhi
+Query 1: OYO Flagship 805147 Hotel Sona International Near Gurudwara Shri Bangla Sahib Delhi
+  HTTP Status: 200
+Query 2: OYO Flagship 805147 Hotel Sona International Near Gurudwara Shri Bangla Sahib, Paharganj  near Delhi Railway Station)null, Delhi, Delhi
+  HTTP Status: 200
+Query 3: OYO Flagship 805147 Hotel Sona International Near Gurudwara Shri Bangla Sahib Paharganj  near Delhi Railway Station)null Delhi
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Le Alfanso Near Jama Masjid
+  - location/address: Near New Delhi Railway Station, Delhi
+  - city: Delhi
+Query 1: OYO Le Alfanso Near Jama Masjid Delhi
+  HTTP Status: 200
+Query 2: OYO Le Alfanso Near Jama Masjid, Near New Delhi Railway Station, Delhi, Delhi
+  HTTP Status: 200
+Query 3: OYO Le Alfanso Near Jama Masjid Near New Delhi Railway Station Delhi
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Nr Royal Near Nexus Mall Koramangala
+  - location/address: Sector 6, HSR Layout Ward, Bommanahalli Zone, Bengaluru, Bangalore South, Bangalore Urban, Karnataka
+  - city: Karnataka
+Query 1: OYO Nr Royal Near Nexus Mall Koramangala Karnataka
+  HTTP Status: 200
+Query 2: OYO Nr Royal Near Nexus Mall Koramangala, Sector 6, HSR Layout Ward, Bommanahalli Zone, Bengaluru, Bangalore South, Bangalore Urban, Karnataka, Karnataka
+  HTTP Status: 200
+Query 3: OYO Nr Royal Near Nexus Mall Koramangala Sector 6 Karnataka
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: Collection O 812451 The Grand Budget Hotel
+  - location/address: Karnataka , Bangalore
+  - city: Bangalore
+Query 1: Collection O 812451 The Grand Budget Hotel Bangalore
+  HTTP Status: 200
+Query 2: Collection O 812451 The Grand Budget Hotel, Karnataka , Bangalore, Bangalore
+  HTTP Status: 200
+Query 3: Collection O 812451 The Grand Budget Hotel Karnataka Bangalore
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Rooms 316 Kalkaji M Block
+  - location/address: M Block, Kalkaji
+  - city: Kalkaji
+Query 1: OYO Rooms 316 Kalkaji M Block Kalkaji
+  HTTP Status: 200
+Query 2: OYO Rooms 316 Kalkaji M Block, M Block, Kalkaji, Kalkaji
+  HTTP Status: 200
+Query 3: OYO Rooms 316 Kalkaji M Block M Block Kalkaji
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Rooms 082 Patel Nagar Main Market
+  - location/address: Main Market
+  - city: Main Market
+Query 1: OYO Rooms 082 Patel Nagar Main Market Main Market
+  HTTP Status: 200
+Query 2: OYO Rooms 082 Patel Nagar Main Market, Main Market, Main Market
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Hotel Fiesta Grand
+  - location/address: Near Mariyappa Road, Jayanagar Ward, Bangalore
+  - city: Bangalore
+Query 1: OYO Hotel Fiesta Grand Bangalore
+  HTTP Status: 200
+Nominatim candidates found: 1
+  candidate name: OYO Hotel Fiesta Grand, T. Mariyappa Road, Kanakanapalya, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560069, India
+  candidate type: commercial
+  coords: 12.9418611, 77.5854648
+
+Original hotel:
+  - name: OYO Rooms 026 Karol Bagh
+  - location/address: Karol Bagh
+  - city: Karol Bagh
+Query 1: OYO Rooms 026 Karol Bagh Karol Bagh
+  HTTP Status: 200
+Query 2: OYO Rooms 026 Karol Bagh, Karol Bagh, Karol Bagh
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Rooms 257 Rajendra Place PUSA Circle
+  - location/address: East Patel Nagar
+  - city: East Patel Nagar
+Query 1: OYO Rooms 257 Rajendra Place PUSA Circle East Patel Nagar
+  HTTP Status: 200
+Query 2: OYO Rooms 257 Rajendra Place PUSA Circle, East Patel Nagar, East Patel Nagar
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Sree Balaji Residency
+  - location/address: Agrahara Dasarahalli, Rajaji Nagar, Bangalore
+  - city: Bangalore
+Query 1: OYO Sree Balaji Residency Bangalore
+  HTTP Status: 200
+Query 2: OYO Sree Balaji Residency, Agrahara Dasarahalli, Rajaji Nagar, Bangalore, Bangalore
+  HTTP Status: 200
+Query 3: OYO Sree Balaji Residency Agrahara Dasarahalli Bangalore
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: SPOT ON Hotel Relax Inn Near Banashankari Metro Station
+  - location/address: Banashankari 3rd Stage, Bangalore
+  - city: Bangalore
+Query 1: SPOT ON Hotel Relax Inn Near Banashankari Metro Station Bangalore
+  HTTP Status: 200
+Query 2: SPOT ON Hotel Relax Inn Near Banashankari Metro Station, Banashankari 3rd Stage, Bangalore, Bangalore
+  HTTP Status: 200
+Query 3: SPOT ON Hotel Relax Inn Near Banashankari Metro Station Banashankari 3rd Stage Bangalore
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: Super OYO Capital O King Suites -hennur Near D Mart
+  - location/address: East Zone, Bangalore
+  - city: Bangalore
+Query 1: Super OYO Capital O King Suites -hennur Near D Mart Bangalore
+  HTTP Status: 200
+Query 2: Super OYO Capital O King Suites -hennur Near D Mart, East Zone, Bangalore, Bangalore
+  HTTP Status: 200
+Query 3: Super OYO Capital O King Suites -hennur Near D Mart East Zone Bangalore
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Flagship 80289 Hotel Neha Inn Near Jama Masjid
+  - location/address: Paharganj  near Delhi Railway Station)null, Delhi
+  - city: Delhi
+Query 1: OYO Flagship 80289 Hotel Neha Inn Near Jama Masjid Delhi
+  HTTP Status: 200
+Query 2: OYO Flagship 80289 Hotel Neha Inn Near Jama Masjid, Paharganj  near Delhi Railway Station)null, Delhi, Delhi
+  HTTP Status: 200
+Query 3: OYO Flagship 80289 Hotel Neha Inn Near Jama Masjid Paharganj  near Delhi Railway Station)null Delhi
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Flagship R K Residency Near Jhilmil Metro Station
+  - location/address: 488/5a Mcd Primary School Dilshad Garden, Delhi
+  - city: Delhi
+Query 1: OYO Flagship R K Residency Near Jhilmil Metro Station Delhi
+  HTTP Status: 200
+Query 2: OYO Flagship R K Residency Near Jhilmil Metro Station, 488/5a Mcd Primary School Dilshad Garden, Delhi, Delhi
+  HTTP Status: 200
+Query 3: OYO Flagship R K Residency Near Jhilmil Metro Station 488/5a Mcd Primary School Dilshad Garden Delhi
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Rooms 451 Gali No 3 Ram Nagar Paharganj
+  - location/address: Saran Building, Gali No. 3
+  - city: Gali No. 3
+Query 1: OYO Rooms 451 Gali No 3 Ram Nagar Paharganj Gali No. 3
+  HTTP Status: 200
+Query 2: OYO Rooms 451 Gali No 3 Ram Nagar Paharganj, Saran Building, Gali No. 3, Gali No. 3
+  HTTP Status: 200
+Query 3: OYO Rooms 451 Gali No 3 Ram Nagar Paharganj Saran Building Gali No. 3
+  HTTP Status: 200
+Nominatim candidates found: 0
+
+Original hotel:
+  - name: OYO Rooms 108 Near Karol Bagh Metro Station 1
+  - location/address: Karol Bagh
+  - city: Karol Bagh
+Query 1: OYO Rooms 108 Near Karol Bagh Metro Station 1 Karol Bagh
+  HTTP Status: 200
+Query 2: OYO Rooms 108 Near Karol Bagh Metro Station 1, Karol Bagh, Karol Bagh
+  HTTP Status: 200
+Nominatim candidates found: 0

@@ -1,0 +1,298 @@
+================================================================================
+PHASE 9 – 20-hotel diagnostic sample with CORRECTED queries
+================================================================================
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=670
+original_name = OYO Homes 367 Greater Kailash M Block Market 2
+cleaned_name  = Greater Kailash M Block Market 2
+address = New Delhi
+city_extracted = 'New Delhi'
+
+  QUERY-A: 'Greater Kailash M Block Market 2 New Delhi'
+  status=LIVE_HTTP200 | candidates=1
+    • type='tailor'        sim=0.273 city_match=True  display='Ali Readymade Blouses, 2, Green Lane, M Block Market, Greater Kailash,'
+
+  BEST CANDIDATE:
+    display='Ali Readymade Blouses, 2, Green Lane, M Block Market, Greater Kailash, South, New Delhi, South Delhi'
+    sim=0.310  city_match=True  type_ok=False  addr_ok=True
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=34
+original_name = Super OYO Townhouse 238 Tierra Woods Near Halasuru Metro Station
+cleaned_name  = Tierra Woods
+address = Halasuru, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: 'Tierra Woods Bangalore'
+  status=LIVE_HTTP200 | candidates=1
+    • type='hotel'         sim=0.121 city_match=False display='Tierra Woods A Business Hotel, Swamy Vivekananda Road, Saraswathipuram'
+
+  BEST CANDIDATE:
+    display='Tierra Woods A Business Hotel, Swamy Vivekananda Road, Saraswathipuram, Halasuru, Bengaluru Central '
+    sim=0.287  city_match=False  type_ok=True  addr_ok=False
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=550
+original_name = OYO Rooms 541 Dwarka Sector 13 Metro Station
+cleaned_name  = Dwarka Sector 13 Metro Station
+address = Sector 13, Dwarka
+city_extracted = 'Dwarka'
+
+  QUERY-A: 'Dwarka Sector 13 Metro Station Dwarka'
+  status=LIVE_HTTP200 | candidates=1
+    • type='station'       sim=0.366 city_match=False display='Dwarka Sector 13, Internal road, metro view apartments, Najafgarh, Del'
+
+  BEST CANDIDATE:
+    display='Dwarka Sector 13, Internal road, metro view apartments, Najafgarh, Delhi, South West Delhi, Delhi, 1'
+    sim=0.366  city_match=False  type_ok=False  addr_ok=False
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=200
+original_name = OYO 811030 Ocean Guest House
+cleaned_name  = Ocean Guest House
+address = Brij Puri, Delhi
+city_extracted = 'Delhi'
+
+  QUERY-A: 'Ocean Guest House Delhi'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: 'Ocean Guest House'
+  status=LIVE_HTTP200 | candidates=1
+    • type='guest_house'   sim=0.374 display='Ocean Guest House, Largo de São Paulo, Peniche, Leiria, 2520-235, Port'
+
+  BEST CANDIDATE:
+    display='Ocean Guest House, Largo de São Paulo, Peniche, Leiria, 2520-235, Portugal'
+    sim=0.374  city_match=False  type_ok=True  addr_ok=False
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=265
+original_name = OYO TOWNHOUSE  R K Residency Near Mother dairy gate no. 2
+cleaned_name  = R K Residency
+address = Flat No 3 Near Fair Deal South Ganesh Nagar, Delhi
+city_extracted = 'Delhi'
+
+  QUERY-A: 'R K Residency Delhi'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: 'R K Residency'
+  status=LIVE_HTTP200 | candidates=1
+    • type='apartments'    sim=0.171 display='R. K. Residency, Plot No 105, Brahmagiri Road, Nerul Village, Nerul We'
+
+  BEST CANDIDATE:
+    display='R. K. Residency, Plot No 105, Brahmagiri Road, Nerul Village, Nerul West, Navi Mumbai, Thane Subdist'
+    sim=0.224  city_match=False  type_ok=False  addr_ok=False
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=584
+original_name = OYO Rooms 145 Paschim Vihar
+cleaned_name  = Paschim Vihar
+address = Rohtak Road
+city_extracted = 'Rohtak Road'
+
+  QUERY-A: 'Paschim Vihar Rohtak Road'
+  status=LIVE_HTTP200 | candidates=5
+    • type='hospital'      sim=0.205 city_match=False display='Paschim Vihar West, A1/10 Ground floor, Rohtak Road, Keshavpuram, Delh'
+    • type='station'       sim=0.243 city_match=False display='Paschim Vihar West, Rohtak Road, Keshavpuram, Delhi, Central North Del'
+
+  BEST CANDIDATE:
+    display='Paschim Vihar West, Rohtak Road, Keshavpuram, Delhi, Central North Delhi, Delhi, 110063, India'
+    sim=0.243  city_match=False  type_ok=False  addr_ok=True
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=40
+original_name = Collection O Hotel Palm Tree
+cleaned_name  = Palm Tree
+address = Near Halasuru Metro Station, Ulsoor, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: 'Palm Tree Bangalore'
+  status=LIVE_HTTP200 | candidates=3
+    • type='tree'          sim=0.106 city_match=False display='Palm, 7th Main Road, LBS Nagar, Hoysala Nagara Central, Bengaluru Cent'
+    • type='tree'          sim=0.099 city_match=False display='Palm, 5th Main Road, Indiranagar 1st Stage, Hoysala Nagara Central, Be'
+
+  BEST CANDIDATE:
+    display='Palm, 7th Main Road, LBS Nagar, Hoysala Nagara Central, Bengaluru Central City Corporation, Bengalur'
+    sim=0.148  city_match=False  type_ok=False  addr_ok=False
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=555
+original_name = OYO Rooms 051 New Friends Colony Market
+cleaned_name  = New Friends Colony Market
+address = New Friends Colony
+city_extracted = 'New Friends Colony'
+
+  QUERY-A: 'New Friends Colony Market New Friends Colony'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: 'New Friends Colony Market'
+  status=LIVE_HTTP200 | candidates=1
+    • type='commercial'    sim=0.338 display='Shankar Market, Kadamb Street, New Friends Colony, Central, Delhi, Sou'
+
+  BEST CANDIDATE:
+    display='Shankar Market, Kadamb Street, New Friends Colony, Central, Delhi, South East Delhi, Delhi, 110025, '
+    sim=0.375  city_match=False  type_ok=False  addr_ok=True
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=586
+original_name = OYO Rooms 280 J Block Vikaspuri Delhi
+cleaned_name  = J Block Vikaspuri Delhi
+address = Vikaspuri
+city_extracted = 'Vikaspuri'
+
+  QUERY-A: 'J Block Vikaspuri Delhi Vikaspuri'
+  status=LIVE_HTTP200 | candidates=2
+    • type='residential'   sim=0.550 city_match=False display='J-Block, Vikaspuri, West, Delhi, West Delhi, Delhi, India'
+    • type='residential'   sim=0.561 city_match=False display='J - Block, Vikaspuri, West, Delhi, West Delhi, Delhi, India'
+
+  BEST CANDIDATE:
+    display='J - Block, Vikaspuri, West, Delhi, West Delhi, Delhi, India'
+    sim=0.561  city_match=False  type_ok=False  addr_ok=True
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=610
+original_name = OYO Rooms 174 New Delhi Railway Station 2
+cleaned_name  = New Delhi Railway Station 2
+address = Ram Nagar
+city_extracted = 'Ram Nagar'
+
+  QUERY-A: 'New Delhi Railway Station 2 Ram Nagar'
+  status=LIVE_HTTP200 | candidates=1
+    • type='secondary'     sim=0.315 city_match=False display='New Delhi Railway Station Flyover, Ram Nagar, Sadar Bazar, New Delhi R'
+
+  BEST CANDIDATE:
+    display='New Delhi Railway Station Flyover, Ram Nagar, Sadar Bazar, New Delhi Railway Station, City & Sadar, '
+    sim=0.391  city_match=False  type_ok=False  addr_ok=True
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=325
+original_name = Capital O Kabita Guest House Near Acropolis Mall
+cleaned_name  = Kabita Guest House
+address = Mukundapur Main Road Seven Maddox Square Multi cuisine Restaurant Kolkata EM Bye Pass Opposite Dr. Devi Shetty Hospital
+city_extracted = 'Mukundapur Main Road Seven Maddox Square Multi cuisine Restaurant Kolkata EM Bye Pass Opposite Dr. Devi Shetty Hospital'
+
+  QUERY-A: 'Kabita Guest House Mukundapur Main Road Seven Maddox Square Multi cuisine Restaurant Kolkata EM Bye Pass Opposite Dr. Devi Shetty Hospital'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: 'Kabita Guest House'
+  status=LIVE_HTTP200 | candidates=1
+    • type='hotel'         sim=0.208 display='Kabita khaja Ghar and Guest House, BP Highway, Golmithumka, Namobuddha'
+
+  BEST CANDIDATE:
+    display='Kabita khaja Ghar and Guest House, BP Highway, Golmithumka, Namobuddha-02, नमोबुद्ध, नमोबुद्ध नगरपाल'
+    sim=0.227  city_match=False  type_ok=True  addr_ok=False
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=391
+original_name = Collection O 76651 Dovers Inn
+cleaned_name  = Dovers Inn
+address = Opp Gariahat Police Station, Kolkata
+city_extracted = 'Kolkata'
+
+  QUERY-A: 'Dovers Inn Kolkata'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: 'Dovers Inn'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=486
+original_name = OYO Rooms 111 Paharganj 54
+cleaned_name  = Paharganj 54
+address = Paharganj
+city_extracted = 'Paharganj'
+
+  QUERY-A: 'Paharganj 54 Paharganj'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: 'Paharganj 54'
+  status=LIVE_HTTP200 | candidates=1
+    • type='suburb'        sim=0.286 display='Paharganj, Karol Bagh, Delhi, Central Delhi, Delhi, 110055, India'
+
+  BEST CANDIDATE:
+    display='Paharganj, Karol Bagh, Delhi, Central Delhi, Delhi, 110055, India'
+    sim=0.286  city_match=False  type_ok=False  addr_ok=True
+  FINAL VERDICT: REJECTED/NOT_FOUND
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=704
+original_name = OYO Rooms 293 Jhandewalan Metro Station 3
+cleaned_name  = Jhandewalan Metro Station 3
+address = Karol Bagh
+city_extracted = 'Karol Bagh'
+
+  QUERY-A: 'Jhandewalan Metro Station 3 Karol Bagh'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: 'Jhandewalan Metro Station 3'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=67
+original_name = Super OYO Capital O High end Withinn Hotel Near Hare Krishna Hill
+cleaned_name  = High end Withinn Hotel
+address = Near NIAS, Mathikere Extension, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: 'High end Withinn Hotel Bangalore'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: 'High end Withinn Hotel'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=79
+original_name = Super OYO Townhouse 490 Indiranagar Extn
+cleaned_name  = Indiranagar Extn
+address = Bangalore, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: 'Indiranagar Extn Bangalore'
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: 'Indiranagar Extn'
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=73
+original_name = Collection O Hotel Status Executive Room's
+cleaned_name  = Status Executive Room's
+address = Near Old Airport Road, Bangalore
+city_extracted = 'Bangalore'
+
+  QUERY-A: "Status Executive Room's Bangalore"
+  status=LIVE_HTTP200 | candidates=0
+
+  QUERY-B: "Status Executive Room's"
+  status=LIVE_HTTP200 | candidates=0
+
+  FINAL VERDICT: not_found (no candidates from all queries)
+
+──────────────────────────────────────────────────────────────────────
+hotel_id=193
+original_name = OYO Kochar Plaza Near Satyam Inox Patel Nagar
+cleaned_name  = Kochar Plaza
+address = Near Liberty Cinema, New Rohtak Rd, Delhi
+city_extracted = 'Delhi'
+
+  QUERY-A: 'Kochar Plaza Delhi'
+  status=LIVE_HTTP200 | candidates=0
