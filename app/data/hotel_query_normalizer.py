@@ -1,97 +1,126 @@
 import re
-from typing import Tuple, List
 
-# Configuration lists for normalization
-FRANCHISE_PREFIXES = [
-    r"\bSuper OYO Capital O\b",
-    r"\bSuper OYO Townhouse\b",
-    r"\bSuper OYO Collection O\b",
-    r"\bSuper OYO Flagship\b",
-    r"\bSuper OYO\b",
-    r"\bCapital O\b",
-    r"\bCollection O\b",
-    r"\bTownhouse OAK\b",
-    r"\bOYO Townhouse\b",
-    r"\bOYO Rooms\b",
-    r"\bSpot On\b",
-    r"\bSPOT ON\b",
-    r"\bSilverKey\b",
-    r"\bPalette\b",
-    r"\bOYO Home\b",
-    r"\bOYO Flagship\b",
-    r"\bOYO\b",
-    r"\bFabHotel\b"
-]
-
-ROOM_PATTERN = r"\b\d{3,6}\b" # Identifies obvious numeric sequence like 604, 8501, 23641, 805147
-PROMO_PATTERNS = [
-    r"\bnear\s+d[\s\-]*mart\b",
-    r"\bbest\s+hotel\b",
-    r"\bbudget\s+hotel\b",
-    r"\bcouple\s+friendly\b"
-]
-
-def clean_promotional_text(name: str, steps: list) -> str:
-    current = name
-    for promo in PROMO_PATTERNS:
-        pattern = re.compile(promo, flags=re.IGNORECASE)
-        if pattern.search(current):
-            current = pattern.sub("", current).strip()
-            steps.append(f"removed promotional text: {promo}")
+class HotelQueryNormalizer:
     
-    # Handle "Near [Location]" - just remove the word "Near " if it starts a trailing phrase
-    # Or generically just remove the word "Near" if it's acting as a preposition, to keep the landmark.
-    # The requirement says "remove or normalize... but preserve location". 
-    # Example: "Near Inderlok Metro Station" -> "Inderlok Metro Station"
-    near_match = re.search(r"\bnear\s+(.+)", current, flags=re.IGNORECASE)
-    if near_match:
-        landmark = near_match.group(1)
-        current = re.sub(r"\bnear\s+", "", current, flags=re.IGNORECASE).strip()
-        steps.append(f"preserved landmark but removed 'near': {landmark}")
+    PLATFORM_PREFIXES = [
+        "OYO Rooms", "Super OYO", "Capital O", "Collection O", "Townhouse OAK", "Townhouse",
+        "Spot On", "SilverKey", "Palette", "Home", "FabHotel", "OYO", "Flagship"
+    ]
+    
+    PROMOTIONAL_PHRASES = [
+        "near d mart", "couple friendly", "budget hotel", "best hotel", 
+        "cheap hotel", "family hotel", "hotel near", "near metro station", "near airport",
+        "near railway station", "near bus stand", "near metro", "near"
+    ]
+
+    def __init__(self):
+        pass
+
+    def normalize(self, original_name: str):
+        steps = []
+        name = original_name
         
-    return current
-
-def normalize_hotel_query(original_name: str) -> Tuple[str, List[str]]:
-    """
-    Takes an original hotel name and creates a normalized search representation.
-    Returns structurally cleaned name, and list of transformation steps.
-    """
-    steps = []
-    
-    current_name = original_name
-    
-    # 1. Remove Franchise Prefixes
-    for prefix in FRANCHISE_PREFIXES:
-        pattern = re.compile(prefix, flags=re.IGNORECASE)
-        if pattern.search(current_name):
-            current_name = pattern.sub("", current_name).strip()
-            # formatting nicely
-            clean_prefix = prefix.replace(r"\b", "").strip()
-            steps.append(f"removed franchise prefix: {clean_prefix}")
-            break # typically only one main branding structure matters
+        # 1. Platform & Franchise prefixes
+        # Sort prefixes by length descending so "Super OYO" is matched before "OYO"
+        prefixes = sorted(self.PLATFORM_PREFIXES, key=len, reverse=True)
+        for prefix in prefixes:
+            pattern = re.compile(rf'\b{re.escape(prefix)}\b', re.IGNORECASE)
+            if pattern.search(name):
+                temp_name = pattern.sub('', name)
+                if temp_name.strip():
+                    name = temp_name
+                    steps.append(f"removed platform/franchise prefix: {prefix}")
+                
+        # 2. Room/booking metadata
+        # Remove standalone numbers or "Room \d+"
+        number_pattern = re.compile(r'\b\d+\b(?![\w-])', re.IGNORECASE)
+        # e.g., "604" in "OYO Rooms 604"
+        if number_pattern.search(name):
+            temp_name = number_pattern.sub('', name)
+            if temp_name.strip():
+                name = temp_name
+                steps.append("removed numeric room/booking metadata")
             
-    # 2. Remove Room/Booking Identifiers
-    room_matches = re.findall(ROOM_PATTERN, current_name)
-    if room_matches:
-        for match in room_matches:
-            current_name = re.sub(rf"\b{match}\b", "", current_name).strip()
-            steps.append(f"removed numeric room/booking metadata: {match}")
+        # 3. Promotional/SEO text
+        # Specifically targeting things like "Near D Mart" or "Near Metro Station"
+        promo_pattern1 = re.compile(r'(?i)\bnear d mart\b', re.IGNORECASE)
+        if promo_pattern1.search(name):
+            temp_name = promo_pattern1.sub('', name)
+            if temp_name.strip():
+                name = temp_name
+                steps.append("removed promotional location phrase: Near D Mart")
             
-    # 3. Promotional/SEO Text
-    current_name = clean_promotional_text(current_name, steps)
+        promo_pattern2 = re.compile(r'(?i)\bnear [a-z\s]+ metro station\b', re.IGNORECASE)
+        if promo_pattern2.search(name):
+            temp_name = promo_pattern2.sub('', name)
+            if temp_name.strip():
+                name = temp_name
+                steps.append("removed promotional location phrase: near metro station")
+            
+        generic_promo = re.compile(r'(?i)\b(couple friendly|budget hotel|best hotel)\b', re.IGNORECASE)
+        if generic_promo.search(name):
+            temp_name = generic_promo.sub('', name)
+            if temp_name.strip():
+                name = temp_name
+                steps.append("removed promotional text")
 
-    # 4. Punctuation and Formatting
-    # Remove hyphens surrounded by spaces, non-alphanumeric (excluding space)
-    clean_name = re.sub(r'[-\(\)\[\]]', ' ', current_name)
-    clean_name = re.sub(r'[^\w\s]', '', clean_name)
-    clean_name = re.sub(r'\s+', ' ', clean_name).strip()
-    
-    if clean_name != current_name:
-        steps.append("normalized punctuation and whitespace")
-        current_name = clean_name
-
-    # Check if empty
-    if not current_name:
-        return original_name, ["failed to normalize: string became empty, reverted"]
+        # 4. Punctuation and formatting
+        # Replace hyphens with spaces
+        if '-' in name:
+            name = name.replace('-', ' ')
+            steps.append("normalized punctuation: hyphens to spaces")
         
-    return current_name, steps
+        # Remove extra whitespace and trim
+        name = re.sub(r'[^\w\s]', '', name)
+        name = re.sub(r'\s+', ' ', name).strip()
+        
+        # Title case for cleanliness
+        name = name.title()
+
+        return name, steps
+
+    def extract_locality(self, address: str) -> str:
+        if not address:
+            return ""
+        parts = [p.strip() for p in address.split(",")]
+        if len(parts) > 1:
+            return parts[0]
+        return ""
+
+    def generate_queries(self, normalized_name: str, original_city: str, original_address: str):
+        queries = []
+        city = original_city.strip() if original_city else ""
+        address = original_address.strip() if original_address else ""
+        
+        # Query 1: <normalized hotel name> + <city>
+        if city:
+            q1 = f"{normalized_name} {city}".strip()
+            if q1:
+                queries.append(q1)
+        else:
+            q1 = f"{normalized_name}".strip()
+            if q1:
+                queries.append(q1)
+                
+        # Query 2: <normalized hotel name> + <locality> + <city>
+        locality = self.extract_locality(address)
+        if locality and locality.lower() not in city.lower():
+            q2 = f"{normalized_name} {locality} {city}".strip()
+            # To avoid duplicates if locality is already in query 1
+            if q2 not in queries:
+                queries.append(q2)
+                
+        # Query 3: <normalized hotel name> + <address/location> + <city>
+        if address:
+            # Clean address to remove city if it's appended at the end
+            clean_addr = address
+            if city and clean_addr.endswith(city):
+                clean_addr = clean_addr[:len(clean_addr)-len(city)].strip().rstrip(',')
+                
+            q3 = f"{normalized_name} {clean_addr} {city}".strip()
+            # We don't want to create massive queries if the address is too long, but we'll try it
+            q3_clean = re.sub(r'\s+', ' ', q3).strip()
+            if q3_clean not in queries:
+                queries.append(q3_clean)
+                
+        return queries

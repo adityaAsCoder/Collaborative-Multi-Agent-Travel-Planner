@@ -1,0 +1,382 @@
+﻿=== 20-HOTEL NORMALIZATION DIAGNOSTIC ===
+
+==================================================
+Original hotel:
+  - name: OYO Rooms 604 DB Gupta Main Road 1
+  - location/address: DB Gupta Road, Pahar Ganj Bridge
+  - city: Pahar Ganj Bridge
+Normalization Steps:
+  - removed platform/franchise prefix: OYO Rooms
+  - removed numeric room/booking metadata
+Normalized Name: Db Gupta Main Road
+--------------------------------------------------
+Old Queries: ['OYO Rooms 604 DB Gupta Main Road 1 Pahar Ganj Bridge', 'OYO Rooms 604 DB Gupta Main Road 1, DB Gupta Road, Pahar Ganj Bridge, Pahar Ganj Bridge', 'OYO Rooms 604 DB Gupta Main Road 1 DB Gupta Road Pahar Ganj Bridge']
+New Queries: ['Db Gupta Main Road Pahar Ganj Bridge', 'Db Gupta Main Road DB Gupta Road Pahar Ganj Bridge']
+Executing Query 1: Db Gupta Main Road Pahar Ganj Bridge
+  [HTTP Status: 200]
+Executing Query 2: Db Gupta Main Road DB Gupta Road Pahar Ganj Bridge
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO 8501 ABHIMAANI COMFORTS
+  - location/address: Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar
+  - city: Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar
+Normalization Steps:
+  - removed platform/franchise prefix: OYO
+  - removed numeric room/booking metadata
+Normalized Name: Abhimaani Comforts
+--------------------------------------------------
+Old Queries: ['OYO 8501 ABHIMAANI COMFORTS Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar', 'OYO 8501 ABHIMAANI COMFORTS, Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar, Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar']
+New Queries: ['Abhimaani Comforts Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar']
+Executing Query 1: Abhimaani Comforts Kanakpura main road metro pillar number 45 nearby Banashankari metro station JP Nagar
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Hotel Townhall
+  - location/address: Near Dhanlakshmi Bank, JC Road, Bangalore
+  - city: Bangalore
+Normalization Steps:
+  - removed platform/franchise prefix: OYO
+Normalized Name: Hotel Townhall
+--------------------------------------------------
+Old Queries: ['OYO Hotel Townhall Bangalore', 'OYO Hotel Townhall, Near Dhanlakshmi Bank, JC Road, Bangalore, Bangalore', 'OYO Hotel Townhall Near Dhanlakshmi Bank Bangalore']
+New Queries: ['Hotel Townhall Bangalore', 'Hotel Townhall Near Dhanlakshmi Bank Bangalore', 'Hotel Townhall Near Dhanlakshmi Bank, JC Road Bangalore']
+Executing Query 1: Hotel Townhall Bangalore
+  [HTTP Status: 200]
+Executing Query 2: Hotel Townhall Near Dhanlakshmi Bank Bangalore
+  [HTTP Status: 200]
+Executing Query 3: Hotel Townhall Near Dhanlakshmi Bank, JC Road Bangalore
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: Collection O 23641 Hotel Cozy Vibes Stay
+  - location/address: Near Inderlok Metro Station, Anandnagar, Delhi
+  - city: Delhi
+Normalization Steps:
+  - removed platform/franchise prefix: Collection O
+  - removed numeric room/booking metadata
+Normalized Name: Hotel Cozy Vibes Stay
+--------------------------------------------------
+Old Queries: ['Collection O 23641 Hotel Cozy Vibes Stay Delhi', 'Collection O 23641 Hotel Cozy Vibes Stay, Near Inderlok Metro Station, Anandnagar, Delhi, Delhi', 'Collection O 23641 Hotel Cozy Vibes Stay Near Inderlok Metro Station Delhi']
+New Queries: ['Hotel Cozy Vibes Stay Delhi', 'Hotel Cozy Vibes Stay Near Inderlok Metro Station Delhi', 'Hotel Cozy Vibes Stay Near Inderlok Metro Station, Anandnagar Delhi']
+Executing Query 1: Hotel Cozy Vibes Stay Delhi
+  [HTTP Status: 200]
+Executing Query 2: Hotel Cozy Vibes Stay Near Inderlok Metro Station Delhi
+  [HTTP Status: 200]
+Executing Query 3: Hotel Cozy Vibes Stay Near Inderlok Metro Station, Anandnagar Delhi
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Flagship 805147 Hotel Sona International Near Gurudwara Shri Bangla Sahib
+  - location/address: Paharganj  near Delhi Railway Station)null, Delhi
+  - city: Delhi
+Normalization Steps:
+  - removed platform/franchise prefix: Flagship
+  - removed platform/franchise prefix: OYO
+  - removed numeric room/booking metadata
+Normalized Name: Hotel Sona International Near Gurudwara Shri Bangla Sahib
+--------------------------------------------------
+Old Queries: ['OYO Flagship 805147 Hotel Sona International Near Gurudwara Shri Bangla Sahib Delhi', 'OYO Flagship 805147 Hotel Sona International Near Gurudwara Shri Bangla Sahib, Paharganj  near Delhi Railway Station)null, Delhi, Delhi', 'OYO Flagship 805147 Hotel Sona International Near Gurudwara Shri Bangla Sahib Paharganj  near Delhi Railway Station)null Delhi']
+New Queries: ['Hotel Sona International Near Gurudwara Shri Bangla Sahib Delhi', 'Hotel Sona International Near Gurudwara Shri Bangla Sahib Paharganj  near Delhi Railway Station)null Delhi', 'Hotel Sona International Near Gurudwara Shri Bangla Sahib Paharganj near Delhi Railway Station)null Delhi']
+Executing Query 1: Hotel Sona International Near Gurudwara Shri Bangla Sahib Delhi
+  [HTTP Status: 200]
+Executing Query 2: Hotel Sona International Near Gurudwara Shri Bangla Sahib Paharganj  near Delhi Railway Station)null Delhi
+  [HTTP Status: 200]
+Executing Query 3: Hotel Sona International Near Gurudwara Shri Bangla Sahib Paharganj near Delhi Railway Station)null Delhi
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Le Alfanso Near Jama Masjid
+  - location/address: Near New Delhi Railway Station, Delhi
+  - city: Delhi
+Normalization Steps:
+  - removed platform/franchise prefix: OYO
+Normalized Name: Le Alfanso Near Jama Masjid
+--------------------------------------------------
+Old Queries: ['OYO Le Alfanso Near Jama Masjid Delhi', 'OYO Le Alfanso Near Jama Masjid, Near New Delhi Railway Station, Delhi, Delhi', 'OYO Le Alfanso Near Jama Masjid Near New Delhi Railway Station Delhi']
+New Queries: ['Le Alfanso Near Jama Masjid Delhi', 'Le Alfanso Near Jama Masjid Near New Delhi Railway Station Delhi']
+Executing Query 1: Le Alfanso Near Jama Masjid Delhi
+  [HTTP Status: 200]
+Executing Query 2: Le Alfanso Near Jama Masjid Near New Delhi Railway Station Delhi
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Nr Royal Near Nexus Mall Koramangala
+  - location/address: Sector 6, HSR Layout Ward, Bommanahalli Zone, Bengaluru, Bangalore South, Bangalore Urban, Karnataka
+  - city: Karnataka
+Normalization Steps:
+  - removed platform/franchise prefix: OYO
+Normalized Name: Nr Royal Near Nexus Mall Koramangala
+--------------------------------------------------
+Old Queries: ['OYO Nr Royal Near Nexus Mall Koramangala Karnataka', 'OYO Nr Royal Near Nexus Mall Koramangala, Sector 6, HSR Layout Ward, Bommanahalli Zone, Bengaluru, Bangalore South, Bangalore Urban, Karnataka, Karnataka', 'OYO Nr Royal Near Nexus Mall Koramangala Sector 6 Karnataka']
+New Queries: ['Nr Royal Near Nexus Mall Koramangala Karnataka', 'Nr Royal Near Nexus Mall Koramangala Sector 6 Karnataka', 'Nr Royal Near Nexus Mall Koramangala Sector 6, HSR Layout Ward, Bommanahalli Zone, Bengaluru, Bangalore South, Bangalore Urban Karnataka']
+Executing Query 1: Nr Royal Near Nexus Mall Koramangala Karnataka
+  [HTTP Status: 200]
+Executing Query 2: Nr Royal Near Nexus Mall Koramangala Sector 6 Karnataka
+  [HTTP Status: 200]
+Executing Query 3: Nr Royal Near Nexus Mall Koramangala Sector 6, HSR Layout Ward, Bommanahalli Zone, Bengaluru, Bangalore South, Bangalore Urban Karnataka
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: Collection O 812451 The Grand Budget Hotel
+  - location/address: Karnataka , Bangalore
+  - city: Bangalore
+Normalization Steps:
+  - removed platform/franchise prefix: Collection O
+  - removed numeric room/booking metadata
+  - removed promotional text
+Normalized Name: The Grand
+--------------------------------------------------
+Old Queries: ['Collection O 812451 The Grand Budget Hotel Bangalore', 'Collection O 812451 The Grand Budget Hotel, Karnataka , Bangalore, Bangalore', 'Collection O 812451 The Grand Budget Hotel Karnataka Bangalore']
+New Queries: ['The Grand Bangalore', 'The Grand Karnataka Bangalore']
+Executing Query 1: The Grand Bangalore
+  [HTTP Status: 200]
+Nominatim candidates found: 1
+  - Top candidate name: Bangalore Express, 1, Corbet Court, Leadenhall Market, Monument, City of London, Greater London, England, EC3V 0AT, United Kingdom
+  - Top candidate type: restaurant
+  - Top coords: 51.5129237, -0.0850193
+
+==================================================
+Original hotel:
+  - name: OYO Rooms 316 Kalkaji M Block
+  - location/address: M Block, Kalkaji
+  - city: Kalkaji
+Normalization Steps:
+  - removed platform/franchise prefix: OYO Rooms
+  - removed numeric room/booking metadata
+Normalized Name: Kalkaji M Block
+--------------------------------------------------
+Old Queries: ['OYO Rooms 316 Kalkaji M Block Kalkaji', 'OYO Rooms 316 Kalkaji M Block, M Block, Kalkaji, Kalkaji', 'OYO Rooms 316 Kalkaji M Block M Block Kalkaji']
+New Queries: ['Kalkaji M Block Kalkaji', 'Kalkaji M Block M Block Kalkaji']
+Executing Query 1: Kalkaji M Block Kalkaji
+  [HTTP Status: 200]
+Executing Query 2: Kalkaji M Block M Block Kalkaji
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Rooms 082 Patel Nagar Main Market
+  - location/address: Main Market
+  - city: Main Market
+Normalization Steps:
+  - removed platform/franchise prefix: OYO Rooms
+  - removed numeric room/booking metadata
+Normalized Name: Patel Nagar Main Market
+--------------------------------------------------
+Old Queries: ['OYO Rooms 082 Patel Nagar Main Market Main Market', 'OYO Rooms 082 Patel Nagar Main Market, Main Market, Main Market']
+New Queries: ['Patel Nagar Main Market Main Market']
+Executing Query 1: Patel Nagar Main Market Main Market
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Hotel Fiesta Grand
+  - location/address: Near Mariyappa Road, Jayanagar Ward, Bangalore
+  - city: Bangalore
+Normalization Steps:
+  - removed platform/franchise prefix: OYO
+Normalized Name: Hotel Fiesta Grand
+--------------------------------------------------
+Old Queries: ['OYO Hotel Fiesta Grand Bangalore', 'OYO Hotel Fiesta Grand, Near Mariyappa Road, Jayanagar Ward, Bangalore, Bangalore', 'OYO Hotel Fiesta Grand Near Mariyappa Road Bangalore']
+New Queries: ['Hotel Fiesta Grand Bangalore', 'Hotel Fiesta Grand Near Mariyappa Road Bangalore', 'Hotel Fiesta Grand Near Mariyappa Road, Jayanagar Ward Bangalore']
+Executing Query 1: Hotel Fiesta Grand Bangalore
+  [HTTP Status: 200]
+Nominatim candidates found: 1
+  - Top candidate name: OYO Hotel Fiesta Grand, T. Mariyappa Road, Kanakanapalya, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560069, India
+  - Top candidate type: commercial
+  - Top coords: 12.9418611, 77.5854648
+
+==================================================
+Original hotel:
+  - name: OYO Rooms 026 Karol Bagh
+  - location/address: Karol Bagh
+  - city: Karol Bagh
+Normalization Steps:
+  - removed platform/franchise prefix: OYO Rooms
+  - removed numeric room/booking metadata
+Normalized Name: Karol Bagh
+--------------------------------------------------
+Old Queries: ['OYO Rooms 026 Karol Bagh Karol Bagh', 'OYO Rooms 026 Karol Bagh, Karol Bagh, Karol Bagh']
+New Queries: ['Karol Bagh Karol Bagh']
+Executing Query 1: Karol Bagh Karol Bagh
+  [HTTP Status: 200]
+Nominatim candidates found: 2
+  - Top candidate name: Karol Bagh, Delhi, Central Delhi, Delhi, India
+  - Top candidate type: administrative
+  - Top coords: 28.6529982, 77.1890227
+
+==================================================
+Original hotel:
+  - name: OYO Rooms 257 Rajendra Place PUSA Circle
+  - location/address: East Patel Nagar
+  - city: East Patel Nagar
+Normalization Steps:
+  - removed platform/franchise prefix: OYO Rooms
+  - removed numeric room/booking metadata
+Normalized Name: Rajendra Place Pusa Circle
+--------------------------------------------------
+Old Queries: ['OYO Rooms 257 Rajendra Place PUSA Circle East Patel Nagar', 'OYO Rooms 257 Rajendra Place PUSA Circle, East Patel Nagar, East Patel Nagar']
+New Queries: ['Rajendra Place Pusa Circle East Patel Nagar']
+Executing Query 1: Rajendra Place Pusa Circle East Patel Nagar
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Sree Balaji Residency
+  - location/address: Agrahara Dasarahalli, Rajaji Nagar, Bangalore
+  - city: Bangalore
+Normalization Steps:
+  - removed platform/franchise prefix: OYO
+Normalized Name: Sree Balaji Residency
+--------------------------------------------------
+Old Queries: ['OYO Sree Balaji Residency Bangalore', 'OYO Sree Balaji Residency, Agrahara Dasarahalli, Rajaji Nagar, Bangalore, Bangalore', 'OYO Sree Balaji Residency Agrahara Dasarahalli Bangalore']
+New Queries: ['Sree Balaji Residency Bangalore', 'Sree Balaji Residency Agrahara Dasarahalli Bangalore', 'Sree Balaji Residency Agrahara Dasarahalli, Rajaji Nagar Bangalore']
+Executing Query 1: Sree Balaji Residency Bangalore
+  [HTTP Status: 200]
+Executing Query 2: Sree Balaji Residency Agrahara Dasarahalli Bangalore
+  [HTTP Status: 200]
+Executing Query 3: Sree Balaji Residency Agrahara Dasarahalli, Rajaji Nagar Bangalore
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: SPOT ON Hotel Relax Inn Near Banashankari Metro Station
+  - location/address: Banashankari 3rd Stage, Bangalore
+  - city: Bangalore
+Normalization Steps:
+  - removed platform/franchise prefix: Spot On
+  - removed promotional location phrase: near metro station
+Normalized Name: Hotel Relax Inn
+--------------------------------------------------
+Old Queries: ['SPOT ON Hotel Relax Inn Near Banashankari Metro Station Bangalore', 'SPOT ON Hotel Relax Inn Near Banashankari Metro Station, Banashankari 3rd Stage, Bangalore, Bangalore', 'SPOT ON Hotel Relax Inn Near Banashankari Metro Station Banashankari 3rd Stage Bangalore']
+New Queries: ['Hotel Relax Inn Bangalore', 'Hotel Relax Inn Banashankari 3rd Stage Bangalore']
+Executing Query 1: Hotel Relax Inn Bangalore
+  [HTTP Status: 200]
+Executing Query 2: Hotel Relax Inn Banashankari 3rd Stage Bangalore
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: Super OYO Capital O King Suites -hennur Near D Mart
+  - location/address: East Zone, Bangalore
+  - city: Bangalore
+Normalization Steps:
+  - removed platform/franchise prefix: Super OYO
+  - removed platform/franchise prefix: Capital O
+  - removed promotional location phrase: Near D Mart
+  - normalized punctuation: hyphens to spaces
+Normalized Name: King Suites Hennur
+--------------------------------------------------
+Old Queries: ['Super OYO Capital O King Suites -hennur Near D Mart Bangalore', 'Super OYO Capital O King Suites -hennur Near D Mart, East Zone, Bangalore, Bangalore', 'Super OYO Capital O King Suites -hennur Near D Mart East Zone Bangalore']
+New Queries: ['King Suites Hennur Bangalore', 'King Suites Hennur East Zone Bangalore']
+Executing Query 1: King Suites Hennur Bangalore
+  [HTTP Status: 200]
+Executing Query 2: King Suites Hennur East Zone Bangalore
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Flagship 80289 Hotel Neha Inn Near Jama Masjid
+  - location/address: Paharganj  near Delhi Railway Station)null, Delhi
+  - city: Delhi
+Normalization Steps:
+  - removed platform/franchise prefix: Flagship
+  - removed platform/franchise prefix: OYO
+  - removed numeric room/booking metadata
+Normalized Name: Hotel Neha Inn Near Jama Masjid
+--------------------------------------------------
+Old Queries: ['OYO Flagship 80289 Hotel Neha Inn Near Jama Masjid Delhi', 'OYO Flagship 80289 Hotel Neha Inn Near Jama Masjid, Paharganj  near Delhi Railway Station)null, Delhi, Delhi', 'OYO Flagship 80289 Hotel Neha Inn Near Jama Masjid Paharganj  near Delhi Railway Station)null Delhi']
+New Queries: ['Hotel Neha Inn Near Jama Masjid Delhi', 'Hotel Neha Inn Near Jama Masjid Paharganj  near Delhi Railway Station)null Delhi', 'Hotel Neha Inn Near Jama Masjid Paharganj near Delhi Railway Station)null Delhi']
+Executing Query 1: Hotel Neha Inn Near Jama Masjid Delhi
+  [HTTP Status: 200]
+Executing Query 2: Hotel Neha Inn Near Jama Masjid Paharganj  near Delhi Railway Station)null Delhi
+  [HTTP Status: 200]
+Executing Query 3: Hotel Neha Inn Near Jama Masjid Paharganj near Delhi Railway Station)null Delhi
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Flagship R K Residency Near Jhilmil Metro Station
+  - location/address: 488/5a Mcd Primary School Dilshad Garden, Delhi
+  - city: Delhi
+Normalization Steps:
+  - removed platform/franchise prefix: Flagship
+  - removed platform/franchise prefix: OYO
+  - removed promotional location phrase: near metro station
+Normalized Name: R K Residency
+--------------------------------------------------
+Old Queries: ['OYO Flagship R K Residency Near Jhilmil Metro Station Delhi', 'OYO Flagship R K Residency Near Jhilmil Metro Station, 488/5a Mcd Primary School Dilshad Garden, Delhi, Delhi', 'OYO Flagship R K Residency Near Jhilmil Metro Station 488/5a Mcd Primary School Dilshad Garden Delhi']
+New Queries: ['R K Residency Delhi', 'R K Residency 488/5a Mcd Primary School Dilshad Garden Delhi']
+Executing Query 1: R K Residency Delhi
+  [HTTP Status: 200]
+Executing Query 2: R K Residency 488/5a Mcd Primary School Dilshad Garden Delhi
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Rooms 451 Gali No 3 Ram Nagar Paharganj
+  - location/address: Saran Building, Gali No. 3
+  - city: Gali No. 3
+Normalization Steps:
+  - removed platform/franchise prefix: OYO Rooms
+  - removed numeric room/booking metadata
+Normalized Name: Gali No Ram Nagar Paharganj
+--------------------------------------------------
+Old Queries: ['OYO Rooms 451 Gali No 3 Ram Nagar Paharganj Gali No. 3', 'OYO Rooms 451 Gali No 3 Ram Nagar Paharganj, Saran Building, Gali No. 3, Gali No. 3', 'OYO Rooms 451 Gali No 3 Ram Nagar Paharganj Saran Building Gali No. 3']
+New Queries: ['Gali No Ram Nagar Paharganj Gali No. 3', 'Gali No Ram Nagar Paharganj Saran Building Gali No. 3']
+Executing Query 1: Gali No Ram Nagar Paharganj Gali No. 3
+  [HTTP Status: 200]
+Executing Query 2: Gali No Ram Nagar Paharganj Saran Building Gali No. 3
+  [HTTP Status: 200]
+Nominatim candidates found: 0
+
+==================================================
+Original hotel:
+  - name: OYO Rooms 108 Near Karol Bagh Metro Station 1
+  - location/address: Karol Bagh
+  - city: Karol Bagh
+Normalization Steps:
+  - removed platform/franchise prefix: OYO Rooms
+  - removed numeric room/booking metadata
+  - removed promotional location phrase: near metro station
+Normalized Name: 
+--------------------------------------------------
+Old Queries: ['OYO Rooms 108 Near Karol Bagh Metro Station 1 Karol Bagh', 'OYO Rooms 108 Near Karol Bagh Metro Station 1, Karol Bagh, Karol Bagh']
+New Queries: ['Karol Bagh']
+Executing Query 1: Karol Bagh
+  [HTTP Status: 200]
+Nominatim candidates found: 3
+  - Top candidate name: Karol Bagh, Delhi, Central Delhi, Delhi, India
+  - Top candidate type: administrative
+  - Top coords: 28.6529982, 77.1890227
+
+==================================================
+=== NORMALIZATION DIAGNOSTIC SUMMARY ===
+Hotels tested: 20
+Queries generated: 39
+HTTP URL successes: 39
+Empty responses (0 candidates): 16
+Candidates returned total: 7
+Hotels with >= 1 plausible candidate: 4

@@ -10,12 +10,6 @@ from pathlib import Path
 from difflib import SequenceMatcher
 import requests
 import random
-import sys
-import os
-
-# Add project root to sys path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from app.data.hotel_query_normalizer import normalize_hotel_query
 
 DATA_PATH = Path("datasets/processed/hotels.csv")
 CACHE_DIR = Path(".cache")
@@ -77,52 +71,44 @@ def do_diagnostic():
         print(f"  - location/address: {source_address}")
         print(f"  - city: {source_city}")
         
+        q_a = f"{source_name} {source_city}".strip()
+        q_b = f"{source_name}, {source_address}, {source_city}".strip()
         
-        queries = {"Old Query": [], "New Query": []}
-        
-        q_a_old = f"{source_name} {source_city}".strip()
-        q_b_old = f"{source_name}, {source_address}, {source_city}".strip()
         locality = ""
         if source_address and "," in source_address:
             parts = [p.strip() for p in source_address.split(",")]
             if len(parts) > 1:
                 locality = parts[0]
-        q_c_old = f"{source_name} {locality} {source_city}".strip() if locality else ""
-        queries["Old Query"] = [x for x in [q_a_old, q_b_old, q_c_old] if x]
+        q_c = f"{source_name} {locality} {source_city}".strip() if locality else ""
         
-        normalized_name, steps = normalize_hotel_query(source_name)
-        q_a_new = f"{normalized_name} {source_city}".strip()
-        q_b_new = f"{normalized_name}, {source_address}, {source_city}".strip()
-        q_c_new = f"{normalized_name} {locality} {source_city}".strip() if locality else ""
-        queries["New Query"] = [x for x in [q_a_new, q_b_new, q_c_new] if x]
+        queries = [q_a, q_b, q_c]
+        queries_performed = []
         
-        for q_type, q_list in queries.items():
-            candidate_data = []
-            print(f"\n--- {q_type} Type ---")
-            for i, q in enumerate(q_list):
-                print(f"Query {i+1}: {q}")
-                res = get_live_response(q)
-                if res["error"]:
-                    print(f"  HTTP Error: {res['error']}")
-                else:
-                    print(f"  HTTP Status: {res['status']}")
-                
-                cache_file = cache_path(q)
-                with open(cache_file, "w", encoding="utf-8") as f:
-                    json.dump(res["data"], f)
-                    
-                if res["data"]:
-                    candidate_data = res["data"]
-                    break
+        candidate_data = []
+        for i, q in enumerate(queries):
+            if not q: continue
+            print(f"Query {i+1}: {q}")
+            res = get_live_response(q)
+            if res["error"]:
+                print(f"  HTTP Error: {res['error']}")
+            else:
+                print(f"  HTTP Status: {res['status']}")
             
-            print(f"Nominatim candidates found: {len(candidate_data)}")
-            if candidate_data:
-                c = candidate_data[0]
-                print(f"  candidate name: {c.get('display_name')}")
-                print(f"  candidate type: {c.get('type')}")
-                print(f"  coords: {c.get('lat')}, {c.get('lon')}")
+            # Save the cache so we can verify if it works
+            cache_file = cache_path(q)
+            with open(cache_file, "w", encoding="utf-8") as f:
+                json.dump(res["data"], f)
                 
-        print(f"Normalization steps: {steps}")
+            if res["data"]:
+                candidate_data = res["data"]
+                break
+        
+        print(f"Nominatim candidates found: {len(candidate_data)}")
+        if candidate_data:
+            c = candidate_data[0]
+            print(f"  candidate name: {c.get('display_name')}")
+            print(f"  candidate type: {c.get('type')}")
+            print(f"  coords: {c.get('lat')}, {c.get('lon')}")
             
 if __name__ == '__main__':
     do_diagnostic()

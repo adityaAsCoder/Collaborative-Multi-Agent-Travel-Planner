@@ -11,3 +11,4 @@ pytest
 networkx
 osmnx
 scikit-learn
+streamlit
