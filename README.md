@@ -7,6 +7,19 @@ depend on an incomplete database migration.
 
 ## Run the website
 
+### React frontend and FastAPI backend
+
+From the repository root, run the launcher whenever you want to start the complete
+application:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\run_project.ps1
+```
+
+It starts the backend at `http://127.0.0.1:8000` and the React frontend at
+`http://127.0.0.1:5173`. The API documentation is available at
+`http://127.0.0.1:8000/docs`.
+
 From the repository root:
 
 ```powershell
