@@ -92,13 +92,21 @@ def test_budget_calculation():
     req = _jaipur_request()
     state = PlannerAgent().run(req)
     br = state.budget_result
-    expected_total = (
-        br["accommodation_cost"]
-        + br["attraction_cost"]
-        + br["transport_cost"]
-    )
-    assert abs(br["total_estimated_cost"] - expected_total) < 0.01
-    assert abs(br["remaining_budget"] - (req.budget - expected_total)) < 0.01
+    available_components = [
+        br[key]
+        for key in ("accommodation_cost", "attraction_cost", "transport_cost")
+        if br[key] is not None
+    ]
+    if available_components:
+        assert abs(br["total_estimated_cost"] - sum(available_components)) < 0.01
+        if br["total_is_complete"]:
+            assert abs(br["remaining_budget"] - (req.budget - sum(available_components))) < 0.01
+        else:
+            assert br["remaining_budget"] is None
+    else:
+        assert br["total_estimated_cost"] is None
+        assert br["remaining_budget"] is None
+    assert br["total_is_complete"] is False
 
 
 # ---------- 8. Constraint validation ----------
@@ -108,8 +116,10 @@ def test_constraint_validation():
     cr = state.constraint_result
     assert "feasible" in cr
     assert "violations" in cr
-    # With 20k budget and ~1k cost, should be feasible
-    assert cr["feasible"] is True
+    # Legacy enrichment has no field-level provenance, so feasibility is not asserted.
+    assert cr["status"] == "incomplete"
+    assert cr["feasible"] is False
+    assert cr["warnings"]
 
 
 # ---------- 9. Itinerary generation produces legs ----------

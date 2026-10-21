@@ -2,12 +2,10 @@ import pytest
 import csv
 from pathlib import Path
 import sqlite3
+from scripts.migrate_validated_hotel_coordinates import migrate_csv, migrate_db
 
 BASE_DIR = Path(".").resolve()
 STAGING_CSV = BASE_DIR / "datasets" / "processed" / "hotel_geocoding_results_full.csv"
-PROCESSED_CSV = BASE_DIR / "datasets" / "processed" / "hotels.csv"
-DB_PATH = BASE_DIR / "travel_planner.db"
-MIGRATION_SCRIPT = BASE_DIR / "scripts" / "migrate_validated_hotel_coordinates.py"
 
 def test_entity_matching_classifications():
     if not STAGING_CSV.exists():
@@ -36,33 +34,44 @@ def test_null_preservation():
                 assert not row.get('latitude')
                 assert not row.get('longitude')
 
-def test_migration_idempotency_and_count():
-    import subprocess
-    import shutil
-    if not PROCESSED_CSV.exists():
-        pytest.skip()
-    
-    # Run migration script
-    res1 = subprocess.run(["python", str(MIGRATION_SCRIPT)], capture_output=True, text=True)
-    assert res1.returncode == 0
-    
-    # Read count 1
-    with open(PROCESSED_CSV, 'r', encoding='utf-8') as f:
-        count1 = sum(1 for _ in f)
-        
-    # Run again and check stdout or return code
-    res2 = subprocess.run(["python", str(MIGRATION_SCRIPT)], capture_output=True, text=True)
-    assert res2.returncode == 0
-    
-    with open(PROCESSED_CSV, 'r', encoding='utf-8') as f:
-        count2 = sum(1 for _ in f)
-        
-    assert count1 == count2, "Record count must be preserved across migrations"
+def test_migration_is_idempotent_and_updates_only_its_database(tmp_path):
+    processed_csv = tmp_path / "hotels.csv"
+    staging_csv = tmp_path / "staging.csv"
+    db_path = tmp_path / "test.db"
+    processed_csv.write_text(
+        "hotel_id,name,latitude,longitude\n1,Example Hotel,,\n",
+        encoding="utf-8",
+    )
+    staging_csv.write_text(
+        "hotel_id,final_classification,latitude,longitude,provenance_query,"
+        "provenance_matched_entity,provenance_matching_evidence,provenance_source\n"
+        "1,resolved,26.9,75.8,query,Example Hotel,exact name,OSM\n",
+        encoding="utf-8",
+    )
 
-def test_database_updated():
-    conn = sqlite3.connect(DB_PATH)
+    assert migrate_csv(processed_csv, staging_csv)
+    with processed_csv.open("r", encoding="utf-8", newline="") as source:
+        count_after_first = sum(1 for _ in csv.DictReader(source))
+    assert migrate_csv(processed_csv, staging_csv)
+    with processed_csv.open("r", encoding="utf-8", newline="") as source:
+        count_after_second = sum(1 for _ in csv.DictReader(source))
+    assert count_after_first == count_after_second == 1
+
+    conn = sqlite3.connect(db_path)
     cur = conn.cursor()
+    cur.execute(
+        "CREATE TABLE hotels (hotel_id INTEGER PRIMARY KEY, latitude REAL, longitude REAL)"
+    )
+    cur.execute("INSERT INTO hotels (hotel_id) VALUES (1)")
+    conn.commit()
+    conn.close()
+
+    migrate_db(processed_csv, db_path)
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+    cur.execute("SELECT latitude, longitude FROM hotels WHERE hotel_id = 1")
+    assert cur.fetchone() == (26.9, 75.8)
     cur.execute("SELECT count(*) FROM hotels WHERE provenance_query IS NOT NULL AND provenance_query != ''")
     migrated_count = cur.fetchone()[0]
     conn.close()
-    assert migrated_count >= 0
+    assert migrated_count == 1

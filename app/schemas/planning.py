@@ -38,14 +38,16 @@ class PlanningRequest(BaseModel):
 class PlanningState(BaseModel):
     request_id: Optional[int] = None
     planning_request: Optional[PlanningRequest] = None
-    candidate_attractions: List[dict] = []
-    preference_scores: dict = {}
-    candidate_hotels: List[dict] = []
-    transport_segments: List[dict] = []
-    budget_result: dict = {}
-    constraint_result: dict = {}
-    candidate_itinerary: List[dict] = []
-    optimized_itinerary: List[dict] = []
-    validation_result: dict = {}
-    agent_execution_log: List[dict] = []
+    candidate_attractions: List[dict] = Field(default_factory=list)
+    preference_scores: dict = Field(default_factory=dict)
+    candidate_hotels: List[dict] = Field(default_factory=list)
+    accommodation_result: dict = Field(default_factory=dict)
+    transport_segments: List[dict] = Field(default_factory=list)
+    budget_result: dict = Field(default_factory=dict)
+    constraint_result: dict = Field(default_factory=dict)
+    candidate_itinerary: List[dict] = Field(default_factory=list)
+    optimized_itinerary: List[dict] = Field(default_factory=list)
+    validation_result: dict = Field(default_factory=dict)
+    agent_execution_log: List[dict] = Field(default_factory=list)
+    planning_note: Optional[str] = None
     replanning_required: bool = False

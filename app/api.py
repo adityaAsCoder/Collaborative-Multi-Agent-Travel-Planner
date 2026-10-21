@@ -138,45 +138,46 @@ def _serialize_state(state) -> dict:
                 "attraction": {
                     "id": att["id"],
                     "name": att["name"],
-                    "category": att.get("category") or "",
-                    "subcategory": att.get("subcategory") or "",
-                    "cost": att.get("cost") or 0,
-                    "duration": att.get("duration") or 0,
-                    "rating": att.get("rating") or 0,
+                    "category": att.get("category"),
+                    "subcategory": att.get("subcategory"),
+                    "cost": att.get("cost"),
+                    "duration": att.get("duration"),
+                    "rating": att.get("rating"),
                     "latitude": att.get("latitude"),
                     "longitude": att.get("longitude"),
+                    "coordinate_status": att.get("coordinate_status"),
+                    "coordinate_reason": att.get("coordinate_reason"),
                 },
                 "transport": {
-                    "distance_km": tr.get("distance_km", 0),
-                    "time_min": tr.get("time_min", 0),
-                    "cost": tr.get("cost", 0),
+                    "distance_km": tr.get("distance_km"),
+                    "time_min": tr.get("time_min"),
+                    "cost": tr.get("cost"),
                     "status": tr.get("status", "unavailable"),
+                    "method": tr.get("method"),
+                    "reason": tr.get("reason"),
                 },
+                "recommendation_reason": leg.get("recommendation_reason"),
             })
         itinerary.append({
             "day": day["day"],
             "hotel": day.get("hotel"),
             "hotel_status": day.get("hotel_status", "unavailable"),
+            "hotel_reason": day.get("hotel_reason"),
             "note": day.get("note", ""),
+            "unscheduled_attractions": day.get("unscheduled_attractions", []),
             "legs": legs,
         })
 
     preference_score = sum(state.preference_scores.values())
-    has_legs = any(day["legs"] for day in itinerary)
-    planning_note = None
-    if has_legs and preference_score == 0:
-        planning_note = (
-            "No exact interest match was found, so the itinerary uses the "
-            "highest-rated verified attractions for this destination."
-        )
     return {
         "request": state.planning_request.model_dump() if state.planning_request else {},
         "itinerary": itinerary,
         "candidate_hotels": state.candidate_hotels,
+        "accommodation": state.accommodation_result,
         "budget": state.budget_result,
         "constraints": state.constraint_result,
         "preference_score": preference_score,
-        "planning_note": planning_note,
+        "planning_note": state.planning_note,
         "validation_error": state.validation_result.get("error") if state.validation_result else None,
     }
 

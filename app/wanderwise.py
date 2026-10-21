@@ -373,53 +373,71 @@ def page_plan():
 
 
 def _render_budget(br: dict, currency="INR"):
-    acc = br.get("accommodation_cost", 0)
-    att = br.get("attraction_cost", 0)
-    trans = br.get("transport_cost", 0)
-    total = br.get("total_estimated_cost", 0)
-    remaining = br.get("remaining_budget", 0)
+    def amount(value):
+        return "Unavailable" if value is None else f"₹{value:,.2f}"
 
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.markdown("**💰 Budget Breakdown**")
-    st.markdown(f'<div class="budget-row"><span>🏛️ Attractions</span><span>₹{att:,.2f}</span></div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="budget-row"><span>🚗 Transport (Haversine estimate)</span><span>₹{trans:,.2f}</span></div>', unsafe_allow_html=True)
-    if acc > 0:
-        st.markdown(f'<div class="budget-row"><span>🏨 Accommodation</span><span>₹{acc:,.2f}</span></div>', unsafe_allow_html=True)
-    else:
+    for label, field in (
+        ("🏨 Accommodation", "accommodation_cost"),
+        ("🏛️ Attractions", "attraction_cost"),
+        ("🚗 Transport (straight-line estimate)", "transport_cost"),
+    ):
+        value = br.get(field)
+        complete = br.get(f"{field}_complete", True)
+        status = "" if complete else " (partial/unavailable)"
         st.markdown(
-            '<div class="budget-row"><span>🏨 Accommodation</span>'
-            '<span class="chip-warn">Unavailable — not included</span></div>',
+            f'<div class="budget-row"><span>{label}{status}</span>'
+            f'<span>{amount(value)}</span></div>',
             unsafe_allow_html=True,
         )
     st.markdown(
         f'<div class="budget-total">'
-        f'<span>Estimated Total (available components)</span>'
-        f'<span>₹{total:,.2f}</span>'
+        f'<span>Cost of available components</span>'
+        f'<span>{amount(br.get("total_estimated_cost"))}</span>'
         f'</div>',
         unsafe_allow_html=True,
     )
-    color = "#16a34a" if remaining >= 0 else "#dc2626"
-    st.markdown(f'<p style="color:{color};font-weight:600;">Remaining budget: ₹{remaining:,.2f}</p>', unsafe_allow_html=True)
-    if acc == 0:
-        st.caption("⚠️ Accommodation cost is not included in the total because no hotel with validated coordinates is currently available for this destination. This does not mean accommodation is free.")
+    remaining = br.get("remaining_budget")
+    if remaining is not None:
+        color = "#16a34a" if remaining >= 0 else "#dc2626"
+        st.markdown(
+            f'<p style="color:{color};font-weight:600;">'
+            f'Remaining budget (complete estimates only): {amount(remaining) if br.get("total_is_complete") else "Unavailable — costs incomplete"}</p>',
+            unsafe_allow_html=True,
+        )
+    if not br.get("total_is_complete", False):
+        detail = " ".join(br.get("unknown_components", []))
+        st.warning(
+            "This is not the complete trip cost. "
+            + (detail or "Some trip costs could not be verified.")
+        )
     st.markdown('</div>', unsafe_allow_html=True)
 
 
 def _render_constraints(cr: dict):
-    feasible = cr.get("feasible", False)
+    status = cr.get("status", "incomplete")
+    feasible = status == "feasible"
     violations = cr.get("violations", [])
-    chip = '<span class="chip-feasible">✓ FEASIBLE</span>' if feasible else '<span class="chip-violated">✗ NOT FEASIBLE</span>'
+    chip = (
+        '<span class="chip-feasible">✓ FEASIBLE</span>'
+        if feasible else '<span class="chip-violated">! UNVERIFIED / NEEDS ATTENTION</span>'
+    )
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.markdown(f"**✅ Constraint Validation** &nbsp; {chip}", unsafe_allow_html=True)
-    if not feasible and violations:
+    if violations:
         for v in violations:
             st.error(v)
+    elif not feasible:
+        for warning in cr.get("warnings", []):
+            st.warning(warning)
     else:
         st.caption("Budget, duration, and daily attraction limits are all within acceptable bounds.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 
-def _render_accommodation(itinerary: list, destination: str):
+def _render_accommodation(itinerary: list, destination: str, accommodation: dict | None = None):
+    accommodation = accommodation or {}
     hotel_status = "unavailable"
     hotel_name = None
     hotel_price = None
@@ -439,9 +457,10 @@ def _render_accommodation(itinerary: list, destination: str):
             '<span class="chip-warn">Unavailable</span>',
             unsafe_allow_html=True,
         )
-        st.caption(f"No hotel with validated coordinates is currently available for **{destination}**. "
-                   "Hotel geocoding is in progress for the full dataset. "
-                   "The itinerary and budget do **not** include accommodation.")
+        st.caption(
+            f"{_html.escape(accommodation.get('reason') or f'No suitable hotel could be verified for {destination}.')} "
+            "The itinerary and estimated costs do **not** include accommodation."
+        )
     st.markdown('</div>', unsafe_allow_html=True)
 
 
@@ -496,8 +515,17 @@ def page_itinerary():
     col1, col2, col3 = st.columns(3)
     br = result.get("budget", {})
     col1.metric("Preference Score", f"{pref_score:.1f}")
-    col2.metric("Estimated Cost", f"₹{br.get('total_estimated_cost', 0):,.2f}")
-    col3.metric("Remaining Budget", f"₹{br.get('remaining_budget', 0):,.2f}")
+    col2.metric("Available-component cost", "Unavailable" if br.get("total_estimated_cost") is None else f"₹{br['total_estimated_cost']:,.2f}")
+    col3.metric(
+        "Remaining budget (complete estimates only)",
+        "Unavailable — costs incomplete"
+        if not br.get("total_is_complete")
+        else "Unavailable"
+        if br.get("remaining_budget") is None
+        else f"₹{br['remaining_budget']:,.2f}",
+    )
+    if not br.get("total_is_complete", False):
+        st.warning("This is not the complete trip cost; unavailable components are excluded.")
 
     st.markdown("---")
 
@@ -519,7 +547,7 @@ def page_itinerary():
                 st.markdown(
                     f'<div class="card"><span class="chip-warn">No eligible attractions remaining</span>'
                     f'<p style="color:#64748b;margin-top:.5rem;font-size:.88rem;">'
-                    f'All available verified attractions for {_html.escape(destination)} were scheduled in earlier days.</p></div>',
+                    f'{_html.escape(note or "No eligible attractions were available for this day.")}</p></div>',
                     unsafe_allow_html=True,
                 )
                 continue
@@ -529,14 +557,17 @@ def page_itinerary():
                 tr = leg["transport"]
                 icon = cat_icon(att.get("category", ""))
                 cat_str = att.get("category") or att.get("subcategory") or "Attraction"
-                cost_str = f"₹{att['cost']:,.0f} entry" if att.get("cost") else "Free entry"
-                dur_str = f"{att['duration']} min" if att.get("duration") else ""
-                rating_str = f"⭐ {att['rating']:.1f}" if att.get("rating") else ""
+                cost = att.get("cost")
+                cost_str = "Entry fee unavailable" if cost is None else "Free entry" if cost == 0 else f"₹{cost:,.0f} entry"
+                duration = att.get("duration")
+                dur_str = "Visit duration unavailable" if duration is None else f"{duration} min"
+                rating = att.get("rating")
+                rating_str = f"⭐ {rating:.1f}" if rating is not None else ""
 
                 if tr["status"] == "calculated":
-                    travel_str = f"🚗 {tr['distance_km']} km · ~{tr['time_min']} min · ₹{tr['cost']:.0f}"
+                    travel_str = f"Straight-line estimate: {tr['distance_km']} km · ~{tr['time_min']} min · ₹{tr['cost']:.0f} (not road routing)"
                 else:
-                    travel_str = "Travel: distance unavailable (no hotel origin coordinates)"
+                    travel_str = f"Travel unavailable: {tr.get('reason') or 'verified coordinates are missing'}"
 
                 st.markdown(f"""
                 <div class="att-row">
@@ -545,12 +576,13 @@ def page_itinerary():
                     <h4>{_html.escape(att['name'])}</h4>
                     <p>{_html.escape(cat_str)} &nbsp;·&nbsp; {cost_str} &nbsp;·&nbsp; {dur_str} {rating_str}</p>
                     <p style="color:#94a3b8;font-size:.78rem;">{travel_str}</p>
+                    <p style="color:#64748b;font-size:.78rem;">{_html.escape(leg.get('recommendation_reason') or '')}</p>
                   </div>
                 </div>
                 """, unsafe_allow_html=True)
 
     with right:
-        _render_accommodation(itinerary, destination)
+        _render_accommodation(itinerary, destination, result.get("accommodation"))
         st.markdown("")
         _render_budget(br)
         st.markdown("")

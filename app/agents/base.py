@@ -14,7 +14,7 @@ class PlannerAgentContract(BaseAgent):
         super().__init__("PlannerAgent")
 
     @abstractmethod
-    def run(self, input_data: Any) -> Any:
+    def run(self, req: Any) -> Any:
         pass
 
 class ResearchAgentContract(BaseAgent):
@@ -31,7 +31,7 @@ class PreferenceAgentContract(BaseAgent):
         super().__init__("PreferenceAgent")
 
     @abstractmethod
-    def run(self, input_data: Dict) -> float:
+    def run(self, input_data: Dict) -> Dict[int, float]:
         # Input: user interests, candidate attractions
         pass
 

@@ -12,6 +12,8 @@ from typing import Iterable
 
 import pandas as pd
 
+from app.data.preferences import matched_interests
+from app.data.quality import address_matches_destination, verified_measure
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "datasets" / "processed"
@@ -53,43 +55,88 @@ def destination_attractions(
     if result.empty:
         return result
 
-    terms = [term.strip().lower() for term in interests if term.strip()]
-    text = result[
-        ["name", "category", "subcategory", "description"]
-    ].astype(str).agg(" ".join, axis=1).str.lower()
-    result["_interest_score"] = text.apply(
-        lambda value: sum(5 for term in terms if term in value)
+    estimated = result.get(
+        "data_quality_status", pd.Series("", index=result.index)
+    ).astype(str).str.casefold().str.contains("estimate", na=False)
+    no_source_url = ~result.get(
+        "source_url", pd.Series("", index=result.index)
+    ).fillna("").astype(str).str.strip().ne("")
+    unverified_metadata = estimated | no_source_url
+    for field in ("category", "subcategory", "description"):
+        if field in result:
+            result.loc[unverified_metadata, field] = None
+    requested_interests = [str(term).strip() for term in interests if str(term).strip()]
+    matched = result.apply(
+        lambda row: matched_interests(row.to_dict(), requested_interests),
+        axis=1,
     )
-    result["_rating_score"] = pd.to_numeric(result["rating"], errors="coerce").fillna(0)
-    result["_popularity_score"] = pd.to_numeric(
-        result["popularity"], errors="coerce"
-    ).fillna(0)
-    result["_rank"] = result["_interest_score"] + result["_rating_score"] + (
-        result["_popularity_score"] / 100
+    result["_matched_interests"] = matched
+    result["_interest_score"] = matched.map(len)
+    result["_verified_rating"] = result.apply(
+        lambda row: verified_measure(
+            row.get("rating"),
+            row.get("rating_source"),
+            minimum=0,
+            maximum=5,
+            validation_status=row.get("rating_validation_status"),
+        ) or 0,
+        axis=1,
     )
-    return result.sort_values(["_rank", "rating"], ascending=False).drop(
-        columns=["_interest_score", "_rating_score", "_popularity_score", "_rank"]
+    result["_rank"] = result["_interest_score"] * 10 + result["_verified_rating"]
+    result["_recommendation_reason"] = result["_matched_interests"].map(
+        lambda values: (
+            f"Matched interests: {', '.join(values)}."
+            if values
+            else "Fallback: no selected interest matched the available attraction text."
+        )
     )
+    result["rating"] = result.apply(
+        lambda row: verified_measure(
+            row.get("rating"),
+            row.get("rating_source"),
+            minimum=0,
+            maximum=5,
+            validation_status=row.get("rating_validation_status"),
+        ),
+        axis=1,
+    )
+    result["estimated_cost"] = result.apply(
+        lambda row: verified_measure(
+            row.get("estimated_cost"),
+            row.get("cost_source"),
+            minimum=0,
+            validation_status=row.get("cost_validation_status"),
+        ),
+        axis=1,
+    )
+    result["estimated_visit_duration_min"] = result.apply(
+        lambda row: verified_measure(
+            row.get("estimated_visit_duration_min"),
+            row.get("duration_source"),
+            minimum=1,
+            validation_status=row.get("duration_validation_status"),
+        ),
+        axis=1,
+    )
+    ranked = result.sort_values(
+        ["_rank", "_verified_rating", "name"],
+        ascending=[False, False, True],
+    )
+    return ranked.drop(columns=["_interest_score", "_verified_rating", "_rank"])
 
 
 def destination_hotels(
     hotels: pd.DataFrame, destination_id: int, destination_name: str
 ) -> pd.DataFrame:
     """Return hotels linked by destination id or by an address match."""
-    by_id = hotels[hotels["destination_id"].astype(str) == str(destination_id)].copy()
-    if not by_id.empty:
-        return by_id
-
-    name_terms = [
-        term.lower()
-        for term in destination_name.replace("(", " ").replace(")", " ").split()
-        if len(term) > 3
-    ]
-    if not name_terms or "address" not in hotels:
+    if "address" not in hotels:
         return hotels.iloc[0:0].copy()
-    address = hotels["address"].astype(str).str.lower()
-    mask = address.apply(lambda value: any(term in value for term in name_terms))
-    return hotels.loc[mask].copy()
+    address_matches = hotels["address"].apply(
+        lambda address: address_matches_destination(address, destination_name)
+    )
+    by_id = hotels["destination_id"].astype(str) == str(destination_id)
+    has_address = hotels["address"].fillna("").astype(str).str.strip().ne("")
+    return hotels.loc[address_matches | (by_id & ~has_address)].copy()
 
 
 def build_itinerary(

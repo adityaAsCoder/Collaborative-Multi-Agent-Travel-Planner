@@ -10,14 +10,17 @@ PROCESSED_CSV = BASE_DIR / "datasets" / "processed" / "hotels.csv"
 STAGING_CSV = BASE_DIR / "datasets" / "processed" / "hotel_geocoding_results_full.csv"
 DB_PATH = BASE_DIR / "travel_planner.db"
 
-def migrate_csv():
+def migrate_csv(
+    processed_csv: Path = PROCESSED_CSV,
+    staging_csv: Path = STAGING_CSV,
+):
     # backup
-    backup_path = PROCESSED_CSV.with_suffix(".csv.bak")
-    shutil.copy(PROCESSED_CSV, backup_path)
+    backup_path = processed_csv.with_suffix(".csv.bak")
+    shutil.copy(processed_csv, backup_path)
 
     # Read original
     original_hotels = []
-    with open(PROCESSED_CSV, "r", encoding="utf-8") as f:
+    with open(processed_csv, "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         fieldnames = reader.fieldnames
         for r in reader:
@@ -27,8 +30,8 @@ def migrate_csv():
 
     # Read staging
     staging_updates = {}
-    if STAGING_CSV.exists():
-        with open(STAGING_CSV, "r", encoding="utf-8") as f:
+    if staging_csv.exists():
+        with open(staging_csv, "r", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for r in reader:
                 if r.get("final_classification") == "resolved" and r.get("latitude") and r.get("longitude"):
@@ -63,7 +66,7 @@ def migrate_csv():
             row["provenance_source"] = staging_updates[hid]["provenance_source"]
 
     # Write back
-    with open(PROCESSED_CSV, "w", newline="", encoding="utf-8") as f:
+    with open(processed_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(original_hotels)
@@ -71,9 +74,12 @@ def migrate_csv():
     print(f"CSV Migration complete. Processed {orig_count} => {len(original_hotels)} rows.")
     return orig_count == len(original_hotels)
 
-def migrate_db():
+def migrate_db(
+    processed_csv: Path = PROCESSED_CSV,
+    db_path: Path = DB_PATH,
+):
     # Update SQLite
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(db_path)
     cur = conn.cursor()
     
     # ensure columns exist
@@ -86,7 +92,7 @@ def migrate_db():
             
     # read the updated canonical csv
     updates = []
-    with open(PROCESSED_CSV, "r", encoding="utf-8") as f:
+    with open(processed_csv, "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for r in reader:
             if r.get("latitude") and r.get("longitude"):

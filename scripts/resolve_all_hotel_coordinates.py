@@ -10,6 +10,7 @@ import hashlib
 import os
 import datetime
 import random
+import argparse
 from pathlib import Path
 from difflib import SequenceMatcher
 import requests
@@ -21,7 +22,7 @@ DATA_PATH = Path("datasets/processed/hotels.csv")
 STAGING_CSV = Path("datasets/processed/hotel_geocoding_results_full.csv")
 CACHE_DIR = Path(".cache")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
-USER_AGENT = "TravelPlanner/2.9.3 (contact: admin_dev@travelplanner.example)"
+USER_AGENT = ""
 RATE_LIMIT_SECONDS = 1.0
 
 STATS = {
@@ -156,6 +157,36 @@ def is_generic_name(name: str):
     return name_clean in generic_words
 
 def main():
+    parser = argparse.ArgumentParser(description="Bounded, optional Nominatim hotel lookup.")
+    parser.add_argument(
+        "--confirm-online",
+        action="store_true",
+        help="explicitly authorize requests to the public Nominatim service",
+    )
+    parser.add_argument(
+        "--max-records",
+        type=int,
+        default=0,
+        help="maximum number of unresolved hotels to query (1-20); default 0 makes no requests",
+    )
+    parser.add_argument(
+        "--user-agent",
+        default=os.environ.get("WANDERWISE_GEOCODING_USER_AGENT", ""),
+        help="contactable project User-Agent; alternatively set WANDERWISE_GEOCODING_USER_AGENT",
+    )
+    args = parser.parse_args()
+    if args.max_records == 0 and not args.confirm_online:
+        print("No online lookup requested. Use --confirm-online and --max-records (1-20) to opt in.")
+        return
+    if not args.confirm_online:
+        parser.error("online lookups require --confirm-online")
+    if not 1 <= args.max_records <= 20:
+        parser.error("--max-records must be between 1 and 20")
+    if not args.user_agent.strip():
+        parser.error("provide a contactable --user-agent or WANDERWISE_GEOCODING_USER_AGENT")
+    global USER_AGENT
+    USER_AGENT = args.user_agent.strip()
+
     rows = []
     with open(DATA_PATH, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -178,9 +209,10 @@ def main():
     for r in rows:
         if not (r.get('latitude') and str(r.get('latitude')).strip()):
             needs_coords.append(r)
+    needs_coords = needs_coords[:args.max_records]
     
     print(f"Total Hotels: {STATS['total_hotels']}")
-    print(f"Running on all remaining: {len(needs_coords)} hotels")
+    print(f"Running on explicitly selected sample: {len(needs_coords)} hotels")
 
     f_staging = open(STAGING_CSV, 'w', newline='', encoding='utf-8')
     writer = csv.DictWriter(f_staging, fieldnames=out_keys)
