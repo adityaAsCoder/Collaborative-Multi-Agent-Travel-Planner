@@ -128,6 +128,26 @@ class SaveTripRequest(BaseModel):
 
 def _serialize_state(state) -> dict:
     """Convert PlanningState → plain dict safe for JSON."""
+    def serialize_transport(route: dict | None) -> dict | None:
+        if route is None:
+            return None
+        return {
+            "origin": route.get("origin"),
+            "destination": route.get("destination"),
+            "origin_id": route.get("origin_id"),
+            "destination_id": route.get("destination_id"),
+            "distance_km": route.get("distance_km"),
+            "time_min": route.get("time_min"),
+            "cost": route.get("cost"),
+            "cost_per_km": route.get("cost_per_km"),
+            "status": route.get("status", "unavailable"),
+            "method": route.get("method"),
+            "mode": route.get("mode"),
+            "data_status": route.get("data_status"),
+            "source_type": route.get("source_type"),
+            "reason": route.get("reason"),
+        }
+
     itinerary = []
     for day in state.optimized_itinerary:
         legs = []
@@ -141,6 +161,11 @@ def _serialize_state(state) -> dict:
                     "category": att.get("category"),
                     "subcategory": att.get("subcategory"),
                     "cost": att.get("cost"),
+                    "cost_basis": att.get("cost_basis", "per_person"),
+                    "cost_data_status": att.get("cost_data_status", "unknown"),
+                    "fee_status": att.get("fee_status"),
+                    "data_status": att.get("data_status"),
+                    "source_type": att.get("source_type"),
                     "duration": att.get("duration"),
                     "rating": att.get("rating"),
                     "latitude": att.get("latitude"),
@@ -148,14 +173,7 @@ def _serialize_state(state) -> dict:
                     "coordinate_status": att.get("coordinate_status"),
                     "coordinate_reason": att.get("coordinate_reason"),
                 },
-                "transport": {
-                    "distance_km": tr.get("distance_km"),
-                    "time_min": tr.get("time_min"),
-                    "cost": tr.get("cost"),
-                    "status": tr.get("status", "unavailable"),
-                    "method": tr.get("method"),
-                    "reason": tr.get("reason"),
-                },
+                "transport": serialize_transport(tr),
                 "recommendation_reason": leg.get("recommendation_reason"),
             })
         itinerary.append({
@@ -163,17 +181,23 @@ def _serialize_state(state) -> dict:
             "hotel": day.get("hotel"),
             "hotel_status": day.get("hotel_status", "unavailable"),
             "hotel_reason": day.get("hotel_reason"),
+            "return_transport": serialize_transport(day.get("return_transport")),
             "note": day.get("note", ""),
             "unscheduled_attractions": day.get("unscheduled_attractions", []),
             "legs": legs,
         })
 
     preference_score = sum(state.preference_scores.values())
+    accommodation_details = state.budget_result.get("accommodation", {})
+    accommodation = {
+        **state.accommodation_result,
+        **accommodation_details,
+    }
     return {
         "request": state.planning_request.model_dump() if state.planning_request else {},
         "itinerary": itinerary,
         "candidate_hotels": state.candidate_hotels,
-        "accommodation": state.accommodation_result,
+        "accommodation": accommodation,
         "budget": state.budget_result,
         "constraints": state.constraint_result,
         "preference_score": preference_score,

@@ -1,0 +1,61 @@
+destination_name,attraction_name,category,subcategory,interest_tags,illustrative_entry_fee_inr,fee_status,visit_duration_min
+Goa,Baga Beach,Beach,Coast,"beach nature",0,DEMO_FREE,120
+Goa,Calangute Beach,Beach,Coast,"beach nature",0,DEMO_FREE,120
+Goa,Old Goa Churches,Religious,Heritage,"history religious culture",150,DEMO_PAID,90
+Ladakh (Leh),Leh Palace,Historical,Palace,"history forts culture",100,DEMO_PAID,90
+Ladakh (Leh),Shanti Stupa,Religious,Stupa,"religious culture nature",0,DEMO_FREE,60
+Ladakh (Leh),Pangong Tso,Nature,Lake,"nature adventure",50,DEMO_PAID,180
+Jaipur,Amer Fort,Historical,Fort,"history forts culture",200,DEMO_PAID,150
+Jaipur,City Palace,Historical,Palace,"history forts culture",250,DEMO_PAID,120
+Jaipur,Hawa Mahal,Historical,Architecture,"history culture",100,DEMO_PAID,60
+Varanasi (Kashi),Dashashwamedh Ghat,Cultural,Ghat,"culture religious history",0,DEMO_FREE,90
+Varanasi (Kashi),Kashi Vishwanath Temple,Religious,Temple,"religious history culture",0,DEMO_FREE,90
+Varanasi (Kashi),Assi Ghat,Cultural,Ghat,"culture religious nature",0,DEMO_FREE,60
+Agra,Taj Mahal,Historical,Monument,"history culture",500,DEMO_PAID,180
+Agra,Agra Fort,Historical,Fort,"history forts culture",250,DEMO_PAID,120
+Agra,Mehtab Bagh,Nature,Garden,"nature history",100,DEMO_PAID,90
+Udaipur,City Palace,Historical,Palace,"history culture",300,DEMO_PAID,150
+Udaipur,Lake Pichola,Nature,Lake,"nature adventure",150,DEMO_PAID,120
+Udaipur,Jagdish Temple,Religious,Temple,"religious history culture",0,DEMO_FREE,60
+Kerala Backwaters (Alappuzha & Kumarakom),Vembanad Lake,Nature,Lake,"nature adventure",0,DEMO_FREE,120
+Kerala Backwaters (Alappuzha & Kumarakom),Houseboat cruises,Adventure,Cruise,"adventure nature",1200,DEMO_PAID,180
+Kerala Backwaters (Alappuzha & Kumarakom),Kumarakom Bird Sanctuary,Nature,Sanctuary,"nature wildlife",150,DEMO_PAID,120
+Shimla,Mall Road,Cultural,Shopping,"culture food",0,DEMO_FREE,90
+Shimla,The Ridge,Nature,Viewpoint,"nature culture",0,DEMO_FREE,60
+Shimla,Jakhoo Temple,Religious,Temple,"religious nature",0,DEMO_FREE,90
+Coorg (Kodagu),Coffee plantations,Cultural,Agriculture,"culture nature food",250,DEMO_PAID,120
+Coorg (Kodagu),Abbey Falls,Nature,Waterfall,"nature adventure",50,DEMO_PAID,90
+Coorg (Kodagu),Raja's Seat,Nature,Viewpoint,"nature culture",20,DEMO_PAID,60
+Ziro Valley,Rice fields and pine hills,Nature,Landscape,"nature culture",0,DEMO_FREE,120
+Ziro Valley,Apatani tribal villages,Cultural,Heritage,"culture history",100,DEMO_PAID,120
+Ziro Valley,Ziro Music Festival,Cultural,Festival,"culture music",1500,DEMO_PAID,180
+Dharamshala & McLeod Ganj,McLeod Ganj main square,Cultural,Market,"culture food",0,DEMO_FREE,60
+Dharamshala & McLeod Ganj,Tsuglagkhang temple,Religious,Temple,"religious culture history",0,DEMO_FREE,90
+Dharamshala & McLeod Ganj,Bhagsu Nag,Nature,Waterfall,"nature adventure",0,DEMO_FREE,120
+Manali,Old Manali,Cultural,Neighborhood,"culture food",0,DEMO_FREE,90
+Manali,Hadimba Temple,Religious,Temple,"religious history nature",50,DEMO_PAID,90
+Manali,Solang Valley,Adventure,Valley,"adventure nature",0,DEMO_FREE,180
+Tawang,Tawang Monastery,Religious,Monastery,"religious history culture",50,DEMO_PAID,120
+Tawang,Sela Pass,Nature,Mountain,"nature adventure",0,DEMO_FREE,90
+Tawang,Bum La Pass,Adventure,Mountain,"adventure nature history",100,DEMO_PAID,120
+Spiti Valley,Kaza,Cultural,Village,"culture nature",0,DEMO_FREE,90
+Spiti Valley,Key Monastery,Religious,Monastery,"religious history culture",50,DEMO_PAID,120
+Spiti Valley,Kibber and Chicham,Nature,Village,"nature adventure culture",0,DEMO_FREE,150
+Nubra Valley,Hunder sand dunes,Nature,Desert,"nature adventure",0,DEMO_FREE,120
+Nubra Valley,Bactrian camel rides,Adventure,Wildlife,"adventure nature",500,DEMO_PAID,60
+Nubra Valley,Diskit Monastery,Religious,Monastery,"religious history culture",50,DEMO_PAID,90
+Ooty (Udhagamandalam),Ooty Lake,Nature,Lake,"nature adventure",50,DEMO_PAID,120
+Ooty (Udhagamandalam),Botanical Gardens,Nature,Garden,"nature culture",50,DEMO_PAID,120
+Ooty (Udhagamandalam),Doddabetta Peak,Nature,Mountain,"nature adventure",30,DEMO_PAID,90
+Munnar,Tea plantations,Cultural,Agriculture,"culture nature",100,DEMO_PAID,120
+Munnar,Top Station viewpoint,Nature,Viewpoint,"nature adventure",0,DEMO_FREE,90
+Munnar,Eravikulam National Park,Nature,Wildlife,"nature wildlife",200,DEMO_PAID,180
+Kanyakumari,Vivekananda Rock Memorial,Historical,Memorial,"history culture",50,DEMO_PAID,90
+Kanyakumari,Thiruvalluvar Statue,Cultural,Monument,"culture history",30,DEMO_PAID,60
+Kanyakumari,Sunrise Point,Nature,Viewpoint,"nature",0,DEMO_FREE,60
+Hampi,Virupaksha Temple,Religious,Temple,"religious history culture",0,DEMO_FREE,90
+Hampi,Vittala Temple,Historical,Temple,"history culture",100,DEMO_PAID,120
+Hampi,Hemakuta Hill,Nature,Viewpoint,"nature history",0,DEMO_FREE,90
+Pondicherry (Puducherry),French Quarter,Cultural,Heritage,"culture history",0,DEMO_FREE,120
+Pondicherry (Puducherry),Seafront Promenade,Nature,Coast,"nature beach",0,DEMO_FREE,90
+Pondicherry (Puducherry),Sri Aurobindo Ashram,Religious,Spiritual,"religious culture",0,DEMO_FREE,90

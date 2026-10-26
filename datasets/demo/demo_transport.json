@@ -1,0 +1,7 @@
+{
+  "illustrative_cost_per_km_inr": 12,
+  "estimated_speed_kmh": 30,
+  "data_status": "DEMO_SYNTHETIC",
+  "source_type": "synthetic",
+  "description": "Configurable illustrative car/taxi cost and speed; not live fares or road-routing data."
+}

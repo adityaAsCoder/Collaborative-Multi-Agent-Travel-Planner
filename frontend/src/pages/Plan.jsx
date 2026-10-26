@@ -28,7 +28,7 @@ export default function Plan() {
             navigate('/itinerary', { state: result });
         } catch (e) { setError(e.message); } finally { setLoading(false); }
     }
-    return <div className="form-card"><div className="page-header"><div><div className="eyebrow">Create a plan</div><h2>Where will you go?</h2><p>We use only what the planner can verify.</p></div></div><div className="location-strip">{locationImages.map(([name, image]) => <div className="location-card" key={name} style={{ backgroundImage: `url(${image})` }}><span>{name}</span></div>)}</div><div className="card">
+    return <div className="form-card"><div className="page-header"><div><div className="eyebrow">Create a plan</div><h2>Where will you go?</h2><p>Demo destinations include illustrative accommodation and attraction details, clearly labeled for demonstration.</p></div></div><div className="location-strip">{locationImages.map(([name, image]) => <div className="location-card" key={name} style={{ backgroundImage: `url(${image})` }}><span>{name}</span></div>)}</div><div className="card">
         {error && <div className="error">{error}</div>}
         <form onSubmit={submit}><div className="form-grid">
             <div className="field full"><label htmlFor="destination">Destination</label><select id="destination" value={form.destination} onChange={e => update('destination', e.target.value)} required><option value="">Select a destination</option>{destinations.map(d => <option key={d.id} value={d.name}>{d.name}{d.state ? `, ${d.state}` : ''}</option>)}</select></div>

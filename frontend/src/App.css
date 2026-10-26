@@ -87,15 +87,20 @@ h3 { margin: 0 0 8px; }
 .error { background: #fff0ef; border: 1px solid #f4c7c3; color: var(--danger); padding: 12px; border-radius: 9px; margin-bottom: 18px; }
 .notice { background: #fff8e6; border: 1px solid #f3d48a; color: #805b00; padding: 14px; border-radius: 10px; }
 .day { margin-bottom: 18px; overflow: hidden; }
-.day-title { background: var(--brand-dark); color: white; padding: 14px 18px; display: flex; justify-content: space-between; }
-.leg { display: grid; grid-template-columns: 42px 1fr auto; gap: 14px; align-items: start; padding: 18px; border-bottom: 1px solid var(--line); }
+.day-title { background: var(--brand-dark); color: white; padding: 14px 18px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+.leg { display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 18px; border-bottom: 1px solid var(--line); }
 .leg:last-child { border-bottom: 0; }
 .number { width: 32px; height: 32px; border-radius: 50%; background: #e7f5f7; color: var(--brand-dark); display: grid; place-items: center; font-weight: 800; }
 .leg-title { font-weight: 800; margin-bottom: 4px; }
-.leg-meta { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.leg-meta { color: var(--muted); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
 .price { font-weight: 800; white-space: nowrap; }
+.transport-return { padding: 16px 18px; border-top: 1px solid var(--line); background: #f8fafc; }
+.transport-return strong { display: block; margin-bottom: 5px; }
+.transport-breakdown { margin-bottom: 18px; }
+.transport-leg { padding: 12px 0; border-top: 1px solid var(--line); }
+.transport-leg strong { display: block; margin-bottom: 4px; }
 .budget { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.budget-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.budget-row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 .budget-row.total { font-weight: 800; border-bottom: 0; font-size: 18px; }
 .trip-grid { grid-template-columns: repeat(3, 1fr); }
 .trip-card { display: flex; flex-direction: column; gap: 14px; }

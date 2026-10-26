@@ -48,10 +48,14 @@ def main():
     print()
 
     print("--- Accommodation Agent ---")
-    print(f"  Hotels with valid coordinates: {len(state.candidate_hotels)}")
+    print(f"  Accommodation candidates: {len(state.candidate_hotels)}")
     if state.candidate_hotels:
         for h in state.candidate_hotels:
-            print(f"    [{h['id']}] {h['name']} | price={h['price']} | rating={h['rating']} | ({h['latitude']}, {h['longitude']})")
+            print(
+                f"    [{h['id']}] {h['name']} | nightly rate={h['price']} "
+                f"| rating={h.get('rating') or 'unavailable'} "
+                f"| status={h.get('data_status', 'VERIFIED')}"
+            )
     else:
         print("    Status: UNAVAILABLE — no hotels for this destination have validated coordinates.")
     print()
@@ -74,17 +78,32 @@ def main():
         if legs:
             for leg in legs:
                 tr = leg['transport']
-                print(f"  Day {day['day']}: {leg['attraction']['name']} — {tr['distance_km']}km, {tr['time_min']}min, cost={tr['cost']} ({tr['status']})")
+                print(
+                    f"  Day {day['day']}: {tr.get('origin', 'origin unavailable')} → "
+                    f"{tr.get('destination', leg['attraction']['name'])} — "
+                    f"{tr.get('distance_km')} km, {tr.get('time_min')} min, "
+                    f"cost={tr.get('cost')} ({tr.get('status')}; {tr.get('method') or tr.get('reason')})"
+                )
+            return_route = day.get("return_transport")
+            if return_route:
+                print(
+                    f"  Day {day['day']} return: {return_route.get('origin')} → "
+                    f"{return_route.get('destination')} — {return_route.get('distance_km')} km, "
+                    f"{return_route.get('time_min')} min, cost={return_route.get('cost')} "
+                    f"({return_route.get('status')})"
+                )
     print()
 
     print("--- Budget Agent ---")
     br = state.budget_result
-    print(f"  Accommodation cost: {br['accommodation_cost']} {req.currency}")
-    print(f"  Attraction cost:    {br['attraction_cost']} {req.currency}")
-    print(f"  Transport cost:     {br['transport_cost']} {req.currency}")
+    print(f"  Accommodation cost: {br['accommodation_total']} {req.currency}")
+    print(f"  Attraction cost:    {br['attraction_total']} {req.currency}")
+    print(f"  Transport cost:     {br['transportation_total']} {req.currency}")
     print(f"  Daily average:      {br['daily_cost']} {req.currency}")
-    print(f"  Total estimated:    {br['total_estimated_cost']} {req.currency}")
-    print(f"  Remaining budget:   {br['remaining_budget']} {req.currency}")
+    print(f"  Known cost total:   {br['known_cost_total']} {req.currency}")
+    print(f"  Budget minus known costs: {br['remaining_budget_after_known_costs']} {req.currency}")
+    if not br["is_estimate_complete"]:
+        print("  Remaining value is not spendable; some expenses are unavailable.")
     print()
 
     print("--- Constraint Agent ---")
@@ -114,7 +133,14 @@ def main():
         hotel_status = day.get('hotel_status', 'unknown')
         if day.get('hotel'):
             h = day['hotel']
-            print(f"  Accommodation: {h['name']} ({h['price']} {req.currency}/night, rating {h['rating']})")
+            if h.get("source_type") == "synthetic":
+                print("  Accommodation: Sample hotel — demonstration data")
+            else:
+                print(f"  Accommodation: {h['name']}")
+            print(
+                f"    Nightly rate: {h.get('price_per_night', h.get('price'))} {req.currency}; "
+                f"rating: {h.get('rating') or 'unavailable'}"
+            )
         else:
             print(f"  Accommodation: UNAVAILABLE (no geocoded hotels for {req.destination})")
 
@@ -135,8 +161,12 @@ def main():
         print()
 
     print("==================================================")
-    print(f"TOTAL COST:          {br['total_estimated_cost']} {req.currency}")
-    print(f"REMAINING BUDGET:    {br['remaining_budget']} {req.currency}")
+    print(f"KNOWN COST TOTAL:    {br['known_cost_total']} {req.currency}")
+    print(
+        "BUDGET MINUS KNOWN COSTS: "
+        f"{br['remaining_budget_after_known_costs']} {req.currency}"
+        + ("" if br["is_estimate_complete"] else " (not spendable; incomplete)")
+    )
     status_str = "FEASIBLE" if cr['feasible'] else f"VIOLATED ({', '.join(cr['violations'])})"
     print(f"CONSTRAINT STATUS:   {status_str}")
     total_pref = sum(state.preference_scores.values())

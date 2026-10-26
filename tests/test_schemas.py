@@ -58,3 +58,15 @@ def test_planning_request_invalid_preference():
             interests=["historical"],
             accommodation_preference="invalid_pref" # invalid
         )
+
+def test_planning_request_rejects_unsupported_currency():
+    with pytest.raises(ValidationError):
+        PlanningRequest(
+            destination="Jaipur",
+            duration=2,
+            travelers=2,
+            budget=10000,
+            currency="USD",
+            interests=["history"],
+            accommodation_preference="any",
+        )

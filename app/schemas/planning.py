@@ -6,7 +6,7 @@ class PlanningRequest(BaseModel):
     duration: int = Field(gt=0, description="Duration in days must be greater than 0")
     travelers: int = Field(gt=0, description="Number of travelers must be greater than 0")
     budget: float = Field(ge=0, description="Budget must be non-negative")
-    currency: str = "INR"
+    currency: str = Field(default="INR", pattern="^INR$")
     interests: List[str]
     max_daily_travel_time: Optional[int] = Field(None, gt=0, description="Maximum daily travel time in minutes")
     accommodation_preference: str = Field(pattern="^(budget|standard|luxury|any)$", description="Preference: budget, standard, luxury, or any")

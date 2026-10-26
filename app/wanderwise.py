@@ -170,7 +170,7 @@ def page_landing():
     <div class="hero">
       <h1>Plan the trip you'll talk about.</h1>
       <p>Enter your destination, interests, and budget — our multi-agent travel planner builds
-         a real, day-by-day itinerary from verified Indian tourism data.</p>
+         a day-by-day itinerary. Selected demo destinations include clearly labeled illustrative fees and stays.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -213,9 +213,9 @@ def page_landing():
     st.divider()
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.markdown('<div class="card card-accent"><h4>🗺️ 93 Destinations</h4><p style="color:#64748b">Verified Indian tourism data from our curated database.</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="card card-accent"><h4>🗺️ 93 Destinations</h4><p style="color:#64748b">India destination catalog, with 20 places configured for complete illustrative demo plans.</p></div>', unsafe_allow_html=True)
     with col2:
-        st.markdown('<div class="card card-accent"><h4>🏛️ 378 Attractions</h4><p style="color:#64748b">Real entry costs, visit durations, and coordinates.</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="card card-accent"><h4>🏛️ 20 Demo Destinations</h4><p style="color:#64748b">Illustrative attraction fees, visit durations, sample stays, and route estimates are labeled as demo data.</p></div>', unsafe_allow_html=True)
     with col3:
         st.markdown('<div class="card card-accent"><h4>🤖 8 AI Agents</h4><p style="color:#64748b">Research, preference, accommodation, transport, budget, constraint, and optimization agents.</p></div>', unsafe_allow_html=True)
 
@@ -233,7 +233,7 @@ def page_dashboard():
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown('<div class="card card-accent"><h4>✈️ Plan a New Trip</h4><p style="color:#64748b">Pick a destination, set your budget and interests, and get a real day-by-day itinerary.</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="card card-accent"><h4>✈️ Plan a New Trip</h4><p style="color:#64748b">Pick a destination, set your budget and interests, and get a day-by-day itinerary with demo data clearly identified.</p></div>', unsafe_allow_html=True)
         if st.button("Start Planning →", type="primary", key="goto_plan"):
             st.session_state.page = "plan"
             st.rerun()
@@ -272,7 +272,7 @@ def page_dashboard():
 
 
 def page_plan():
-    st.markdown('<div class="hero"><h1>✈️ Plan Your Trip</h1><p>Fill in the details and our agents will build a real itinerary from verified data.</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="hero"><h1>✈️ Plan Your Trip</h1><p>Generate an itinerary. Selected destinations use illustrative demo fees and stays, labeled as demonstration data.</p></div>', unsafe_allow_html=True)
 
     # Load destination list
     dests, err = api("get", "/destinations")
@@ -374,39 +374,62 @@ def page_plan():
 
 def _render_budget(br: dict, currency="INR"):
     def amount(value):
-        return "Unavailable" if value is None else f"₹{value:,.2f}"
+        return "Unavailable" if value is None else f"{currency} {value:,.2f}"
 
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.markdown("**💰 Budget Breakdown**")
-    for label, field in (
-        ("🏨 Accommodation", "accommodation_cost"),
-        ("🏛️ Attractions", "attraction_cost"),
-        ("🚗 Transport (straight-line estimate)", "transport_cost"),
+    for label, field, complete_field in (
+        ("🏨 Accommodation", "accommodation_total", "accommodation_cost_complete"),
+        ("🏛️ Attractions", "attraction_total", "attraction_cost_complete"),
+        ("🚗 Transportation", "transportation_total", "transport_cost_complete"),
     ):
         value = br.get(field)
-        complete = br.get(f"{field}_complete", True)
+        complete = br.get(complete_field, True)
         status = "" if complete else " (partial/unavailable)"
+        if field == "accommodation_total" and br.get("accommodation", {}).get("data_status") == "NOT_REQUIRED":
+            value_text = "Not applicable — no overnight stay"
+        else:
+            value_text = amount(value)
         st.markdown(
             f'<div class="budget-row"><span>{label}{status}</span>'
-            f'<span>{amount(value)}</span></div>',
+            f'<span>{value_text}</span></div>',
             unsafe_allow_html=True,
         )
+    total_label = (
+        "Illustrative trip total"
+        if br.get("data_status") == "DEMO_SYNTHETIC"
+        else "Estimated trip total" if br.get("is_estimate_complete")
+        else "Known cost total (incomplete)"
+    )
     st.markdown(
         f'<div class="budget-total">'
-        f'<span>Cost of available components</span>'
-        f'<span>{amount(br.get("total_estimated_cost"))}</span>'
+        f'<span>{total_label}</span>'
+        f'<span>{amount(br.get("known_cost_total"))}</span>'
         f'</div>',
         unsafe_allow_html=True,
     )
-    remaining = br.get("remaining_budget")
+    remaining = br.get("remaining_budget_after_known_costs")
     if remaining is not None:
         color = "#16a34a" if remaining >= 0 else "#dc2626"
+        remaining_label = (
+            "Budget minus illustrative costs (not spendable)"
+            if br.get("data_status") == "DEMO_SYNTHETIC"
+            else
+            "Budget minus known costs (not spendable)"
+            if not br.get("is_estimate_complete")
+            else "Budget minus estimated trip costs"
+        )
         st.markdown(
             f'<p style="color:{color};font-weight:600;">'
-            f'Remaining budget (complete estimates only): {amount(remaining) if br.get("total_is_complete") else "Unavailable — costs incomplete"}</p>',
+            f'{remaining_label}: {amount(remaining)}</p>',
             unsafe_allow_html=True,
         )
-    if not br.get("total_is_complete", False):
+    st.caption(
+        f"Verified: {amount(br.get('verified_cost_total'))} · "
+        f"Estimated: {amount(br.get('estimated_cost_total'))} · "
+        f"Illustrative: {amount(br.get('demonstration_cost_total'))}"
+    )
+    if not br.get("is_estimate_complete", False) and br.get("data_status") != "DEMO_SYNTHETIC":
         detail = " ".join(br.get("unknown_components", []))
         st.warning(
             "This is not the complete trip cost. "
@@ -438,28 +461,56 @@ def _render_constraints(cr: dict):
 
 def _render_accommodation(itinerary: list, destination: str, accommodation: dict | None = None):
     accommodation = accommodation or {}
-    hotel_status = "unavailable"
-    hotel_name = None
-    hotel_price = None
+
+    def amount_for_display(value):
+        return "Unavailable" if value is None else f"₹{float(value):,.2f}"
+
+    hotel = None
     for day in itinerary:
         if day.get("hotel"):
-            hotel_status = "selected"
-            hotel_name = day["hotel"].get("name")
-            hotel_price = day["hotel"].get("price")
+            hotel = day["hotel"]
             break
+    hotel_name = accommodation.get("hotel_name") or (hotel or {}).get("name")
 
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.markdown("**🏨 Accommodation**")
-    if hotel_status == "selected":
-        st.markdown(f"✅ **{_html.escape(hotel_name)}** — ₹{hotel_price:,.0f}/night", unsafe_allow_html=True)
-    else:
-        st.markdown(
-            '<span class="chip-warn">Unavailable</span>',
-            unsafe_allow_html=True,
+    if hotel_name:
+        if accommodation.get("source_type") == "synthetic":
+            st.markdown(f"**{_html.escape(hotel_name)}**")
+            st.caption("Illustrative stay · estimated price · not bookable")
+        else:
+            st.markdown(f"✅ **{_html.escape(hotel_name)}**")
+            st.caption(
+                f"Verified accommodation record · "
+                f"{_html.escape(str(accommodation.get('data_status') or 'VERIFIED'))}"
+            )
+        nightly_rate = accommodation.get("price_per_night", (hotel or {}).get("price"))
+        nightly_label = "Illustrative nightly rate" if accommodation.get("source_type") == "synthetic" else "Price per night"
+        st.caption(
+            f"{_html.escape(str(accommodation.get('destination') or destination))}"
+            + (
+                f" · {_html.escape(str(accommodation['address']))}"
+                if accommodation.get("source_type") != "synthetic" and accommodation.get("address")
+                else ""
+            )
         )
         st.caption(
-            f"{_html.escape(accommodation.get('reason') or f'No suitable hotel could be verified for {destination}.')} "
-            "The itinerary and estimated costs do **not** include accommodation."
+            f"{nightly_label}: {amount_for_display(nightly_rate)} · "
+            f"Nights: {accommodation.get('nights', 'Unavailable')} · "
+            f"Rooms: {accommodation.get('rooms_required', 'Unknown')}"
+        )
+        st.caption(
+            f"Rating: {accommodation.get('rating') if accommodation.get('rating') is not None else 'Unavailable'} · "
+            f"Total accommodation estimate: "
+            f"{amount_for_display(accommodation.get('total_accommodation_cost'))}"
+        )
+        if accommodation.get("source_type") != "synthetic" and accommodation.get("reason"):
+            st.warning(accommodation["reason"])
+    else:
+        st.markdown('<span class="chip-warn">Unavailable</span>', unsafe_allow_html=True)
+        st.caption(
+            f"{_html.escape(accommodation.get('reason') or f'No suitable accommodation was available for {destination}.')} "
+            "Accommodation is not free and is excluded from the known cost total."
         )
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -515,17 +566,32 @@ def page_itinerary():
     col1, col2, col3 = st.columns(3)
     br = result.get("budget", {})
     col1.metric("Preference Score", f"{pref_score:.1f}")
-    col2.metric("Available-component cost", "Unavailable" if br.get("total_estimated_cost") is None else f"₹{br['total_estimated_cost']:,.2f}")
-    col3.metric(
-        "Remaining budget (complete estimates only)",
-        "Unavailable — costs incomplete"
-        if not br.get("total_is_complete")
-        else "Unavailable"
-        if br.get("remaining_budget") is None
-        else f"₹{br['remaining_budget']:,.2f}",
+    known_cost = br.get("known_cost_total")
+    total_label = (
+        "Illustrative trip total"
+        if br.get("data_status") == "DEMO_SYNTHETIC"
+        else "Known cost total" if not br.get("is_estimate_complete")
+        else "Estimated trip total"
     )
-    if not br.get("total_is_complete", False):
-        st.warning("This is not the complete trip cost; unavailable components are excluded.")
+    col2.metric(
+        total_label,
+        "Unavailable" if known_cost is None else f"₹{known_cost:,.2f}",
+    )
+    col3.metric(
+        "Budget minus illustrative costs" if br.get("data_status") == "DEMO_SYNTHETIC"
+        else "Budget minus known costs" if not br.get("is_estimate_complete")
+        else "Budget minus estimated costs",
+        "Unavailable"
+        if br.get("remaining_budget_after_known_costs") is None
+        else f"₹{br['remaining_budget_after_known_costs']:,.2f}",
+    )
+    if not br.get("is_estimate_complete", False):
+        if br.get("data_status") == "DEMO_SYNTHETIC":
+            st.warning("Illustrative remainder only; it is not a spendable trip balance.")
+        else:
+            st.warning("The arithmetic remainder is not spendable budget; unavailable components are excluded.")
+    if br.get("data_status") == "DEMO_SYNTHETIC":
+        st.info("Illustrative plan: accommodation, attraction fees, locations, and transport costs are estimates, not verified listings, prices, or road routes.")
 
     st.markdown("---")
 
@@ -558,14 +624,27 @@ def page_itinerary():
                 icon = cat_icon(att.get("category", ""))
                 cat_str = att.get("category") or att.get("subcategory") or "Attraction"
                 cost = att.get("cost")
-                cost_str = "Entry fee unavailable" if cost is None else "Free entry" if cost == 0 else f"₹{cost:,.0f} entry"
+                if att.get("source_type") == "synthetic":
+                    cost_str = (
+                        "Entry fee estimate: Free"
+                        if cost == 0
+                        else f"Entry fee estimate: Paid · ₹{cost:,.0f} per person"
+                    )
+                else:
+                    cost_str = "Entry fee unavailable" if cost is None else "Free entry" if cost == 0 else f"₹{cost:,.0f} entry"
                 duration = att.get("duration")
                 dur_str = "Visit duration unavailable" if duration is None else f"{duration} min"
                 rating = att.get("rating")
                 rating_str = f"⭐ {rating:.1f}" if rating is not None else ""
 
                 if tr["status"] == "calculated":
-                    travel_str = f"Straight-line estimate: {tr['distance_km']} km · ~{tr['time_min']} min · ₹{tr['cost']:.0f} (not road routing)"
+                    source_label = "estimate"
+                    travel_str = (
+                        f"{_html.escape(str(tr.get('origin') or 'Origin'))} → "
+                        f"{_html.escape(str(tr.get('destination') or att['name']))}: "
+                        f"straight-line estimate (not road distance), {tr['distance_km']} km · "
+                        f"~{tr['time_min']} min · ₹{tr['cost']:.2f} · {source_label}"
+                    )
                 else:
                     travel_str = f"Travel unavailable: {tr.get('reason') or 'verified coordinates are missing'}"
 
@@ -580,6 +659,21 @@ def page_itinerary():
                   </div>
                 </div>
                 """, unsafe_allow_html=True)
+
+            return_route = day.get("return_transport")
+            if return_route:
+                if return_route.get("status") == "calculated":
+                    return_description = (
+                        f"{_html.escape(str(return_route.get('origin') or 'Origin unavailable'))} → "
+                        f"{_html.escape(str(return_route.get('destination') or 'Destination unavailable'))} · "
+                        f"{return_route.get('distance_km')} km · ~{return_route.get('time_min')} min · "
+                        f"₹{return_route.get('cost')} · straight-line estimate, not road routing"
+                    )
+                else:
+                    return_description = (
+                        f"Return leg unavailable: {return_route.get('reason') or 'location data unavailable'}"
+                    )
+                st.caption(f"Return leg: {return_description}")
 
     with right:
         _render_accommodation(itinerary, destination, result.get("accommodation"))
@@ -622,7 +716,9 @@ def page_trips():
         created = t.get("created_at", "")[:10]
         result = t["result"]
         br = result.get("budget", {})
-        total_cost = br.get("total_estimated_cost", 0)
+        total_cost = br.get("known_cost_total")
+        total_label = "Known cost total" if not br.get("is_estimate_complete") else "Estimated cost"
+        total_text = "Unavailable" if total_cost is None else f"₹{total_cost:,.2f}"
 
         col1, col2 = st.columns([3, 1])
         with col1:
@@ -630,7 +726,7 @@ def page_trips():
                 f'<div class="card">'
                 f'<b>📍 {_html.escape(dest)}</b> &nbsp;·&nbsp; {dur} days &nbsp;·&nbsp; {travelers} travellers<br>'
                 f'<span style="color:#64748b;font-size:.88rem;">Budget: ₹{float(budget):,.0f} &nbsp;·&nbsp; '
-                f'Est. cost: ₹{total_cost:,.2f} &nbsp;·&nbsp; Interests: {_html.escape(interests)}</span><br>'
+                f'{total_label}: {total_text} &nbsp;·&nbsp; Interests: {_html.escape(interests)}</span><br>'
                 f'<span style="color:#94a3b8;font-size:.8rem;">Planned on {created}</span>'
                 f'</div>',
                 unsafe_allow_html=True,

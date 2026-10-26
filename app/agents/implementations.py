@@ -11,13 +11,20 @@ from app.data.quality import (
     address_matches_destination,
     finite_number,
     has_verified_source,
-    haversine_km,
     valid_india_coordinates,
     verified_coordinates,
     verified_measure,
 )
 from app.data.preferences import matched_interests
 from app.schemas.planning import PlanningRequest, PlanningState
+from app.agents.cost_estimator import (
+    calculate_trip_costs,
+    demo_attractions_enabled,
+    demo_hotels_enabled,
+    estimate_transport,
+    load_demo_attractions,
+    load_demo_hotels,
+)
 
 
 class ResearchAgent(ResearchAgentContract):
@@ -42,6 +49,8 @@ class ResearchAgent(ResearchAgentContract):
                     "latitude": anchor_latitude,
                     "longitude": anchor_longitude,
                     "location_type": "destination_center",
+                    "id": dest.destination_id,
+                    "name": dest.destination_name + " destination reference point",
                 }
 
             attractions = (
@@ -81,6 +90,9 @@ class ResearchAgent(ResearchAgentContract):
                     minimum=0,
                     validation_status=a.cost_validation_status,
                 )
+                cost_currency = str(getattr(a, "currency", "") or "").strip().upper()
+                if cost is not None and cost_currency not in {"INR", "₹"}:
+                    cost = None
                 duration = verified_measure(
                     a.estimated_visit_duration_min,
                     a.duration_source,
@@ -96,6 +108,8 @@ class ResearchAgent(ResearchAgentContract):
                     "rating_validation_status": a.rating_validation_status,
                     "cost": cost,
                     "cost_validation_status": a.cost_validation_status,
+                    "cost_basis": "per_person",
+                    "cost_data_status": "verified" if cost is not None else "unknown",
                     "duration": int(duration) if duration is not None else None,
                     "duration_validation_status": a.duration_validation_status,
                     "description": description,
@@ -107,6 +121,17 @@ class ResearchAgent(ResearchAgentContract):
                     ),
                     "destination_origin": anchor,
                 })
+            if demo_attractions_enabled() and anchor:
+                demo_attractions = load_demo_attractions(
+                    dest.destination_name,
+                    dest.state,
+                    anchor["latitude"],
+                    anchor["longitude"],
+                )
+                if demo_attractions:
+                    for attraction in demo_attractions:
+                        attraction["destination_origin"] = anchor
+                    return demo_attractions
             return candidates
         finally:
             db.close()
@@ -202,6 +227,9 @@ class AccommodationAgent(AccommodationAgentContract):
                     minimum=0.01,
                     validation_status=h.price_validation_status,
                 )
+                hotel_currency = str(getattr(h, "currency", "") or "").strip().upper()
+                if price is not None and hotel_currency not in {"INR", "₹"}:
+                    price = None
                 if price is None:
                     no_price_count += 1
                     continue
@@ -216,15 +244,48 @@ class AccommodationAgent(AccommodationAgentContract):
                     "id": h.hotel_id,
                     "name": h.name,
                     "price": price,
+                    "price_per_night": price,
+                    "currency": hotel_currency,
                     "rating": rating,
                     "latitude": coordinates[0],
                     "longitude": coordinates[1],
+                    "destination": destination_name,
+                    "address": hotel_address,
                     "coordinate_status": "verified",
+                    "data_status": "VERIFIED",
+                    "source_type": "verified",
                 })
+
+            if not h_candidates and demo_hotels_enabled():
+                destination_reference = None
+                if (
+                    has_verified_source(getattr(dest, "source", None))
+                    and valid_india_coordinates(destination_latitude, destination_longitude)
+                ):
+                    destination_reference = (
+                        float(destination_latitude),
+                        float(destination_longitude),
+                    )
+                if destination_reference:
+                    demo_candidates = load_demo_hotels(
+                        destination_name,
+                        destination_state,
+                        destination_reference[0],
+                        destination_reference[1],
+                    )
+                    h_candidates.extend(demo_candidates)
 
             if h_candidates:
                 reason = None
-                status = "available"
+                is_demo_only = all(
+                    hotel.get("source_type") == "synthetic" for hotel in h_candidates
+                )
+                status = "demo_available" if is_demo_only else "available"
+                if is_demo_only:
+                    reason = (
+                        "Sample hotel — demonstration data. The property and nightly rate "
+                        "are synthetic illustrations, not a real hotel or market price."
+                    )
             elif not matched_count:
                 reason = "No hotel record could be reliably linked to this destination."
                 status = "unavailable"
@@ -252,134 +313,23 @@ class AccommodationAgent(AccommodationAgentContract):
 
 class TransportAgent(TransportAgentContract):
     def run(self, input_data: Dict) -> Dict:
-        origin = input_data.get("origin")
-        dest = input_data.get("destination")
-        if not origin or not dest:
-            return {
-                "distance_km": None, "time_min": None, "cost": None,
-                "status": "unavailable",
-                "reason": "A verified origin and destination are required.",
-            }
-
-        olat, olon = finite_number(origin.get("latitude")), finite_number(origin.get("longitude"))
-        dlat, dlon = finite_number(dest.get("latitude")), finite_number(dest.get("longitude"))
-        if (
-            olat is None or olon is None or dlat is None or dlon is None
-            or not valid_india_coordinates(olat, olon)
-            or not valid_india_coordinates(dlat, dlon)
-        ):
-            return {
-                "distance_km": None, "time_min": None, "cost": None,
-                "status": "unavailable",
-                "reason": "Coordinates are missing, invalid, or outside the supported India data bounds.",
-            }
-
-        distance_km = haversine_km(olat, olon, dlat, dlon)
-        time_min = distance_km * 2.0
-        cost = distance_km * 10.0
-        return {
-            "distance_km": round(distance_km, 2),
-            "time_min": round(time_min),
-            "cost": round(cost, 2),
-            "status": "calculated",
-            "method": "haversine_straight_line_estimate",
-            "reason": "Straight-line distance; time and cost use planning estimates, not road routing or a live fare.",
-        }
+        return estimate_transport(
+            input_data.get("origin"),
+            input_data.get("destination"),
+            mode=input_data.get("mode", "car_taxi_estimate"),
+        )
 
 
 class BudgetAgent(BudgetAgentContract):
     def run(self, input_data: Dict) -> Dict:
-        itinerary = input_data.get("itinerary", [])
-        total_budget = finite_number(input_data.get("total_budget"))
-        nights = max(0, int(input_data.get("duration", len(itinerary))) - 1)
-        unknown_components = []
-
-        selected_hotel = next((day.get("hotel") for day in itinerary if day.get("hotel")), None)
-        if nights == 0:
-            accommodation_cost = 0.0
-            accommodation_complete = True
-        elif selected_hotel:
-            nightly_price = finite_number(selected_hotel.get("price"))
-            if nightly_price is None or nightly_price <= 0:
-                accommodation_cost = None
-                accommodation_complete = False
-                unknown_components.append("Accommodation price is unavailable.")
-            else:
-                accommodation_cost = nightly_price * nights
-                accommodation_complete = True
-        else:
-            accommodation_cost = None
-            accommodation_complete = False
-            unknown_components.append("Accommodation cost is unavailable and excluded.")
-
-        attraction_total = 0.0
-        priced_attractions = 0
-        unknown_attractions = 0
-        transport_total = 0.0
-        priced_routes = 0
-        unknown_routes = 0
-        for day in itinerary:
-            for leg in day.get("legs", []):
-                attraction = leg.get("attraction") or {}
-                fee = finite_number(attraction.get("cost"))
-                if fee is None or fee < 0:
-                    unknown_attractions += 1
-                else:
-                    attraction_total += fee
-                    priced_attractions += 1
-
-                route = leg.get("transport") or {}
-                route_cost = finite_number(route.get("cost"))
-                if route.get("status") != "calculated" or route_cost is None or route_cost < 0:
-                    unknown_routes += 1
-                else:
-                    transport_total += route_cost
-                    priced_routes += 1
-
-        attraction_cost = attraction_total if priced_attractions else (0.0 if not unknown_attractions else None)
-        transport_cost = transport_total if priced_routes else (0.0 if not unknown_routes else None)
-        attraction_complete = unknown_attractions == 0
-        transport_complete = unknown_routes == 0
-        if unknown_attractions:
-            unknown_components.append(
-                f"Entry fee unavailable for {unknown_attractions} attraction(s)."
-            )
-        if unknown_routes:
-            unknown_components.append(
-                f"Transport estimate unavailable for {unknown_routes} route(s)."
-            )
-
-        known_amounts = [
-            amount for amount in (accommodation_cost, attraction_cost, transport_cost)
-            if amount is not None
-        ]
-        available_total = sum(known_amounts)
-        complete = accommodation_complete and attraction_complete and transport_complete
-        remaining_budget = (
-            total_budget - available_total
-            if complete and total_budget is not None and known_amounts else None
+        return calculate_trip_costs(
+            input_data.get("itinerary", []),
+            duration=int(input_data.get("duration", 0)),
+            travelers=int(input_data.get("travelers", 1)),
+            budget_limit=finite_number(input_data.get("total_budget")),
+            currency=str(input_data.get("currency", "INR")),
+            accommodation_status=input_data.get("accommodation_status"),
         )
-        return {
-            "accommodation_cost": accommodation_cost,
-            "attraction_cost": attraction_cost,
-            "transport_cost": transport_cost,
-            "accommodation_cost_complete": accommodation_complete,
-            "attraction_cost_complete": attraction_complete,
-            "transport_cost_complete": transport_complete,
-            "daily_cost": (
-                round(available_total / max(1, len(itinerary)), 2)
-                if itinerary and known_amounts else None
-            ),
-            "total_estimated_cost": round(available_total, 2) if known_amounts else None,
-            "total_is_complete": complete,
-            "remaining_budget_status": (
-                "complete"
-                if complete and remaining_budget is not None
-                else "unavailable_incomplete_costs"
-            ),
-            "unknown_components": unknown_components,
-            "remaining_budget": round(remaining_budget, 2) if remaining_budget is not None else None,
-        }
 
 
 class ConstraintAgent(ConstraintAgentContract):
@@ -395,18 +345,23 @@ class ConstraintAgent(ConstraintAgentContract):
 
         if budget_result.get("total_is_complete") is False:
             warnings.append("Budget feasibility is unverified because one or more costs are unavailable.")
+        if budget_result.get("data_status") == "DEMO_SYNTHETIC":
+            warnings.append("Budget feasibility is not verified.")
         estimated_total = finite_number(budget_result.get("total_estimated_cost"))
         if estimated_total is not None and estimated_total > total_budget:
             violations.append(f"Budget exceeded: {budget_result['total_estimated_cost']} > {total_budget}")
             
         for d_idx, day in enumerate(itinerary):
             legs = day.get("legs", [])
+            routes = [leg.get("transport", {}) for leg in legs]
+            if day.get("return_transport"):
+                routes.append(day["return_transport"])
             known_times = [
-                finite_number(leg.get("transport", {}).get("time_min"))
-                for leg in legs
-                if leg.get("transport", {}).get("status") == "calculated"
+                finite_number(route.get("time_min"))
+                for route in routes
+                if route.get("status") == "calculated"
             ]
-            if max_daily_travel_time < 9999 and len(known_times) < len(legs):
+            if max_daily_travel_time < 9999 and len(known_times) < len(routes):
                 warnings.append(f"Day {d_idx+1} travel-time limit cannot be verified.")
             day_travel_time = sum(value for value in known_times if value is not None)
             if day_travel_time > max_daily_travel_time:
@@ -452,7 +407,6 @@ class OptimizationAgent(OptimizationAgentContract):
             sorted_hotels = sorted(candidate_hotels, key=hotel_rank)
             selected_hotel = sorted_hotels[0]
 
-        matched_atts = [att for att in candidate_att if att["id"] in prefs]
         scored_atts = sorted(
             candidate_att,
             key=lambda x: (
@@ -468,15 +422,15 @@ class OptimizationAgent(OptimizationAgentContract):
              if attraction.get("destination_origin")),
             None,
         )
-        nights = max(0, duration - 1)
-        hotel_price = finite_number(selected_hotel.get("price")) if selected_hotel else None
-        known_cost = hotel_price * nights if hotel_price is not None else 0.0
         daily_times = [0.0 for _ in range(duration)]
         itinerary = [
             {
                 "day": day_num,
                 "hotel": selected_hotel,
-                "hotel_status": "selected" if selected_hotel else "unavailable",
+                "hotel_status": (
+                    "demo_selected" if selected_hotel and selected_hotel.get("source_type") == "synthetic"
+                    else "selected" if selected_hotel else "unavailable"
+                ),
                 "hotel_reason": accommodation_result.get("reason"),
                 "legs": [],
             }
@@ -517,12 +471,6 @@ class OptimizationAgent(OptimizationAgentContract):
                 ):
                     continue
 
-                attraction_cost = finite_number(attraction.get("cost"))
-                route_cost = finite_number(transport.get("cost"))
-                incremental_known_cost = (attraction_cost or 0.0) + (route_cost or 0.0)
-                if known_cost + incremental_known_cost > req.budget:
-                    continue
-
                 matches = PreferenceAgent.matched_interests(attraction, req.interests)
                 if matches:
                     recommendation_reason = f"Matched interests: {', '.join(matches)}."
@@ -538,13 +486,19 @@ class OptimizationAgent(OptimizationAgentContract):
                 })
                 if route_time is not None and transport.get("status") == "calculated":
                     daily_times[day_index] += route_time
-                known_cost += incremental_known_cost
                 placed = True
                 break
             if not placed:
                 unscheduled.append(attraction.get("name", "Attraction"))
 
         for day_plan in itinerary:
+            if day_plan["legs"]:
+                final_attraction = day_plan["legs"][-1]["attraction"]
+                return_destination = selected_hotel or destination_origin
+                day_plan["return_transport"] = transport_agent.run({
+                    "origin": final_attraction,
+                    "destination": return_destination,
+                })
             if not day_plan["legs"]:
                 day_plan["note"] = (
                     "No remaining attraction could be scheduled within the known "
@@ -588,6 +542,9 @@ class PlannerAgent(PlannerAgentContract):
                 "itinerary": state.optimized_itinerary,
                 "total_budget": req.budget,
                 "duration": req.duration,
+                "travelers": req.travelers,
+                "currency": req.currency,
+                "accommodation_status": state.accommodation_result,
             })
             state.constraint_result = ConstraintAgent().run({
                 "budget_result": state.budget_result,
@@ -670,6 +627,9 @@ class PlannerAgent(PlannerAgentContract):
             "itinerary": itinerary,
             "total_budget": req.budget,
             "duration": req.duration,
+            "travelers": req.travelers,
+            "currency": req.currency,
+            "accommodation_status": state.accommodation_result,
         })
         
         # 6. Constraints

@@ -1,8 +1,13 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, Text, Boolean, JSON
 from sqlalchemy.orm import declarative_base
-from datetime import datetime
+from datetime import datetime, timezone
 
 Base = declarative_base()
+
+
+def utc_now_naive() -> datetime:
+    return datetime.now(timezone.utc).replace(tzinfo=None)
+
 
 class Destination(Base):
     __tablename__ = 'destinations'
@@ -40,7 +45,7 @@ class Attraction(Base):
     source_record_id = Column(String)
     source_url = Column(String)
     source_confidence = Column(String)
-    retrieved_at = Column(DateTime, default=datetime.utcnow)
+    retrieved_at = Column(DateTime, default=utc_now_naive)
     coordinate_source = Column(String)
     rating_source = Column(String)
     rating_validation_status = Column(String)
@@ -52,8 +57,8 @@ class Attraction(Base):
     
     data_quality_status = Column(String)
     is_active = Column(Boolean, nullable=False, default=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now_naive)
+    updated_at = Column(DateTime, default=utc_now_naive, onupdate=utc_now_naive)
 
 class Hotel(Base):
     __tablename__ = 'hotels'
@@ -81,8 +86,8 @@ class Hotel(Base):
     source_url = Column(String)
     provenance_source = Column(String)
     data_quality_status = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now_naive)
+    updated_at = Column(DateTime, default=utc_now_naive, onupdate=utc_now_naive)
 
 class TransportSegment(Base):
     __tablename__ = 'transport_segments'
@@ -99,7 +104,7 @@ class TransportSegment(Base):
     currency = Column(String)
     source = Column(String)
     graph_version = Column(String)
-    calculated_at = Column(DateTime, default=datetime.utcnow)
+    calculated_at = Column(DateTime, default=utc_now_naive)
 
 class UserRequest(Base):
     __tablename__ = 'user_requests'
@@ -113,7 +118,7 @@ class UserRequest(Base):
     interests = Column(JSON)
     max_daily_travel_time = Column(Integer)
     accommodation_pref = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now_naive)
 
 class Itinerary(Base):
     __tablename__ = 'itineraries'
@@ -133,4 +138,4 @@ class EvaluationLog(Base):
     itinerary_id = Column(Integer, ForeignKey('itineraries.itinerary_id'))
     metric_name = Column(String)
     metric_value = Column(Float)
-    computed_at = Column(DateTime, default=datetime.utcnow)
+    computed_at = Column(DateTime, default=utc_now_naive)

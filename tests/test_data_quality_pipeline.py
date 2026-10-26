@@ -91,7 +91,8 @@ def test_budget_marks_missing_costs_and_accommodation_incomplete():
     assert result["attraction_cost"] is None
     assert result["transport_cost"] is None
     assert result["total_estimated_cost"] is None
-    assert result["remaining_budget"] is None
+    assert result["remaining_budget"] == 20000
+    assert result["remaining_budget_is_spendable"] is False
     assert result["total_is_complete"] is False
     assert result["remaining_budget_status"] == "unavailable_incomplete_costs"
     assert result["unknown_components"]
@@ -206,6 +207,7 @@ def test_verified_hotel_price_is_selected_and_included_in_known_budget(monkeypat
             provenance_source="OpenStreetMap",
             data_quality_status="verified",
             price_per_night=2500,
+            currency="INR",
             price_source="verified property rate table",
             price_validation_status="verified",
             rating=4.5,
@@ -230,10 +232,12 @@ def test_verified_hotel_price_is_selected_and_included_in_known_budget(monkeypat
             }]}
         ],
     })
-    assert budget["accommodation_cost"] == 5000
-    assert budget["total_estimated_cost"] == 5000
+    assert budget["accommodation_cost"] is None
+    assert budget["accommodation"]["price_per_night"] == 2500
+    assert "occupancy is unknown" in budget["accommodation"]["reason"]
+    assert budget["total_estimated_cost"] is None
     assert budget["total_is_complete"] is False
-    assert budget["remaining_budget"] is None
+    assert budget["remaining_budget"] == 20000
     engine.dispose()
 
 
@@ -312,7 +316,8 @@ def test_optimizer_uses_fallback_candidates_after_interest_matches():
     )
 
 
-def test_fallback_is_explained_and_insufficient_candidates_are_not_invented():
+def test_fallback_is_explained_and_insufficient_candidates_are_not_invented(monkeypatch):
+    monkeypatch.setenv("WANDERWISE_DEMO_DATA", "false")
     state = PlannerAgent().run(_request(
         destination="Kerala Backwaters (Alappuzha & Kumarakom)",
         interests=["Quantum Gardening"],

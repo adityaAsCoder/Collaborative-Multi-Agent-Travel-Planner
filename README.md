@@ -75,3 +75,63 @@ prices, ratings, or locations. The generated
 `reports/data_inspection/data_quality_audit.md` reports coverage and remaining
 gaps by destination. Do not interpret an incomplete budget as spendable remaining
 money or as live hotel availability.
+
+## Cost estimates and demonstration data
+
+The planner calculates entry fees, transportation, and accommodation through the
+shared `app/agents/cost_estimator.py` module. Attraction fees are multiplied by
+travellers unless a record explicitly identifies a group charge. Accommodation
+estimates require both nightly pricing and known room occupancy; synthetic sample
+properties include an illustrative occupancy of two. An incomplete budget still
+shows the arithmetic difference from known costs, but identifies it as not
+spendable remaining money.
+
+Without a routing provider, transportation uses validated coordinates to derive a
+Haversine straight-line distance. It is explicitly not a road distance. The
+illustrative car/taxi calculation is distance in kilometres multiplied by the
+configurable rate in `datasets/demo/demo_transport.json` (default ₹12/km); the
+duration estimate uses its configurable speed (default 30 km/h). Override these
+for the backend process with `WANDERWISE_TRANSPORT_COST_PER_KM` and
+`WANDERWISE_ESTIMATED_SPEED_KMH`. These are not live fares or verified market
+prices.
+The current dataset and configured rates are INR-only; other currencies are
+rejected rather than relabelled or silently converted.
+
+Demonstration records are stored separately in `datasets/demo/demo_hotels.csv`
+and `datasets/demo/demo_attractions.csv`. They are enabled by default for 20
+destinations: Goa, Ladakh (Leh), Jaipur, Varanasi, Agra, Udaipur, Kerala
+Backwaters, Shimla, Coorg, Ziro Valley, Dharamshala & McLeod Ganj, Manali,
+Tawang, Spiti Valley, Nubra Valley, Ooty, Munnar, Kanyakumari, Hampi, and
+Pondicherry. Each has three attraction recommendations with illustrative
+free/paid entry fees and visit durations, plus an illustrative sample stay.
+The planner includes the available sample details and estimates in the
+demonstration itinerary and budget. These are synthetic records, not real
+property listings, verified fees, actual attraction coordinates, live prices,
+or bookings. The interface labels the attraction, accommodation, and budget
+values as demonstration data. To disable the demo accommodation and attraction
+records, set this in PowerShell before starting the backend:
+
+```powershell
+$env:WANDERWISE_DEMO_HOTELS = "false"
+$env:WANDERWISE_DEMO_ATTRACTIONS = "false"
+powershell -ExecutionPolicy Bypass -File .\run_project.ps1
+```
+
+To restore the default demonstration behavior, clear these switches before
+starting the app:
+
+```powershell
+Remove-Item Env:WANDERWISE_DEMO_HOTELS -ErrorAction SilentlyContinue
+Remove-Item Env:WANDERWISE_DEMO_ATTRACTIONS -ErrorAction SilentlyContinue
+Remove-Item Env:WANDERWISE_DEMO_DATA -ErrorAction SilentlyContinue
+powershell -ExecutionPolicy Bypass -File .\run_project.ps1
+```
+
+`WANDERWISE_DEMO_DATA=true` separately marks configured transport costs as
+demonstration data; without it, transport costs remain labeled estimates.
+
+Demo attraction coordinates are illustrative offsets from each sourced
+destination reference point, not actual attraction coordinates. Demo property
+locations also use the destination reference point, not real addresses. The app
+labels these values and sample fees as demonstration data; do not use them as
+verified travel prices, property listings, directions, or bookings.
