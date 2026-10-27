@@ -192,7 +192,7 @@ def test_demo_attractions_are_labeled_and_have_consistent_fees(monkeypatch):
     monkeypatch.delenv("WANDERWISE_DEMO_ATTRACTIONS", raising=False)
     attractions = load_demo_attractions("Jaipur", "Rajasthan", 26.9124, 75.7873)
 
-    assert len(attractions) == 3
+    assert len(attractions) >= 6
     assert all(item["source_type"] == "synthetic" for item in attractions)
     assert all(item["data_status"] == "DEMO_SYNTHETIC" for item in attractions)
     assert all(item["duration"] > 0 for item in attractions)
@@ -204,14 +204,14 @@ def test_demo_attractions_can_be_disabled(monkeypatch):
     assert load_demo_attractions("Jaipur", "Rajasthan", 26.9124, 75.7873) == []
 
 
-def test_demo_catalog_has_twenty_destinations_with_three_attractions_each():
+def test_demo_catalog_has_twenty_destinations_with_six_attractions_each():
     with DEMO_ATTRACTIONS_PATH.open(newline="", encoding="utf-8-sig") as data_file:
         rows = list(csv.DictReader(data_file))
 
     destination_names = {row["destination_name"] for row in rows}
     assert len(destination_names) == 20
     assert all(
-        sum(row["destination_name"] == name for row in rows) == 3
+        sum(row["destination_name"] == name for row in rows) >= 6
         for name in destination_names
     )
 

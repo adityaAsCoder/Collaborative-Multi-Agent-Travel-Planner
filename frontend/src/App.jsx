@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Plan from './pages/Plan';
 import Itinerary from './pages/Itinerary';
 import Trips from './pages/Trips';
+import Hotels from './pages/Hotels';
 
 // Keep a simple check for auth
 const ProtectedRoute = ({ children }) => {
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/plan" element={<ProtectedRoute><Plan /></ProtectedRoute>} />
+            <Route path="/hotels" element={<ProtectedRoute><Hotels /></ProtectedRoute>} />
             <Route path="/itinerary" element={<ProtectedRoute><Itinerary /></ProtectedRoute>} />
             <Route path="/trips" element={<ProtectedRoute><Trips /></ProtectedRoute>} />
             <Route path="*" element={<Navigate to="/" replace />} />

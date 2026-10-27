@@ -23,7 +23,7 @@ export default function Plan() {
         if (!form.destination || !form.interests.length) { setError('Choose a destination and at least one interest.'); return; }
         setLoading(true);
         try {
-            const result = await fetchApi('/plan', { method: 'POST', body: JSON.stringify({ ...form, email: localStorage.getItem('user_email'), duration: Number(form.duration), travelers: Number(form.travelers), budget: Number(form.budget), max_daily_travel_time: form.max_daily_travel_time ? Number(form.max_daily_travel_time) : null }) });
+            const result = await fetchApi('/plan', { method: 'POST', body: JSON.stringify({ ...form, duration: Number(form.duration), travelers: Number(form.travelers), budget: Number(form.budget), max_daily_travel_time: form.max_daily_travel_time ? Number(form.max_daily_travel_time) : null }) });
             sessionStorage.setItem('last_itinerary', JSON.stringify(result));
             navigate('/itinerary', { state: result });
         } catch (e) { setError(e.message); } finally { setLoading(false); }

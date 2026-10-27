@@ -19,7 +19,8 @@ export default function Login() {
                 body: JSON.stringify({ email, password })
             });
             localStorage.setItem('user_email', data.email);
-            navigate('/dashboard');
+            const returnTo = new URLSearchParams(window.location.search).get('returnTo');
+            navigate(returnTo && returnTo.startsWith('/') ? returnTo : '/dashboard');
         } catch (err) {
             setError(err.message);
         } finally {

@@ -1,7 +1,10 @@
+from pathlib import Path
+
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./travel_planner.db"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{(PROJECT_ROOT / 'travel_planner.db').as_posix()}"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}

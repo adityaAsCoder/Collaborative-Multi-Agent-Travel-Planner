@@ -1,14 +1,19 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Plane, Home, Map, ClipboardList, LogOut, User } from 'lucide-react';
+import { Plane, Home, Map, ClipboardList, LogOut, User, BedDouble } from 'lucide-react';
+import { logout } from '../lib/api';
 
 export default function Navbar() {
     const navigate = useNavigate();
     const user = localStorage.getItem('user_email');
 
-    const handleLogout = () => {
-        localStorage.removeItem('user_email');
-        navigate('/');
+    const handleLogout = async () => {
+        try {
+            await logout();
+        } finally {
+            localStorage.removeItem('user_email');
+            navigate('/');
+        }
     };
 
     return (
@@ -27,6 +32,9 @@ export default function Navbar() {
                                 </Link>
                                 <Link to="/plan">
                                     <Map size={18} /> Plan Trip
+                                </Link>
+                                <Link to="/hotels">
+                                    <BedDouble size={18} /> Hotels
                                 </Link>
                                 <Link to="/trips">
                                     <ClipboardList size={18} /> My Trips

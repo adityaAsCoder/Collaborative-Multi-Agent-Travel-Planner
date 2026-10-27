@@ -124,8 +124,8 @@ def test_all_twenty_demo_destinations_generate_complete_labeled_plans(monkeypatc
         ]
 
         assert not state.validation_result.get("error"), destination
-        assert len(state.candidate_attractions) == 3, destination
-        assert len(scheduled_legs) == 3, destination
+        assert len(state.candidate_attractions) >= 6, destination
+        assert len(scheduled_legs) >= 3, destination
         assert state.candidate_hotels[0]["source_type"] == "synthetic", destination
         assert all(day["hotel"] for day in state.optimized_itinerary), destination
         assert all(leg["attraction"]["source_type"] == "synthetic" for leg in scheduled_legs), destination
@@ -137,6 +137,24 @@ def test_all_twenty_demo_destinations_generate_complete_labeled_plans(monkeypatc
         assert state.budget_result["demonstration_cost_total"] > 0, destination
         assert state.budget_result["remaining_budget_is_spendable"] is False, destination
         assert state.constraint_result["status"] == "incomplete", destination
+
+
+def test_six_day_demo_plan_has_attractions_on_every_day(monkeypatch):
+    monkeypatch.delenv("WANDERWISE_DEMO_DATA", raising=False)
+    monkeypatch.delenv("WANDERWISE_DEMO_HOTELS", raising=False)
+    monkeypatch.delenv("WANDERWISE_DEMO_ATTRACTIONS", raising=False)
+
+    state = PlannerAgent().run(_jaipur_request(
+        destination="Jaipur",
+        duration=6,
+        travelers=2,
+        budget=50000,
+        interests=["History", "Forts", "Nature", "Religious", "Culture", "Adventure"],
+    ))
+
+    assert len(state.optimized_itinerary) == 6
+    assert all(day["legs"] for day in state.optimized_itinerary)
+    assert not state.optimized_itinerary[0].get("unscheduled_attractions")
 
 
 # ---------- 7. Budget correctly calculated ----------

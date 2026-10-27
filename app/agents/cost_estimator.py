@@ -165,6 +165,8 @@ def load_demo_attractions(
             fee = finite_number(row.get("illustrative_entry_fee_inr"))
             duration = finite_number(row.get("visit_duration_min"))
             fee_status = row.get("fee_status")
+            if fee_status in {"PAID", "FREE"}:
+                fee_status = "DEMO_FREE" if fee == 0 else "DEMO_PAID"
             if fee is None or fee < 0 or duration is None or duration < 1:
                 raise ValueError(
                     f"Invalid demonstration fee or visit duration for {row.get('attraction_name')}."

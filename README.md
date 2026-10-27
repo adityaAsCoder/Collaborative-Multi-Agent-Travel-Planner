@@ -19,6 +19,20 @@ It starts the backend at `http://127.0.0.1:8000` and the React frontend at
 `http://127.0.0.1:5173`. The API documentation is available at
 `http://127.0.0.1:8000/docs`.
 
+The browser frontend uses an HttpOnly session cookie plus a double-submit CSRF
+token. The frontend obtains the token from `GET /auth/csrf` automatically and
+sends it on state-changing requests. Local HTTP development uses `SameSite=Lax`
+and an insecure cookie so `127.0.0.1` works; HTTPS deployments must set
+`WANDERWISE_COOKIE_SECURE=true` and configure exact frontend origins with
+`WANDERWISE_ALLOWED_ORIGINS`.
+
+Login failures are rate-limited in the SQLite database. The default policy is
+five failed attempts per normalized email and client address in 15 minutes.
+Configure it before starting the API with
+`WANDERWISE_LOGIN_RATE_MAX_FAILURES` and
+`WANDERWISE_LOGIN_RATE_WINDOW_SECONDS`. A successful login clears that key, and
+expired windows reset automatically.
+
 From the repository root:
 
 ```powershell
@@ -135,3 +149,10 @@ destination reference point, not actual attraction coordinates. Demo property
 locations also use the destination reference point, not real addresses. The app
 labels these values and sample fees as demonstration data; do not use them as
 verified travel prices, property listings, directions, or bookings.
+
+Live hotel inventory is intentionally not configured. The planner uses clearly
+labeled synthetic demonstration stays when demo mode is enabled; they are
+fictional, not bookable, and do not represent live availability. The future
+provider boundary is defined in `app/providers/hotels.py` and requires offers
+to include availability, price, currency, occupancy, source, retrieval time,
+and an optional booking URL before any provider can be integrated.

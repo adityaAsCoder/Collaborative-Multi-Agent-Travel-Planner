@@ -25,6 +25,7 @@ from app.agents.cost_estimator import (
     load_demo_attractions,
     load_demo_hotels,
 )
+from app.providers.hotels import hotel_mode
 
 
 class ResearchAgent(ResearchAgentContract):
@@ -165,6 +166,19 @@ class AccommodationAgent(AccommodationAgentContract):
 
     def run(self, input_data: Dict) -> List[dict]:
         destination_name = str(input_data.get("destination") or "").strip()
+        configured_hotel_mode = hotel_mode()
+        if configured_hotel_mode in {"disabled", "live"}:
+            self.last_status = {
+                "status": "disabled" if configured_hotel_mode == "disabled" else "live_search_required",
+                "reason": (
+                    "Accommodation search is disabled by configuration."
+                    if configured_hotel_mode == "disabled"
+                    else "Live offers require explicit dates and occupancy. Search live inventory in the Hotels page; demo or cached prices are not substituted."
+                ),
+                "matched_hotel_count": 0,
+                "eligible_hotel_count": 0,
+            }
+            return []
         db = SessionLocal()
         try:
             dest = db.query(Destination).filter(

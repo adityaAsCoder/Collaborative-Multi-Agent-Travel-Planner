@@ -171,6 +171,16 @@ def init_auth_db() -> None:
             )
             """
         )
+        connection.execute(
+            """
+            CREATE TABLE IF NOT EXISTS auth_sessions (
+                session_hash TEXT PRIMARY KEY,
+                email TEXT NOT NULL,
+                expires_at TEXT NOT NULL,
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+            )
+            """
+        )
 
 
 def create_user(email: str, password: str) -> tuple[bool, str]:
